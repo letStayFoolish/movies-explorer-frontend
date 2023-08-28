@@ -1,6 +1,7 @@
 .promo {
     background: var(--color-footer);
     color: var(--color-text-light);
+    position: relative;
 }
 
 .promo__wrapper {

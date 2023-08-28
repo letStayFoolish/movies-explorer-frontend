@@ -3,19 +3,17 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 
-import './main.css'
+// import './main.css'
 
 const Main = () => {
   return (
-    <main className='main' >
-
+    <main>
       <Promo />
       {/*<NavTab />*/}
       {/*<AboutProject />*/}
       <Techs />
       <AboutMe />
       <Portfolio />
-
     </main>
   )
 }
