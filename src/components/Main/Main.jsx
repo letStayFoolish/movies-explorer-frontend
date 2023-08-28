@@ -1,13 +1,17 @@
-import React from 'react'
+import Promo from "../Promo/Promo";
+import Techs from "../Techs/Techs";
+import AboutMe from "../AboutMe/AboutMe";
+import Portfolio from "../Portfolio/Portfolio";
+
 import './main.css'
-import {AboutMe, AboutProject, NavTab, Portfolio, Promo, Techs} from "../index";
+
 const Main = () => {
   return (
     <main className='main' >
 
       <Promo />
-      <NavTab />
-      <AboutProject />
+      {/*<NavTab />*/}
+      {/*<AboutProject />*/}
       <Techs />
       <AboutMe />
       <Portfolio />

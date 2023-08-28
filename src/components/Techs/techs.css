@@ -1,0 +1,135 @@
+.techs {
+    background: var(--color-dark);
+    color: var(--color-text-light);
+}
+
+.techs__wrapper {
+    padding: 5.62rem 4.37rem 6.25rem;
+}
+
+.techs__top {
+    padding-bottom: 1.44rem;
+    border-bottom: 1px solid #dadada;
+}
+
+.techs__top h3 {
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+}
+
+.techs__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.techs__content h4 {
+    margin: 5.62rem 0 1.62rem;
+
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+}
+
+.techs__content p {
+    margin-bottom: 6.25rem;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+
+    max-width: 460px;
+}
+
+.content__stack {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.63rem;
+}
+
+.content__stack div {
+    width: 90px;
+    min-height: 60px;
+    background: var(--color-dark-fields);
+    padding-top: 1.31rem;
+    padding-bottom: 1.38rem;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .techs__wrapper {
+        padding: 5.62rem 3.12rem;
+    }
+
+    .techs__content h4 {
+        margin: 5rem 0 1.38rem;
+    }
+
+    .techs__content p {
+        margin-bottom: 5.19rem;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.48px;
+    }
+
+    .content__stack {
+        flex-wrap: wrap;
+        /*justify-content: space-around;*/
+        justify-content: flex-start;
+        gap: 0.62rem;
+        /*padding: 0 0.62rem;*/
+    }
+
+    .content__stack div {
+        padding-bottom: 1.31rem;
+        border-radius: 10px;
+        width: 84px;
+        min-height: 57px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .techs__wrapper {
+        padding: 4.38rem 1.12rem;
+    }
+
+    .techs__top h3 {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .techs__top {
+        padding-bottom: 1.75rem;
+    }
+
+    .techs__content h4 {
+        margin: 3.75rem 0 1.5rem;
+
+        font-size: 30px;
+        line-height: normal;
+        letter-spacing: -1.2px;
+    }
+
+    .techs__content p {
+        margin-bottom: 3.13rem;
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: -0.44px;
+    }
+
+    .content__stack {
+        padding: 0 3.32rem;
+        /*justify-content: flex-start;*/
+    }
+}
