@@ -1,0 +1,136 @@
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-bg);
+    font-family: var(--font-family);
+}
+
+.header__wrapper {
+    padding: 0 4.37rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__content {
+}
+
+.header__content h1 {
+    font-family: var(--font-family);
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+
+    margin: calc(4.69rem + 4.625rem) 0 2.25rem;
+    max-width: 640px;
+}
+
+.header__content p {
+    opacity: .5;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+
+    max-width: 310px;
+}
+
+.header__content button {
+    margin: 9.12rem 0 4.69rem;
+    padding: 0.62rem 1.25rem;
+    background: transparent;
+    outline: none;
+    border-radius: 0.1875rem;
+    border: 1px solid var(--color-text-light);
+    opacity: .6;
+
+    color: var(--color-text-light);
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+    transition: var(--transition-on-hover);
+}
+
+.header__content button:hover {
+    background: var(--color-green);
+    color: var(--color-text-dark);
+    outline: none;
+    border: none;
+    opacity: 1;
+}
+
+
+.header__image {
+    /*margin: calc(4.69rem + 4.625rem) 0 9.06rem 11.88rem;*/
+    margin: calc(4.69rem + 4.625rem) 0 9.06rem;
+}
+
+@media screen and (max-width: 768px) {
+    .header__wrapper {
+        padding: 0 2.75rem;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__image {
+        margin: calc(4.625rem + 8.75rem) 0 0;
+    }
+
+    .header__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header__content h1 {
+        font-size: 40px;
+        line-height: 50px;
+        margin: 3rem auto 1.37rem;
+    }
+
+    .header__content p {
+        max-width: 260px;
+    }
+
+    .header__content button {
+        margin: 5.75rem 0 4.75rem;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .header__wrapper {
+        padding: 0 0.63rem;
+    }
+
+    .header__content h1 {
+        font-size: 30px;
+        line-height: 38px;
+        letter-spacing: -1.2px;
+        margin: 2.75rem auto 1.5rem;
+        width: 100%;
+    }
+
+    .header__content button {
+        margin: 5rem 0 1.87rem;
+    }
+
+    .header__image {
+        margin: calc(4.625rem + 4.38rem) 0 0;
+
+    }
+
+    .header__image img {
+        /*margin: 140px 0 0;*/
+        max-width: 210px;
+    }
+}
