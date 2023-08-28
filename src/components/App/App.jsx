@@ -4,8 +4,8 @@ import './app.css'
 const App = () => {
   return (
     <div className='App'>
-      <Navbar />
-      <Header />
+      {/*<Navbar />*/}
+      {/*<Header />*/}
       <Main />
       <Footer />
     </div>
