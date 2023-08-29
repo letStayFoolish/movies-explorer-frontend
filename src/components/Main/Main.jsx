@@ -9,8 +9,7 @@ import AboutProject from "../AboutProject/AboutProject";
 const Main = () => {
   return (
     <main>
-      {/*<Promo />*/}
-      {/*<NavTab />*/}
+      <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />

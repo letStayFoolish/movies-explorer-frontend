@@ -1,7 +1,7 @@
 import './about-project.css'
 const AboutProject = () => {
   return (
-    <section className='about-project'>
+    <section id='about-project' className='about-project'>
       <div className="about-project__wrapper">
         <div className="about-project__about">
           <h3>

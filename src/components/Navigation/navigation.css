@@ -1,25 +1,6 @@
-.navbar {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    background: transparent;
-    width: 100%;
-    z-index: 10;
-    min-height: 74px;
-
-    padding: 1.12rem 0;
-}
-
-.navbar__wrapper {
-    padding: 0 4.37rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .navbar__links {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -30,7 +11,7 @@
     gap: 20px
 }
 
-.navbar__links_list a {
+.navbar__links_link {
     text-align: right;
     font-family: var(--font-family);
     font-size: 14px;
@@ -49,13 +30,25 @@
 
 .navbar__links_account p {
     font-family: var(--font-family);
+    font-size: 14px;
+    font-style: normal;
     font-weight: 500;
-    line-height: 1rem;
+    line-height: 16px; /* 114.286% */
+}
+
+.navbar__links_account div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0F4157;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
 }
 
 .navbar__links_account img {
-    width: 10.383px;
-    height: 10.669px;
+    width: 10px;
+    height: 10px;
 }
 
 .navbar-menu {
@@ -108,10 +101,6 @@
         display: none;
     }
 
-    .navbar__wrapper {
-        padding: 0 1.88rem;
-    }
-
     .navbar-menu {
         display: flex;
         flex-direction: row-reverse;
@@ -123,10 +112,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .navbar__wrapper {
-        padding: 0 0.88rem;
-    }
-
     .navbar__menu_container_links-sign p {
         font-size: 10px;
         margin-right: 0.88rem;

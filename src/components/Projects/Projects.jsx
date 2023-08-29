@@ -8,7 +8,7 @@ const Projects = () => {
       { projects.map((project, _index) => (
         <div key={_index} className='project__content'>
           <h2 className="project__title">{project.name}</h2>
-          <a className="project__link" href={project.url}>
+          <a className="project__link" href={project.url} target='_blank' rel="noreferrer">
             ↗
           </a>
         </div>

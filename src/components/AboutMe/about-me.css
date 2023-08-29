@@ -77,6 +77,11 @@
 
 .content__image img {
     border-radius: 10px;
+    width: 270px;
+    height: 327px;
+
+    object-fit: cover;
+    object-position: center;
 }
 
 
@@ -117,17 +122,14 @@
         margin-right: 3.06rem;
     }
 
-    .content__image {
-        width: 255px;
-    }
-
     .content__image img {
-        width: 100%;
+        width: 255px;
+        height: 307px;
     }
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
     .about-me__wrapper {
         padding: 4.38rem 0.87rem;
     }
@@ -173,10 +175,9 @@
         line-height: 16px;
     }
 
-
-
     .content__image {
         width: 292px;
+        height: 352px;
     }
 
     .content__image img {
