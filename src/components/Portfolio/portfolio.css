@@ -19,6 +19,7 @@
     margin-bottom: 2.5rem;
 }
 
+
 @media screen and (max-width: 768px) {
     .portfolio__wrapper {
         padding: 0 3.13rem 5.63rem;

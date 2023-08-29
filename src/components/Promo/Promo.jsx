@@ -7,18 +7,18 @@ const Promo = () => {
   return (
     <section className='promo'>
       <div className="promo__wrapper wrapper">
-        <div className="promo__content content">
+        <div className="promo__content content puff-in-center">
           <h1 className="content_heading new-line">
             {Text}
           </h1>
           <p>
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
-          <button type='button'>
+          <button type='button' className='jello-horizontal'>
             <a href="#about-project">Узнать больше</a>
           </button>
         </div>
-        <div className="promo__image image">
+        <div className="promo__image image puff-in-center">
           <img src={image} alt="Planet Earth Image"/>
         </div>
       </div>

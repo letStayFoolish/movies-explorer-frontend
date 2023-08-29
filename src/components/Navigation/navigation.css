@@ -1,3 +1,11 @@
+.navbar-big-screens {
+    display: flex;
+}
+
+.navbar-small-screens {
+    display: none;
+}
+
 .navbar__links {
     display: flex;
     flex-direction: row;
@@ -5,10 +13,13 @@
     align-items: center;
 }
 
+.navbar__links:hover {
+}
+
 .navbar__links_list {
     display: flex;
     flex-direction: row;
-    gap: 20px
+    gap: 1.25rem;
 }
 
 .navbar__links_link {
@@ -17,7 +28,15 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
+    transition: var(--transition-on-hover);
+    cursor: pointer;
+}
+
+.navbar__links_link:hover {
+    text-decoration: underline;
+    opacity: .5;
+
 }
 
 .navbar__links_account {
@@ -26,6 +45,7 @@
     margin-left: 3.12rem;
     align-items: center;
     gap: 0.81rem;
+    cursor: pointer;
 }
 
 .navbar__links_account p {
@@ -33,7 +53,13 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 16px; /* 114.286% */
+    line-height: 16px;
+    transition: var(--transition-on-hover);
+}
+
+.navbar__links_account p:hover {
+    text-decoration: underline;
+    opacity: .5;
 }
 
 .navbar__links_account div {
@@ -51,7 +77,7 @@
     height: 10px;
 }
 
-.navbar-menu {
+.header__menu {
     display: none;
 }
 
@@ -68,6 +94,14 @@
     font-weight: 500;
     line-height: 16px;
     margin-right: 1.88rem;
+    cursor: pointer;
+    transition: var(--transition-on-hover);
+}
+
+.navbar__menu_container_links-sign p:hover {
+    opacity: .5;
+    transform: scale3d(1.1, 1, 1.1);
+    text-decoration: underline;
 }
 
 .navbar__menu_container_links-sign button {
@@ -96,14 +130,95 @@
     opacity: 0.8;
 }
 
+.swing-in-top-fwd {
+    -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+@-webkit-keyframes swing-in-top-fwd {
+    0% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+    }
+}
+@keyframes swing-in-top-fwd {
+    0% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+    }
+}
+
+
 @media screen and (max-width: 768px) {
-    .navbar__links {
+    .header__menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__menu_btn {
+        position: fixed;
+        top: 13.44px;
+        right: 13.44px;
+        z-index: 50;
+        cursor: pointer;
+        transition: var(--transition-on-hover);
+    }
+
+    .header__menu_btn:hover {
+        opacity: .5;
+    }
+
+    .navbar-big-screens {
         display: none;
     }
 
-    .navbar-menu {
+    .navbar-small-screens {
         display: flex;
-        flex-direction: row-reverse;
+        justify-content: center;
+        background: var(--color-footer);
+        height: 100vh;
+        width: 528px;
+        padding: 9.94rem 5.62rem 5.75rem;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    .navbar__links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar__links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .navbar__links_account {
+        margin: 0;
     }
 
     .navbar__menu img {
@@ -115,6 +230,14 @@
     .navbar__menu_container_links-sign p {
         font-size: 10px;
         margin-right: 0.88rem;
+    }
+
+    .navbar-small-screens {
+        height: 100vh;
+        width: 100%;
+        padding: 9rem 0.62rem 3rem;
+        top: 0;
+        right: 0;
     }
 
     .navbar__menu_container_links-sign button {

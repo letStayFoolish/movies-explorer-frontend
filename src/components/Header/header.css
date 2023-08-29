@@ -1,9 +1,13 @@
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(4px);
+    -o-backdrop-filter: blur(4px);
+    -moz-backdrop-filter: blur(4px);
 
-    background: transparent;
+    backdrop-filter: blur(4px);
     width: 100%;
     z-index: 10;
     min-height: 74px;
