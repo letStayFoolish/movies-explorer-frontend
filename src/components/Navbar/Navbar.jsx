@@ -42,21 +42,21 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            // <Sign />
-            <></>
+            <Sign />
+            // <></>
           )}
 
         {/*  Smaller Devices */}
-        <div className="navbar__menu">
-          {toggleMenu ?
-            <AiOutlineClose size={22} color='#fff' onClick={() => setToggleMenu(false)} />
-            :
-            <AiOutlineMenu color='#fff' size={28} onClick={() => setToggleMenu(true)} />
-          }
-          {toggleMenu && (
-            <Menu />
-          )}
-        </div>
+        {/*<div className="navbar__menu">*/}
+        {/*  {toggleMenu ?*/}
+        {/*    <AiOutlineClose size={22} color='#fff' onClick={() => setToggleMenu(false)} />*/}
+        {/*    :*/}
+        {/*    <AiOutlineMenu color='#fff' size={28} onClick={() => setToggleMenu(true)} />*/}
+        {/*  }*/}
+        {/*  {toggleMenu && (*/}
+        {/*    <Menu />*/}
+        {/*  )}*/}
+        {/*</div>*/}
       </div>
 
     </div>

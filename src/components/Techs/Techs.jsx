@@ -1,4 +1,3 @@
-import React from 'react'
 import './techs.css'
 const Techs = () => {
   return (
@@ -12,7 +11,7 @@ const Techs = () => {
 
         <div className="techs__content content">
           <h4 className="content_heading">7 технологий</h4>
-          <p className="content__text">
+          <p className="content_text">
             На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
           </p>
 

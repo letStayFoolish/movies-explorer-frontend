@@ -4,7 +4,7 @@
 }
 
 .techs__wrapper {
-    padding: 5.62rem 4.37rem 6.25rem;
+    padding: 6.25em 4.37rem 6.25rem;
 }
 
 .techs__top {
@@ -64,6 +64,13 @@
     padding-top: 1.31rem;
     padding-bottom: 1.38rem;
     border-radius: 10px;
+
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
 }
 
 
@@ -96,6 +103,9 @@
         border-radius: 10px;
         width: 84px;
         min-height: 57px;
+
+        font-size: 12px;
+        letter-spacing: -0.48px;
     }
 }
 
@@ -110,7 +120,7 @@
     }
 
     .techs__top {
-        padding-bottom: 1.75rem;
+        padding-bottom: 1.5rem;
     }
 
     .techs__content h4 {
@@ -130,6 +140,10 @@
 
     .content__stack {
         padding: 0 3.32rem;
-        /*justify-content: flex-start;*/
+    }
+
+    .content__stack div {
+        font-size: 12px;
+        letter-spacing: -0.48px;
     }
 }
