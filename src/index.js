@@ -8,9 +8,11 @@ import './index.css'
 import Main from "./containers/Main/Main";
 import Movies from "./containers/Movies/Movies";
 import SavedMovies from "./containers/SavedMovies/SavedMovies";
+import NotFound from "./containers/NotFound/NotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path='/' element={<App />}>
       <Route path='/' index={true} element={<Main />} />
       <Route path='/movies' index={true} element={<Movies />} />
@@ -18,6 +20,9 @@ const router = createBrowserRouter(
       <Route path='/' index={true} element={<Main />} />
       <Route path='/' index={true} element={<Main />} />
     </Route>
+    <Route path='/*' element={<NotFound />} />
+    </>
+
   )
 )
 

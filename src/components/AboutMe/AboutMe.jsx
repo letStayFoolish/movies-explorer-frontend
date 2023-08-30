@@ -1,5 +1,6 @@
-import './about-me.css'
 import image from '../../assets/images/about-me/image.png'
+
+import './about-me.css'
 const AboutMe = () => {
   return (
     <section className='about-me'>
