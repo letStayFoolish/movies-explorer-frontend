@@ -25,7 +25,7 @@ const AboutMe = () => {
           <a href='https://github.com/letStayFoolish' className="content_link">GitHub</a>
         </div>
 
-        <div className="content__image">
+        <div className="content__image roll-in-right">
           <img src={image} alt="Profile Image"/>
         </div>
       </div>

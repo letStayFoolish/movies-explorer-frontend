@@ -1,0 +1,38 @@
+.movies {
+    color: var(--color-text-light);
+    background: var(--color-footer);
+    font-family: var(--font-family);
+}
+
+.movies__wrapper {
+    padding: 4.38rem 4.38rem 0.62rem;
+}
+
+.movies__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.75rem;
+}
+
+.movies__btn-more {
+    color: var(--color-text-light);
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    margin: 4rem 0 4.3rem;
+    padding: 0.69rem 1rem 0.56rem;
+
+    background: var(--color-button-dark);
+    transition: var(--transition-on-hover);
+    cursor: pointer;
+}
+
+.movies__btn-more:hover {
+    opacity: var(--opacity-btn);
+}

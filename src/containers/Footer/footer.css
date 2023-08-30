@@ -55,7 +55,7 @@
 }
 
 .footer__navigation li a:hover {
-    opacity: .5;
+    opacity: var(--opacity-btn);
 }
 
 @media screen and (max-width: 768px) {

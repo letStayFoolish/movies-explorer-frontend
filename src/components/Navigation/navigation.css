@@ -35,7 +35,7 @@
 
 .navbar__links_link:hover {
     text-decoration: underline;
-    opacity: .5;
+    opacity: var(--opacity-btn);
 
 }
 
@@ -59,7 +59,7 @@
 
 .navbar__links_account p:hover {
     text-decoration: underline;
-    opacity: .5;
+    opacity: var(--opacity-btn);
 }
 
 .navbar__links_account div {
@@ -99,7 +99,7 @@
 }
 
 .navbar__menu_container_links-sign p:hover {
-    opacity: .5;
+    opacity: var(--opacity-btn);
     transform: scale3d(1.1, 1, 1.1);
     text-decoration: underline;
 }
@@ -127,7 +127,7 @@
 }
 
 .navbar__menu_container_links-sign button:hover {
-    opacity: 0.8;
+    opacity: var(--opacity-btn);
 }
 
 .swing-in-top-fwd {
@@ -177,15 +177,15 @@
 
     .header__menu_btn {
         position: fixed;
-        top: 13.44px;
-        right: 13.44px;
+        top: 22.44px;
+        right: 22.44px;
         z-index: 50;
         cursor: pointer;
         transition: var(--transition-on-hover);
     }
 
     .header__menu_btn:hover {
-        opacity: .5;
+        opacity: var(--opacity-btn);
     }
 
     .navbar-big-screens {
@@ -238,6 +238,16 @@
         padding: 9rem 0.62rem 3rem;
         top: 0;
         right: 0;
+    }
+
+    .header__menu_btn_opened {
+        top: 23px;
+        right: 21px;
+    }
+
+    .header__menu_btn_closed {
+        top: 13.44px;
+        right: 13.44px;
     }
 
     .navbar__menu_container_links-sign button {

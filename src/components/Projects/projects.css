@@ -48,7 +48,7 @@
 }
 
 .project__link:hover {
-    opacity: .5;
+    opacity: var(--opacity-btn);
 }
 
 

@@ -8,7 +8,8 @@
 
 
     --color-bg: #073042;
-    --color-dark: #272727;;
+    --color-dark: #272727;
+    --color-button-dark: #2F2F2F;
     --color-footer: #202020;
     --color-text-light: #fff;
     --color-text-dark: #000;
@@ -16,6 +17,9 @@
     --color-green: #3DDC84;
     --color-line: #424242;
     --color-dark-fields: #303030;
+    --color-red: #EE3465;
+
+    --opacity-btn: .7;
 
     --transition-on-hover: all .5s ease;
 }

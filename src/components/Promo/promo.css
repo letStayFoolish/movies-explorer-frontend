@@ -27,7 +27,7 @@
 }
 
 .promo__content p {
-    opacity: .5;
+    opacity: var(--opacity-btn);
     font-family: var(--font-family);
     font-size: 13px;
     font-weight: 400;
@@ -43,7 +43,7 @@
     outline: none;
     border-radius: 0.1875rem;
     border: 1px solid var(--color-text-light);
-    opacity: .6;
+    opacity: var(--opacity-btn);
 
     color: var(--color-text-light);
     font-family: var(--font-family);
@@ -59,7 +59,7 @@
     color: var(--color-text-dark);
     outline: none;
     border: 1px solid var(--color-green);
-    opacity: 1;
+    opacity: var(--opacity-btn);
 }
 
 .promo__image {

@@ -43,11 +43,11 @@ const Navigation = () => {
           </div>
           <div className="header__menu">
             {toggleMenu ?
-              <div className='header__menu_btn'>
-                <AiOutlineClose size={22} color='#fff' onClick={() => setToggleMenu(false)} />
+              <div className='header__menu_btn header__menu_btn_closed'>
+                <AiOutlineClose size={30} color='#fff' onClick={() => setToggleMenu(false)} />
               </div>
               :
-              <div className='header__menu_btn'>
+              <div className='header__menu_btn header__menu_btn_opened'>
                 <AiOutlineMenu color='#fff' size={28} onClick={() => setToggleMenu(true)} />
               </div>
             }
