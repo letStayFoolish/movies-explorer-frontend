@@ -15,6 +15,7 @@ const SavedMovies = () => {
         <div className="saved-movies__container">
           { movies.map((movie, _index) => (
             <MoviesCard
+              key={_index}
               title={movie.nameRU}
               duration={movie.duration}
               poster={`${baseURL}/${movie.image.url}`}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import icon from "../../assets/icons/navbar/account-icon.svg";
+import { NavLink, useLocation } from 'react-router-dom';
+import accountIcon from '../../assets/icons/navbar/account-icon-1.svg'
+import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 
 import './navigation.css'
-import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 
 const Sign = () => (
   <div className="navbar__menu_container scale-up-center">
@@ -13,17 +14,17 @@ const Sign = () => (
   </div>
 )
 
-const Menu = () => (
+const Menu = ({ divStyle }) => (
   <>
     <div className="navbar__links">
       <ul className='navbar__links_list'>
-        <li className='navbar__links_item'><a href='/movies' className='navbar__links_link' >Фильмы</a></li>
-        <li className='navbar__links_item'><a href='/saved-movies' className='navbar__links_link' >Сохранённые фильмы</a></li>
+        <li className='navbar__links_item'><NavLink to='/movies' className='navbar__links_link' >Фильмы</NavLink></li>
+        <li className='navbar__links_item'><NavLink to='/saved-movies' className='navbar__links_link' >Сохранённые фильмы</NavLink></li>
       </ul>
       <div className="navbar__links_account">
         <p>Аккаунт</p>
-        <div>
-          <img src={icon} alt="Account image"/>
+        <div style={divStyle} >
+          <img src={accountIcon} alt="Account image"/>
         </div>
       </div>
     </div>
@@ -34,12 +35,19 @@ const Navigation = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
 
+  const location = useLocation()
+
+  const divStyle = {
+    backgroundColor: location.pathname === '/' ? '#0F4157' : '#313131',
+  };
+
+
   return (
     <nav className='navbar'>
       {isLoggedIn ? (
         <>
           <div className="navbar-big-screens">
-            <Menu />
+            <Menu divStyle={divStyle} />
           </div>
           <div className="header__menu">
             {toggleMenu ?
