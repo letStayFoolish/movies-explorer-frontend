@@ -177,8 +177,8 @@
 
     .header__menu_btn {
         position: fixed;
-        top: 22.44px;
-        right: 22.44px;
+        top: 24px;
+        right: 36px;
         z-index: 50;
         cursor: pointer;
         transition: var(--transition-on-hover);

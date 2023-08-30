@@ -36,3 +36,31 @@
 .movies__btn-more:hover {
     opacity: var(--opacity-btn);
 }
+
+@media screen and (max-width: 768px) {
+    .movies__wrapper {
+        padding: 4.38rem 1.88rem 0;
+    }
+
+    .movies__container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.19rem 1.5rem;
+    }
+
+    .movies__btn-more {
+        margin: 5rem 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .movies__wrapper {
+        padding-right: 0.88rem;
+        padding-left: 0.88rem;
+        padding-top: 2.2rem;
+    }
+
+    .movies__container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: .76rem;
+    }
+}

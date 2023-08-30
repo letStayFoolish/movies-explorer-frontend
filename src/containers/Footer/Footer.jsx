@@ -17,8 +17,8 @@ const Footer = () => {
           </p>
 
           <ul>
-            <li><a href="https://practicum.yandex.ru/">Яндекс.Практикум</a></li>
-            <li><a href="https://github.com/letStayFoolish">GitHub</a></li>
+            <li><a href="https://practicum.yandex.ru/" target='_blank' rel="noreferrer">Яндекс.Практикум</a></li>
+            <li><a href="https://github.com/letStayFoolish" target='_blank' rel="noreferrer">GitHub</a></li>
           </ul>
         </nav>
       </div>

@@ -92,3 +92,41 @@
     font-size: 13px;
     line-height: 18px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .search-form__wrapper {
+        padding-right: 1.88rem;
+        padding-left: 1.88rem;
+    }
+
+    .search-form__switch {
+        margin-bottom: 2.9rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .search-form__wrapper {
+        padding-right: 0.88rem;
+        padding-left: 0.88rem;
+    }
+
+    .search-form__input {
+        padding: .2rem .25rem;
+    }
+
+    .search-form__input input {
+        padding: 0.87rem 0.25rem;
+
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .search-form__input button {
+        padding: 0.81rem 1.1rem;
+    }
+
+    .search-form__switch {
+        margin: 1.8rem 0 3.8rem;
+    }
+}

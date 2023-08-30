@@ -1,5 +1,4 @@
 import React from 'react'
-import { BsCheck } from "react-icons/bs";
 import './movies-card.css'
 
 function DurationConverter({ minutes }) {
@@ -10,8 +9,6 @@ function DurationConverter({ minutes }) {
 }
 
 const MoviesCard = ({ title, duration, poster, id }) => {
-
-
 
   return (
     <div className='movies-card card '>

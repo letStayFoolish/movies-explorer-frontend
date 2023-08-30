@@ -17,14 +17,12 @@ const Movies = () => {
             <MoviesCard
               title={movie.nameRU}
               duration={movie.duration}
-              // poster={`${baseURL}{movie.image.formats.thumbnail.url}}
-              poster={`${baseURL}/${movie.image.formats.thumbnail.url}`}
+              poster={`${baseURL}/${movie.image.url}`}
               id={movie.id}
             />
           ))}
         </div>
         <button type='button' className='movies__btn-more'>Ещё</button>
-
       </div>
     </div>
   )

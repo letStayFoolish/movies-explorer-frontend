@@ -25,7 +25,6 @@ const SearchForm = () => {
             <p>Короткометражки</p>
           </div>
         </div>
-
       </div>
     </div>
   )
