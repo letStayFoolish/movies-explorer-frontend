@@ -1,0 +1,66 @@
+.saved-movies {
+    color: var(--color-text-light);
+    background: var(--color-footer);
+    font-family: var(--font-family);
+}
+
+.saved-movies__wrapper {
+    padding: 4.38rem 4.38rem 0.62rem;
+}
+
+.saved-movies__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.75rem;
+}
+
+.saved-movies__btn-more {
+    color: var(--color-text-light);
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    margin: 4rem 0 4.3rem;
+    padding: 0.69rem 1rem 0.56rem;
+
+    background: var(--color-button-dark);
+    transition: var(--transition-on-hover);
+    cursor: pointer;
+}
+
+.saved-movies__btn-more:hover {
+    opacity: var(--opacity-btn);
+}
+
+@media screen and (max-width: 768px) {
+    .saved-movies__wrapper {
+        padding: 4.38rem 1.88rem 0;
+    }
+
+    .saved-movies__container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.19rem 1.5rem;
+    }
+
+    .saved-movies__btn-more {
+        margin: 5rem 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .saved-movies__wrapper {
+        padding-right: 0.62rem;
+        padding-left: 0.62rem;
+        padding-top: 2.2rem;
+    }
+
+    .saved-movies__container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: .76rem;
+    }
+}

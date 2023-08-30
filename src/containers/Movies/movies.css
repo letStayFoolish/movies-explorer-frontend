@@ -54,8 +54,8 @@
 
 @media screen and (max-width: 320px) {
     .movies__wrapper {
-        padding-right: 0.88rem;
-        padding-left: 0.88rem;
+        padding-right: 0.62rem;
+        padding-left: 0.62rem;
         padding-top: 2.2rem;
     }
 

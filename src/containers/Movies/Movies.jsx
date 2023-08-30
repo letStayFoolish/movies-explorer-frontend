@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { movies } from '../../utils/constants'
 
 import SearchForm from "../../components/SearchForm/SearchForm";
@@ -8,6 +6,7 @@ import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import './movies.css'
 const Movies = () => {
   const baseURL = 'https://api.nomoreparties.co'
+
   return (
     <div className='movies'>
       <SearchForm />

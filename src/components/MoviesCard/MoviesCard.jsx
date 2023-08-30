@@ -22,8 +22,9 @@ const MoviesCard = ({ title, duration, poster, id }) => {
           <img src={poster} alt="Movie Image"/>
         </div>
 
-        {/*<button className='button button_type_checked' type='button'>&#10003;</button>*/}
-        <button className='button button_type_text' type='button'>Сохранить</button>
+        {/*<button className='button button_type_add' type='button'>&#10003;</button>*/}
+        {/*<button className='button button_type_text' type='button'>Сохранить</button>*/}
+        <button className='button button_type_remove' type='button'>&#10006;</button>
       </div>
     </div>
   )

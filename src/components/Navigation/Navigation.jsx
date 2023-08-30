@@ -17,8 +17,8 @@ const Menu = () => (
   <>
     <div className="navbar__links">
       <ul className='navbar__links_list'>
-        <li className='navbar__links_item'><a className='navbar__links_link' >Фильмы</a></li>
-        <li className='navbar__links_item'><a className='navbar__links_link' >Сохранённые фильмы</a></li>
+        <li className='navbar__links_item'><a href='/movies' className='navbar__links_link' >Фильмы</a></li>
+        <li className='navbar__links_item'><a href='/saved-movies' className='navbar__links_link' >Сохранённые фильмы</a></li>
       </ul>
       <div className="navbar__links_account">
         <p>Аккаунт</p>

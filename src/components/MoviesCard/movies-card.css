@@ -77,8 +77,12 @@
     background: #313131;
 }
 
-.button_type_checked {
+.button_type_add {
     background: var(--color-red);
+}
+
+.button_type_remove {
+    background: #313131;
 }
 
 .fade-in-fwd {
