@@ -147,7 +147,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 888px) {
     .movies-card {
         max-width: 342px;
     }
@@ -166,7 +166,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
     .movies-card {
         max-width: 300px;
     }

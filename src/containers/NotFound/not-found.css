@@ -27,7 +27,7 @@
 }
 
 .not-found__navigate {
-    color: #4285F4;
+    color: var(--color-blue);
     text-align: center;
     font-size: 14px;
     font-style: normal;

@@ -27,7 +27,7 @@
 }
 
 .promo__content p {
-    opacity: var(--opacity-btn);
+    opacity: var(--opacity-link);
     font-family: var(--font-family);
     font-size: 13px;
     font-weight: 400;

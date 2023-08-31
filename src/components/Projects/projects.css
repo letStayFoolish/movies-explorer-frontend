@@ -48,7 +48,7 @@
 }
 
 .project__link:hover {
-    opacity: var(--opacity-btn);
+    opacity: var(--opacity-link);
 }
 
 @media screen and (max-width: 768px) {

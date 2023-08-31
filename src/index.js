@@ -4,7 +4,7 @@ import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } 
 
 import App from "./containers/App/App";
 
-import './index.css'
+
 import Main from "./containers/Main/Main";
 import Movies from "./containers/Movies/Movies";
 import SavedMovies from "./containers/SavedMovies/SavedMovies";
@@ -13,6 +13,8 @@ import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import NotFound from "./containers/NotFound/NotFound";
 import Preloader from "./components/Preloader/Preloader";
+
+import './index.css'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

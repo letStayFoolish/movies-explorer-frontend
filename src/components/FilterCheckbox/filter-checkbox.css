@@ -5,7 +5,7 @@
     width: 36px;
     /*height: 34px;*/
     height: 20px;
-    background-color: var(--color-gray);
+    background-color: var(--color-checkbox-dark);
     border-radius: 10px;
     transition: background-color 0.4s;
     cursor: pointer;
@@ -18,7 +18,8 @@
     width: 8px;
     left: 8px;
     bottom: 6px;
-    background-color: white;
+    /*background-color: white;*/
+    background-color: var(--color-checkbox-gray);
     border-radius: 50%;
     transition: left 0.4s;
 }
@@ -41,6 +42,8 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     left: 22px;
+    background-color: var(--color-text-light);
+
 }
 
 @media screen and (max-width: 768px) {

@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 
 import logo from '../../assets/images/register/logo.svg'
 import './form-element.css'
+import FormButton from "../FormButton/FormButton";
 
 const FormElement = () => {
   const [formValue, setFormValue] = useState({
@@ -69,9 +70,7 @@ const FormElement = () => {
 
         {pathname === '/signup' ? (
           <>
-            <button className="form-element__button">
-              Зарегистрироваться
-            </button>
+            <FormButton text='Зарегистрироваться' />
             <div className="form-element__text">
               <p>Уже зарегистрированы?<span><NavLink to='/signin'>Войти</NavLink></span></p>
             </div>
@@ -79,9 +78,7 @@ const FormElement = () => {
 
         ) : (
           <>
-            <button className="form-element__button">
-              Войти
-            </button>
+            <FormButton text='Войти' />
             <div className="form-element__text">
               <p>Ещё не зарегистрированы?<span><NavLink to='/signup'>Регистрация</NavLink></span></p>
             </div>

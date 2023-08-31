@@ -58,7 +58,7 @@
 .search-form__input button {
     color: var(--color-text-light);
     border-radius: 5px;
-    background: #4285F4;
+    background: var(--color-blue);
     padding: 1.06rem 1.7rem;
 
     text-align: center;
@@ -95,7 +95,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
     .search-form__wrapper {
         padding-right: 0.88rem;
         padding-left: 0.88rem;
