@@ -15,15 +15,15 @@
 
 .project__content:not(:first-child),
 .project__content:not(:last-child) {
-    padding: 12px 0 13px;
+    padding: 13px 0 13px;
 }
 
 .project__content:first-child {
-    padding: 0 0 23px;
+    padding: 0 0 13px;
 }
 
 .project__content:last-child {
-    padding: 16px 0 0;
+    padding: 13px 0 0;
 }
 
 .project__content h2 {
@@ -36,6 +36,7 @@
 }
 
 .project__link {
+    margin-top: .34rem;
     font-family: var(--font-family);
     font-size: 30px;
     font-style: normal;
@@ -60,11 +61,11 @@
 
     .project__content:not(:first-child),
     .project__content:not(:last-child) {
-        padding: 18px 0 19px;
+        padding: 22px 0 16px;
     }
 
     .project__content:first-child {
-        padding: 0 0 19px;
+        padding: 0 0 9px;
     }
 
     .project__content:last-child {
@@ -90,5 +91,18 @@
         font-size: 18px;
         line-height: 28px;
         letter-spacing: -0.72px;
+    }
+
+    .project__content:not(:first-child),
+    .project__content:not(:last-child) {
+        padding: 20px 0 16px;
+    }
+
+    .project__content:first-child {
+        padding: 0 0 15px;
+    }
+
+    .project__content:last-child {
+        padding: 15px 0 0;
     }
 }

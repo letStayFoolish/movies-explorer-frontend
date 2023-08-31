@@ -1,5 +1,5 @@
 .footer__wrapper {
-    padding: 4.94rem 4.38rem 1.25rem;
+    padding: 4.2rem 4.38rem 1.25rem;
 }
 
 .footer__text {
@@ -80,12 +80,12 @@
     .footer__navigation {
         display: flex;
         flex-direction: column-reverse;
-        margin-top: 1.8rem;
+        margin-top: 1.6rem;
     }
 
     .footer__navigation ul {
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.5rem;
     }
 
     .footer__navigation ul li a {

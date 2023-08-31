@@ -4,7 +4,7 @@
 }
 
 .techs__wrapper {
-    padding: 6.25em 4.37rem 6.25rem;
+    padding: 6em 4.37rem 6.25rem;
 }
 
 .techs__top {
@@ -76,7 +76,7 @@
 
 @media screen and (max-width: 768px) {
     .techs__wrapper {
-        padding: 5.62rem 3.12rem;
+        padding: 5.8rem 3.12rem;
     }
 
     .techs__content h4 {

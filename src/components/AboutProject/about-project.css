@@ -5,11 +5,11 @@
 }
 
 .about-project__wrapper {
-    padding: 6.88rem 4.37rem;
+    padding: 7rem 4.37rem;
 }
 
 .about-project__about {
-    padding-bottom: 1.44rem;
+    padding-bottom: 1.6rem;
     border-bottom: 1px solid #dadada;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .about-project__content {
-    margin: 4rem 0 6.88rem;
+    margin: 4.2rem 0 6.88rem;
     display: flex;
     gap: 3.5rem;
 }
@@ -92,12 +92,12 @@
 
 @media screen and (max-width: 768px) {
     .about-project__wrapper {
-        padding: 5.63rem 3.13rem;
+        padding: 5.4rem 3.13rem;
     }
 
     .about-project__content {
-        margin-bottom: 6rem;
-        gap: 1.88rem;
+        margin-bottom: 5.8rem;
+        gap: 2.4rem;
     }
 
     .content__column h4 {
@@ -107,6 +107,14 @@
     .content__column p {
         font-size: 12px;
         line-height: 18px;
+    }
+
+    .timeline__first-week {
+        flex: 1.2;
+    }
+
+    .timeline__second-week {
+        flex: 4.5;
     }
 
     .first-week_box_color_green {

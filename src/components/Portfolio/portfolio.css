@@ -22,21 +22,21 @@
 
 @media screen and (max-width: 768px) {
     .portfolio__wrapper {
-        padding: 0 3.13rem 5.63rem;
+        padding: 0 3.13rem 5.3rem;
     }
 
     .portfolio__heading {
-         margin-bottom: 3.12rem;
+         margin-bottom: 3rem;
     }
 }
 
 @media screen and (max-width: 320px) {
     .portfolio__wrapper {
-        padding: 0 0.87rem 4.38rem;
+        padding: 0 0.87rem 4.3rem;
     }
 
     .portfolio__heading {
-        margin-bottom: 2.4rem;
+        margin-bottom: 2.2rem;
 
         font-size: 14px;
     }
