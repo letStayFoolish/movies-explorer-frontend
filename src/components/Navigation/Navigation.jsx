@@ -22,7 +22,7 @@ const Navigation = () => {
       {isLoggedIn ? (
         <>
           <div className="navbar-big-screens">
-            <Menu divStyle={divStyle} pathname={pathname} toggleMenu={toggleMenu} />
+            <Menu divStyle={divStyle} pathname={pathname} />
           </div>
           <div className="header__menu">
             {toggleMenu ?
@@ -36,7 +36,7 @@ const Navigation = () => {
             }
             {toggleMenu && (
               <div className="navbar-small-screens swing-in-top-fwd" style={{background: pathname === '/' ? '#073042' : '#202020'}}>
-                <Menu divStyle={divStyle} pathname={pathname} />
+                <Menu divStyle={divStyle} pathname={pathname} toggleMenu={toggleMenu} />
               </div>
             )}
           </div>

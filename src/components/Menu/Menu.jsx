@@ -9,7 +9,7 @@ const Menu = ({ divStyle, pathname, toggleMenu }) => {
     <>
       <div className="menu">
         <ul className='menu_list'>
-          {!toggleMenu && (
+          {toggleMenu && (
             <li className='menu_item'>
               <NavLink to='/'
                        className={pathname === '/' ? 'menu_link_active menu_link' : 'menu_link'}
