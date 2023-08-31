@@ -26,8 +26,8 @@
     border-radius: 6px;
     border: none;
     outline: none;
-    margin: 4rem 0 4.3rem;
-    padding: 0.69rem 1rem 0.56rem;
+    margin: 4rem 0 5rem;
+    padding: .69rem 1rem .56rem;
 
     background: var(--color-button-dark);
     transition: var(--transition-on-hover);

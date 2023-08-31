@@ -7,6 +7,8 @@ const FormButton = ({ text, onClick, margin, smallScreenMargin }) => {
 
   if (window.innerWidth <= 320 && smallScreenMargin)  {
     buttonStyle.marginTop = smallScreenMargin
+  } else {
+    buttonStyle.marginTop = margin
   }
 
   return <button type='button' className="form-btn" onClick={onClick} style={buttonStyle} >{text}</button>

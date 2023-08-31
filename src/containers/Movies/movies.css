@@ -26,8 +26,8 @@
     border-radius: 6px;
     border: none;
     outline: none;
-    margin: 4rem 0 4.3rem;
-    padding: 0.69rem 1rem 0.56rem;
+    margin: 4rem 0 5rem;
+    padding: .69rem 1rem .56rem;
 
     background: var(--color-button-dark);
     transition: var(--transition-on-hover);
@@ -40,12 +40,12 @@
 
 @media screen and (max-width: 888px) {
     .movies__wrapper {
-        padding: 4.38rem 1.88rem 0;
+        padding: 5rem 1.88rem 0;
     }
 
     .movies__container {
         grid-template-columns: repeat(auto-fit, 342px);
-        gap: 2.19rem 1.5rem;
+        gap: 2.19rem 1.4rem;
     }
 
     .movies__btn-more {
@@ -57,11 +57,15 @@
     .movies__wrapper {
         padding-right: 0.62rem;
         padding-left: 0.62rem;
-        padding-top: 2.2rem;
+        padding-top: 2.9rem;
     }
 
     .movies__container {
         grid-template-columns: repeat(1, 300px);
         gap: .76rem;
+    }
+
+    .movies__btn-more {
+        margin: 5.2rem 0;
     }
 }
