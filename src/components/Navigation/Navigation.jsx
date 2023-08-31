@@ -8,7 +8,7 @@ import './navigation.css'
 
 const Navigation = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   const location = useLocation()
   const pathname = location.pathname

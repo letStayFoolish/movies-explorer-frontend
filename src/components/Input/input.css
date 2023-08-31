@@ -59,6 +59,9 @@
         height: 63px;
 
         margin-bottom: .31rem;
+    }
 
+    .label input {
+        padding-bottom: .5rem;
     }
 }
