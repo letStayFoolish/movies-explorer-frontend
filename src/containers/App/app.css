@@ -23,6 +23,10 @@ li {
     list-style: none;
 }
 
+fieldset {
+    border: none;
+}
+
 /*.wrapper {*/
 /*    padding-left: 4.37rem;*/
 /*    padding-right: 4.37rem;*/

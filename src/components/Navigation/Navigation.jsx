@@ -8,21 +8,29 @@ import './navigation.css'
 const Sign = () => (
   <div className="navbar__menu_container scale-up-center">
     <div className="navbar__menu_container_links-sign">
-      <p>Регистрация</p>
-      <button type='button'>Войти</button>
+      <p>
+        <NavLink to='/signin'>Регистрация</NavLink>
+      </p>
+      <button type='button'>
+        <NavLink to='/signup'>Войти</NavLink>
+      </button>
     </div>
   </div>
 )
 
-const Menu = ({ divStyle }) => (
+const Menu = ({ divStyle, pathname }) => (
   <>
     <div className="navbar__links">
       <ul className='navbar__links_list'>
-        <li className='navbar__links_item'><NavLink to='/movies' className='navbar__links_link' >Фильмы</NavLink></li>
-        <li className='navbar__links_item'><NavLink to='/saved-movies' className='navbar__links_link' >Сохранённые фильмы</NavLink></li>
+        {/*{pathname !== '/' && <li className='navbar__links_item'><NavLink to='/' className='navbar__links_link' >Главная</NavLink></li> }*/}
+        <li className='navbar__links_item' style={{textDecoration: pathname === '/' && 'underline'}}><NavLink to='/' className='navbar__links_link' >Главная</NavLink></li>
+        <li className='navbar__links_item' style={{textDecoration: pathname === '/movies' && 'underline'}}><NavLink to='/movies' className='navbar__links_link' >Фильмы</NavLink></li>
+        <li className='navbar__links_item' style={{textDecoration: pathname === '/saved-movies' && 'underline'}}><NavLink to='/saved-movies' className='navbar__links_link' >Сохранённые фильмы</NavLink></li>
       </ul>
       <div className="navbar__links_account">
-        <p>Аккаунт</p>
+        <p style={{textDecoration: pathname === '/profile' && 'underline'}}>
+          <NavLink to='/profile'>Аккаунт</NavLink>
+        </p>
         <div style={divStyle} >
           <img src={accountIcon} alt="Account image"/>
         </div>
@@ -36,9 +44,10 @@ const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   const location = useLocation()
+  const pathname = location.pathname
 
   const divStyle = {
-    backgroundColor: location.pathname === '/' ? '#0F4157' : '#313131',
+    backgroundColor: pathname === '/' ? '#0F4157' : '#313131',
   };
 
 
@@ -47,7 +56,7 @@ const Navigation = () => {
       {isLoggedIn ? (
         <>
           <div className="navbar-big-screens">
-            <Menu divStyle={divStyle} />
+            <Menu divStyle={divStyle} pathname={pathname} />
           </div>
           <div className="header__menu">
             {toggleMenu ?
@@ -60,8 +69,8 @@ const Navigation = () => {
               </div>
             }
             {toggleMenu && (
-              <div className="navbar-small-screens swing-in-top-fwd">
-                <Menu />
+              <div className="navbar-small-screens swing-in-top-fwd" style={{background: pathname === '/' ? '#073042' : '#202020'}}>
+                <Menu divStyle={divStyle} pathname={pathname} />
               </div>
             )}
           </div>

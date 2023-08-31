@@ -8,18 +8,24 @@ import './index.css'
 import Main from "./containers/Main/Main";
 import Movies from "./containers/Movies/Movies";
 import SavedMovies from "./containers/SavedMovies/SavedMovies";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
 import NotFound from "./containers/NotFound/NotFound";
+import Preloader from "./components/Preloader/Preloader";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
     <Route path='/' element={<App />}>
       <Route path='/' index={true} element={<Main />} />
-      <Route path='/movies' index={true} element={<Movies />} />
-      <Route path='/saved-movies' index={true} element={<SavedMovies />} />
-      <Route path='/' index={true} element={<Main />} />
-      <Route path='/' index={true} element={<Main />} />
+      <Route path='/movies' element={<Movies />} />
+      <Route path='/saved-movies' element={<SavedMovies />} />
+      <Route path='/profile' element={<Profile />} />
     </Route>
+    <Route path='/signup' element={<Register />} />
+    <Route path='/signin' element={<Login />} />
+    <Route path='/spinner' element={<Preloader />} />
     <Route path='/*' element={<NotFound />} />
     </>
 

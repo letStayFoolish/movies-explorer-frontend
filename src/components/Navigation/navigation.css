@@ -194,7 +194,9 @@
     .navbar-small-screens {
         display: flex;
         justify-content: center;
-        background: var(--color-footer);
+        /*background: var(--color-footer);*/
+        outline: 1px solid var(--color-footer);
+        box-shadow: 0 0 5px 0 var(--color-footer);
         height: 100vh;
         width: 528px;
         padding: 9.94rem 5.62rem 5.75rem;

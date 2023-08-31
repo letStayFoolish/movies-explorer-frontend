@@ -1,6 +1,4 @@
-import React from 'react'
-import Switch from "../Switch/Switch";
-
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './search-form.css'
 const SearchForm = () => {
   return (
@@ -15,15 +13,11 @@ const SearchForm = () => {
               // onChange={''}
               // minLength={''}
               // maxLength={''}
-              // required={}
               placeholder='Фильм'
             />
             <button type='button'>Поиск</button>
           </div>
-          <div className="search-form__switch">
-            <Switch />
-            <p>Короткометражки</p>
-          </div>
+          <FilterCheckbox />
         </div>
       </div>
     </div>

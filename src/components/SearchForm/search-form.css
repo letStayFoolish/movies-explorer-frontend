@@ -87,21 +87,11 @@
     gap: 0.7rem;
 }
 
-.search-form__switch p {
-    font-family: var(--font-family);
-    font-size: 13px;
-    line-height: 18px;
-}
-
 
 @media screen and (max-width: 768px) {
     .search-form__wrapper {
         padding-right: 1.88rem;
         padding-left: 1.88rem;
-    }
-
-    .search-form__switch {
-        margin-bottom: 2.9rem;
     }
 }
 
@@ -124,9 +114,5 @@
 
     .search-form__input button {
         padding: 0.81rem 1.1rem;
-    }
-
-    .search-form__switch {
-        margin: 1.8rem 0 3.8rem;
     }
 }

@@ -1,0 +1,122 @@
+.form-element {
+    font-family: var(--font-family);
+    color: var(--color-text-light);
+    background: var(--color-footer);
+    margin: 0 auto;
+}
+
+.form-element__wrapper {
+    padding: 4.38rem 1.87rem;
+    /*padding-top: 4.38rem;*/
+    /*padding-bottom: 4.38rem;*/
+    max-width: calc(396px + 1.87rem + 1.87rem);
+    margin: 0 auto;
+}
+
+.form-element__greeting {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 2.2rem 0 2.4rem;
+}
+
+.form-form-element__fieldset {
+    height: 266px;
+}
+
+.form-element__button {
+    margin: 4.31rem 0 1rem;
+    padding: 0.81rem 2rem 0.94rem;
+    width: 396px;
+    color: var(--color-text-light);
+    border-radius: 3px;
+    background: #4285F4;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: var(--transition-on-hover);
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.form-element__button:hover {
+    opacity: var(--opacity-btn);
+}
+
+.form-element__text p {
+    color: var(--color-gray);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form-element__text p span {
+    margin-left: 6px;
+    color: #4285F4;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: var(--transition-on-hover);
+}
+
+.form-element__text p span:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .form-element__wrapper {
+        padding-top: 14.55rem;
+        padding-bottom: 14.55rem;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .form-element__button {
+        /*width: 260px;*/
+        width: 100%
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form-element__wrapper {
+        padding-top: 3.5rem;
+        padding-bottom: 1.87rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-element__logo {
+        text-align: center;
+    }
+
+    .form-element__greeting {
+        margin: 2.9rem 0 5rem;
+        text-align: center;
+    }
+
+    .form-element__button {
+        margin: 9.7rem 0 .9rem;
+        padding-top: .94rem;
+        padding-bottom: .94rem;
+        width: 260px;
+
+        font-size: 12px;
+    }
+
+    .form-element__text p {
+        font-size: 12px;
+    }
+
+    .form-element__text p span {
+        margin-left: 7px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+}
