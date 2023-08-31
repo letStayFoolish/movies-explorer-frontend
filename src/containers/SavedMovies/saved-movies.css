@@ -10,7 +10,8 @@
 
 .saved-movies__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, 360px);
+    justify-content: center;
     gap: 2rem 1.75rem;
 }
 
@@ -37,13 +38,13 @@
     opacity: var(--opacity-btn);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 888px) {
     .saved-movies__wrapper {
         padding: 4.38rem 1.88rem 0;
     }
 
     .saved-movies__container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, 342px);
         gap: 2.19rem 1.5rem;
     }
 
@@ -52,7 +53,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
     .saved-movies__wrapper {
         padding-right: 0.62rem;
         padding-left: 0.62rem;
@@ -60,7 +61,7 @@
     }
 
     .saved-movies__container {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 300px);
         gap: .76rem;
     }
 }
