@@ -56,6 +56,16 @@
 ## About The Project
 
 <img src="./src/assets/images/screens/screen.png">
+<details><summary><b>Show all</b></summary>
+<img src="./src/assets/images/screens/screen-signup.png">
+<img src="./src/assets/images/screens/screen-signin.png">
+<img src="./src/assets/images/screens/screen-profile.png">
+<img src="./src/assets/images/screens/screen-profile-edit.png">
+<img src="./src/assets/images/screens/screen-not-login.png">
+<img src="./src/assets/images/screens/screen-movies.png">
+<img src="./src/assets/images/screens/screen-menu-01.png">
+<img src="./src/assets/images/screens/screen-menu-02.png">
+</details>
 
 `Project Description`
 
