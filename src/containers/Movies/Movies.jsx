@@ -1,13 +1,13 @@
 import { movies } from '../../utils/constants'
 import SearchForm from "../../components/SearchForm/SearchForm";
+import MoviesCards from "../../components/MoviesCards/MoviesCards";
 import './movies.css'
-import Pagination from "../../components/Pagination/Pagination";
 
 const Movies = () => {
   return (
     <div className='movies'>
       <SearchForm />
-      <Pagination cards={movies} biggerScreen={12} midScreen={8} smallScreen={5} />
+      <MoviesCards cards={movies} biggerScreen={12} midScreen={8} smallScreen={5} />
     </div>
   )
 }
