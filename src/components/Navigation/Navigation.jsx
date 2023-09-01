@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom';
 import Menu from '../Menu/Menu'
 import Entry from "../Entry/Entry";
 
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
+import {useLocation} from "react-router-dom";
 import './navigation.css'
 
 const Navigation = () => {
@@ -35,9 +35,12 @@ const Navigation = () => {
               </div>
             }
             {toggleMenu && (
-              <div className="navbar-small-screens swing-in-top-fwd" style={{background: pathname === '/' ? '#073042' : '#202020'}}>
-                <Menu divStyle={divStyle} pathname={pathname} toggleMenu={toggleMenu} />
-              </div>
+              <>
+                <div className='overlay'></div>
+                <div className="navbar-small-screens swing-in-top-fwd" style={{background: pathname === '/' ? '#073042' : '#202020'}}>
+                  <Menu divStyle={divStyle} pathname={pathname} toggleMenu={toggleMenu} />
+                </div>
+              </>
             )}
           </div>
         </>

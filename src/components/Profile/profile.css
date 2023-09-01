@@ -179,6 +179,12 @@
     }
 }
 
+@media screen and (max-width: 470px) {
+    .profile__form {
+        width: 300px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .profile {
         margin-top: calc(4.38rem + 4.625rem);
