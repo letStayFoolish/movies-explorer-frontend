@@ -44,7 +44,7 @@ const Menu = ({ divStyle, pathname, toggleMenu }) => {
             <NavLink to='/profile'>Аккаунт</NavLink>
           </p>
           <div style={divStyle} >
-            <img src={accountIcon} alt="Account image"/>
+            <img src={accountIcon} alt="profile mage"/>
           </div>
         </div>
       </div>
