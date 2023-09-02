@@ -1,16 +1,16 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './entry.css'
 const Entry = () => {
   return (
     <div className="entry__container scale-up-center">
       <div className="entry__container_links-sign">
         <p>
-          <NavLink to='/signin'>Регистрация</NavLink>
+          <NavLink to='/signup'>Регистрация</NavLink>
         </p>
-        <button type='button'>
-          <NavLink to='/signup'>Войти</NavLink>
-        </button>
+        <NavLink to='/signin'>
+          <button type='button'>Войти</button>
+        </NavLink>
       </div>
     </div>
   )

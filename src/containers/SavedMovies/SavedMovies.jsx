@@ -6,10 +6,10 @@ import './saved-movies.css'
 
 const SavedMovies = () => {
   return (
-    <div className='saved-movies'>
+    <section className='saved-movies'>
       <SearchForm />
       <MoviesCards cards={movies} biggerScreen={3} midScreen={3} smallScreen={2} />
-    </div>
+    </section>
   )
 }
 export default SavedMovies

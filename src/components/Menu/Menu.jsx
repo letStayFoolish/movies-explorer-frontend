@@ -1,13 +1,12 @@
 import {NavLink} from "react-router-dom";
 import accountIcon from "../../assets/icons/navbar/account-icon-1.svg";
-import React from "react";
 
 import './menu.css'
 
-const Menu = ({ divStyle, pathname, toggleMenu }) => {
+const Menu = ({ pathname, toggleMenu }) => {
   return (
     <>
-      <div className="menu">
+      <section className="menu">
         <ul className='menu_list'>
           {toggleMenu && (
             <li className='menu_item'>
@@ -43,11 +42,13 @@ const Menu = ({ divStyle, pathname, toggleMenu }) => {
           >
             <NavLink to='/profile'>Аккаунт</NavLink>
           </p>
-          <div style={divStyle} >
-            <img src={accountIcon} alt="profile mage"/>
-          </div>
+          <NavLink to='/profile'>
+            <div className={pathname === '/' ? 'menu_account_div menu_account_div_color_blue' : 'menu_account_div'}>
+              <img src={accountIcon} alt="profile mage"/>
+            </div>
+          </NavLink>
         </div>
-      </div>
+      </section>
     </>
   )
 }

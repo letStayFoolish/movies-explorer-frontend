@@ -1,5 +1,5 @@
-import './promo.css'
 import image from "../../assets/images/header/image.png";
+import './promo.css'
 
 const Text = 'Учебный проект студента факультета \n Веб-разработки.'
 
@@ -14,9 +14,9 @@ const Promo = () => {
           <p>
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
-          <button type='button' className='jello-horizontal'>
-            <a href="#about-project">Узнать больше</a>
-          </button>
+          <a href="#about-project">
+            <button type='button' className='jello-horizontal'>Узнать больше</button>
+          </a>
         </div>
         <div className="promo__image image puff-in-center">
           <img src={image} alt="Planet Earth Image"/>

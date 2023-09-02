@@ -3,11 +3,9 @@ const AboutProject = () => {
   return (
     <section id='about-project' className='about-project'>
       <div className="about-project__wrapper">
-        <div className="about-project__about">
-          <h3>
-            О проекте
-          </h3>
-        </div>
+        <h3 className="about-project__about">
+          О проекте
+        </h3>
 
         <div className="about-project__content content">
           <div className="content__column">

@@ -57,7 +57,10 @@
     .overlay {
         background: var(--color-dark);
         opacity: .3;
-        position: absolute;
+        /*position: absolute;*/
+        /* Sticky header */
+        /* ================================================= */
+        position: fixed;
         height: 100vh;
         top: 0;
         bottom: 0;
@@ -66,16 +69,36 @@
     }
 
     .header__menu_btn {
-        position: fixed;
+        position: absolute;
+        /* Sticky header */
+        /* ================================================= */
+        /*position: fixed;*/
         top: 24px;
         right: 36px;
         z-index: 50;
         cursor: pointer;
+        background: transparent;
+        border: none;
+        outline: none;
         transition: var(--transition-on-hover);
     }
 
     .header__menu_btn:hover {
         opacity: var(--opacity-btn);
+    }
+
+    .header__menu_btn_type_closed {
+        position: fixed;
+        background: none;
+        outline: none;
+        border: none;
+        top: 20.5px;
+        right: 20.5px;
+    }
+
+    .header__menu_btn_type_opened {
+        top: 16px;
+        right: 28px;
     }
 
     .navbar-big-screens {
@@ -85,16 +108,26 @@
     .navbar-small-screens {
         display: flex;
         justify-content: center;
-        /*background: var(--color-footer);*/
+        /* For changing background color of the menu depending on page route, remove next line: */
+        background: var(--color-footer);
+        /* ==================================================================================== */
         outline: 1px solid var(--color-footer);
         box-shadow: 0 0 5px 0 var(--color-footer);
         height: 100vh;
         width: 528px;
         padding: 9.94rem 5.62rem 5.75rem;
         text-align: center;
+        /* ============================================================= */
+        /* Basic (scrollable) menu: */
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*right: 0;*/
+        /* ============================================================= */
+        /* Sticky menu: */
         position: fixed;
         top: 0;
         right: 0;
+        /* ============================================================= */
     }
 
     .navbar__menu img {
@@ -126,12 +159,13 @@
         display: none;
     }
 
-    .header__menu_btn_opened {
-        top: 23px;
-        right: 21px;
+    .header__menu_btn_type_opened {
+        top: 16px;
+        right: 17px;
+        width: 40px;
     }
 
-    .header__menu_btn_closed {
+    .header__menu_btn_type_closed {
         top: 13.44px;
         right: 13.44px;
     }

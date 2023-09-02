@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {NavLink, useLocation} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Input from "../Input/Input";
 
 import logo from '../../assets/images/register/logo.svg'
@@ -22,12 +22,21 @@ const FormElement = () => {
       }))
   }
 
+  const navigate = useNavigate()
+  const handleLogin = () => {
+    navigate('/movies', {replace: true})
+  }
+
+  const handleSignup = () => {
+    navigate('/signin', {replace: true})
+  }
+
   return (
-    <div className='form-element'>
+    <section className='form-element'>
       <div className="form-element__wrapper">
-        <div className="form-element__logo">
+        <a href='/' className="form-element__logo">
           <img src={logo} alt="Logo"/>
-        </div>
+        </a>
         <h2 className="form-element__greeting">
           {pathname === '/signup' ? 'Добро пожаловать!' : 'Рады видеть!'}
         </h2>
@@ -73,7 +82,7 @@ const FormElement = () => {
 
         {pathname === '/signup' ? (
           <>
-            <FormButton text='Зарегистрироваться' />
+            <FormButton text='Зарегистрироваться' onClick={handleSignup} />
             <div className="form-element__text">
               <p>Уже зарегистрированы?<span><NavLink to='/signin'>Войти</NavLink></span></p>
             </div>
@@ -81,7 +90,7 @@ const FormElement = () => {
 
         ) : (
           <>
-            <FormButton text='Войти' />
+            <FormButton text='Войти' onClick={handleLogin} />
             <div className="form-element__text">
               <p>Ещё не зарегистрированы?<span><NavLink to='/signup'>Регистрация</NavLink></span></p>
             </div>
@@ -89,7 +98,7 @@ const FormElement = () => {
           )
         }
       </div>
-    </div>
+    </section>
   )
 }
 export default FormElement

@@ -11,9 +11,7 @@
 .about-project__about {
     padding-bottom: 1.6rem;
     border-bottom: 1px solid #dadada;
-}
 
-.about-project__about h3 {
     font-family: var(--font-family);
     font-size: 22px;
     font-weight: 400;
@@ -92,7 +90,11 @@
 
 @media screen and (max-width: 768px) {
     .about-project__wrapper {
-        padding: 5.4rem 3.13rem;
+        padding: 5.5rem 3.13rem;
+    }
+
+    .about-project__about {
+        padding-bottom: 1.5rem;
     }
 
     .about-project__content {
@@ -130,23 +132,22 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 430px) {
     .about-project__wrapper {
-        padding: 4.38rem 1.12rem 4.31rem;
+        padding: 4.4rem 1.12rem 4.31rem;
     }
 
     .about-project__about {
-        padding-bottom: 1.75rem;
-    }
+        padding-bottom: 1.72rem;
 
-    .about-project__about h3 {
         font-size: 18px;
+        font-style: normal;
         letter-spacing: -0.72px;
     }
 
     .about-project__content {
         flex-direction: column;
-        gap: 3.5rem;
+        gap: 3.4rem;
         margin: 3.6rem 0;
     }
 

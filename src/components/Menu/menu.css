@@ -5,9 +5,6 @@
     align-items: center;
 }
 
-.menu:hover {
-}
-
 .menu_list {
     display: flex;
     flex-direction: row;
@@ -53,13 +50,23 @@
     opacity: var(--opacity-link);
 }
 
-.menu_account div {
+.menu_account_div {
+    background: #313131;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
     width: 30px;
     height: 30px;
+    transition: var(--transition-on-hover);
+}
+
+.menu_account_div_color_blue {
+    background: #0F4157;
+}
+
+.menu_account div:hover {
+    opacity: var(--opacity-btn);
 }
 
 .menu_account img {
@@ -82,6 +89,8 @@
 
     .menu_link {
         font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
     }
 
     .menu_link_active {
@@ -90,6 +99,10 @@
 
     .menu_account {
         margin: 0;
+    }
+
+    .menu_account_div {
+        background: #313131;
     }
 }
 

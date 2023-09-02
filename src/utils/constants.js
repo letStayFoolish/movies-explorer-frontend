@@ -17,6 +17,7 @@ export const projects = [
 export const movies = [
   {
     "id": 1,
+    "savedMovies": true,
     "nameRU": "«Роллинг Стоунз» в изгнании",
     "nameEN": "Stones in Exile",
     "director": "Стивен Кайак ",
@@ -70,6 +71,7 @@ export const movies = [
   },
   {
     "id": 2,
+    "savedMovies": true,
     "nameRU": "All Tomorrow's Parties",
     "nameEN": "All Tomorrow's Parties",
     "director": " Джонатан Кауэтт",
@@ -123,6 +125,7 @@ export const movies = [
   },
   {
     "id": 3,
+    "savedMovies": true,
     "nameRU": " Без обратного пути",
     "nameEN": "No Distance Left to Run",
     "director": "Уилл Лавлейс, Дилан Сотерн",
@@ -166,6 +169,7 @@ export const movies = [
   },
   {
     "id": 4,
+    "savedMovies": false,
     "nameRU": "Bassweight",
     "nameEN": "Bassweight",
     "director": "Сурид Хассан",
@@ -209,6 +213,7 @@ export const movies = [
   },
   {
     "id": 5,
+    "savedMovies": false,
     "nameRU": "Taqwacore: The Birth of Punk Islam",
     "nameEN": "Taqwacore: The Birth of Punk Islam",
     "director": " Омар Маджид",
@@ -262,6 +267,7 @@ export const movies = [
   },
   {
     "id": 6,
+    "savedMovies": false,
     "nameRU": "Фавела на взрыве",
     "nameEN": "Favela on Blast",
     "director": "Уэсли Пенц",
@@ -315,6 +321,7 @@ export const movies = [
   },
   {
     "id": 7,
+    "savedMovies": false,
     "nameRU": "Постеры, сошедшие со стен",
     "nameEN": "The Posters Came from the Walls",
     "director": "Джереми Деллер, Николас Абрахамс",
@@ -378,6 +385,7 @@ export const movies = [
   },
   {
     "id": 8,
+    "savedMovies": false,
     "nameRU": "Soul Power",
     "nameEN": "Soul Power",
     "director": "Джеффри Леви-Хинте",
@@ -421,6 +429,7 @@ export const movies = [
   },
   {
     "id": 9,
+    "savedMovies": false,
     "nameRU": " 196 ударов в минуту",
     "nameEN": "196 BPM",
     "director": "Ромуальд Кармакар",
@@ -474,6 +483,7 @@ export const movies = [
   },
   {
     "id": 10,
+    "savedMovies": false,
     "nameRU": " Hit So Hard: Школа жизни Патти Шемель",
     "nameEN": "Hit So Hard: The Life & Near Death Story of Patty Schemel",
     "director": "П.Дэвид Эберсол",
@@ -517,6 +527,7 @@ export const movies = [
   },
   {
     "id": 11,
+    "savedMovies": false,
     "nameRU": " Баллада о Дженезисе и Леди Джей",
     "nameEN": "The Ballad of Genesis and Lady Jaye",
     "director": "Мари Лозье",
@@ -570,6 +581,7 @@ export const movies = [
   },
   {
     "id": 12,
+    "savedMovies": false,
     "nameRU": "Виллалобос",
     "nameEN": "Villalobos",
     "director": "Ромуальд Кармакар",

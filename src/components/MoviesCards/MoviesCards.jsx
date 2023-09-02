@@ -2,7 +2,7 @@ import {useState} from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './movies-cards.css'
 
-const Pagination = ({cards, biggerScreen, midScreen, smallScreen}) => {
+const MoviesCards = ({cards, biggerScreen, midScreen, smallScreen}) => {
   const baseURL = 'https://api.nomoreparties.co'
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -31,6 +31,7 @@ const Pagination = ({cards, biggerScreen, midScreen, smallScreen}) => {
       <div className="movies-cards__container">
         {currentCards.map((card, _index) => (
           <MoviesCard
+            savedMovies={card.savedMovies}
             key={_index}
             title={card.nameRU}
             duration={card.duration}
@@ -39,20 +40,19 @@ const Pagination = ({cards, biggerScreen, midScreen, smallScreen}) => {
           />
         ))}
       </div>
-      <div className="movies-cards__btn-more">
-        <button
-          type='button'
-          onClick={() => handlePageChange([...currentCards])}
-          style={{
-            visibility: cardsPerPage >= 12 && biggerScreen ? "visible" :
-              cardsPerPage >= 8 && midScreen ? "visible" :
-                cardsPerPage >= 5 && smallScreen ? "visible" : "hidden"
-          }}
-        >Ещё
-        </button>
-      </div>
+      <button
+        className="movies-cards__btn-more"
+        type='button'
+        onClick={() => handlePageChange([...currentCards])}
+        style={{
+          visibility: cardsPerPage >= 12 && biggerScreen ? "visible" :
+            cardsPerPage >= 8 && midScreen ? "visible" :
+              cardsPerPage >= 5 && smallScreen ? "visible" : "hidden"
+        }}
+      >Ещё
+      </button>
     </div>
   )
 }
 
-export default Pagination
+export default MoviesCards

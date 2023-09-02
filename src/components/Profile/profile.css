@@ -1,13 +1,14 @@
 .profile {
-    margin: calc(4.63rem + 4.625rem) auto 0;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 1.88rem;
+    padding: 3rem 1.88rem;
 }
 
 .profile__heading {
+    margin: calc(4.63rem + 1.6rem) auto 7.65rem;
     color: var(--color-text-light);
     text-align: center;
     font-family: var(--font-family);
@@ -15,7 +16,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-bottom: 7.65rem;
 }
 
 .profile__form {
@@ -166,12 +166,8 @@
 
 
 @media screen and (max-width: 768px) {
-    .profile {
-        margin-top: calc(14.75rem + 4.625rem);
-    }
-
     .profile__heading {
-        margin-bottom: 6rem;
+        margin: calc(4.63rem + 11.6rem) auto 6.1rem;
     }
 
     .profile__btn_type_edit {
@@ -186,16 +182,12 @@
 }
 
 @media screen and (max-width: 320px) {
-    .profile {
-        margin-top: calc(4.38rem + 4.625rem);
+    .profile__heading {
+        margin: calc(4.63rem + 1.3rem) auto 5rem;
     }
 
     .profile__form {
         width: 260px;
-    }
-
-    .profile__heading {
-        margin-bottom: 5rem;
     }
 
     .profile__btn {
@@ -204,6 +196,6 @@
     }
 
     .profile__btn_type_edit {
-        margin: 22.49rem 0 1rem;
+        margin: 22.6rem 0 1rem;
     }
 }

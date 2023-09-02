@@ -4,7 +4,7 @@
 }
 
 .about-me__wrapper {
-    padding: 6.88rem 4.37rem 6rem;
+    padding: 6.88rem 4.37rem 6.3rem;
 }
 
 .about-me__heading {
@@ -47,7 +47,7 @@
 }
 
 .content__text h5 {
-    margin-bottom: 1.63rem;
+    margin-bottom: 1.5rem;
 
     font-family: var(--font-family);
     font-size: 18px;
@@ -73,9 +73,14 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    transition: var(--transition-on-hover);
 }
 
-.content__image img {
+.content__text a:hover {
+    opacity: var(--opacity-link);
+}
+
+.content__image {
     border-radius: 10px;
     width: 270px;
     height: 327px;
@@ -142,7 +147,7 @@
     }
 
     .content__text p {
-        margin-bottom: 5.44rem;
+        margin-bottom: 5.3rem;
 
         font-size: 12px;
         line-height: 18px;
@@ -153,7 +158,7 @@
         margin-right: 3.06rem;
     }
 
-    .content__image img {
+    .content__image {
         width: 255px;
         height: 307px;
     }
@@ -183,7 +188,7 @@
 
     .content__text {
         max-width: 100%;
-        margin: 2.2rem 0 0;
+        margin: 2.3rem 0 0;
     }
 
     .content__text h4 {
@@ -209,9 +214,5 @@
     .content__image {
         width: 292px;
         height: 352px;
-    }
-
-    .content__image img {
-        width: 100%;
     }
 }

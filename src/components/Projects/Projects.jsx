@@ -1,17 +1,16 @@
 import { projects } from '../../utils/constants'
+import iconArrow from '../../assets/icons/portfolio/arrow-icon.svg'
 import './projects.css'
 
 const Projects = () => {
 
   return (
-    <div className='projects'>
+    <div className='project'>
       { projects.map((project, _index) => (
-        <div key={_index} className='project__content'>
+        <a key={_index} className="project__link" href={project.url} target='_blank' rel="noreferrer">
           <h2 className="project__title">{project.name}</h2>
-          <a className="project__link" href={project.url} target='_blank' rel="noreferrer">
-            ↗
-          </a>
-        </div>
+          <p>↗</p>
+        </a>
       ))
       }
     </div>

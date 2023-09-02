@@ -7,7 +7,7 @@
 }
 
 .search-form__wrapper {
-    margin-top: 4.625rem;
+    margin-top: 4.5rem;
     padding: 4.38rem 4.38rem 0.62rem;
 }
 
@@ -105,6 +105,10 @@
 }
 
 @media screen and (max-width: 375px) {
+    .search-form__container {
+        margin-top: 4.5rem;
+    }
+
     .search-form__wrapper {
         padding-right: 0.88rem;
         padding-left: 0.88rem;
@@ -126,6 +130,6 @@
     }
 
     .search-form__switch {
-        margin: 1.9rem 0 3.8rem;
+        margin: 1.8rem 0 3.8rem;
     }
 }

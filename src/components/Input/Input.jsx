@@ -1,5 +1,3 @@
-import React from 'react'
-
 import './input.css'
 
 const Input = ({
@@ -14,7 +12,6 @@ const Input = ({
   maxLength
 }) => {
   return (
-    <div className='input'>
       <label htmlFor="" className='label'>{label}
         <input
           style={{color: error && '#EE3465'}}
@@ -31,8 +28,6 @@ const Input = ({
         {error && `Что-то пошло не так...`}
       </span>
       </label>
-    </div>
-
   )
 }
 export default Input

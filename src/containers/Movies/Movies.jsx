@@ -5,10 +5,10 @@ import './movies.css'
 
 const Movies = () => {
   return (
-    <div className='movies'>
+    <section className='movies'>
       <SearchForm />
       <MoviesCards cards={movies} biggerScreen={12} midScreen={8} smallScreen={5} />
-    </div>
+    </section>
   )
 }
 export default Movies

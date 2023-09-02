@@ -1,6 +1,6 @@
 import image from '../../assets/images/about-me/image.png'
-
 import './about-me.css'
+
 const AboutMe = () => {
   return (
     <section className='about-me'>
@@ -23,12 +23,10 @@ const AboutMe = () => {
             Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
             и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a href='https://github.com/letStayFoolish' className="content_link">GitHub</a>
+          <a href='https://github.com/letStayFoolish' target='_blank' className="content_link" rel="noreferrer">GitHub</a>
         </div>
 
-        <div className="content__image roll-in-right">
-          <img src={image} alt="Profile Image"/>
-        </div>
+        <img src={image} alt="Profile Image" className="content__image roll-in-right"/>
       </div>
       </div>
     </section>

@@ -1,13 +1,11 @@
 import './techs.css'
 const Techs = () => {
   return (
-    <div className='techs'>
+    <section className='techs'>
       <div className="techs__wrapper">
-        <div className="techs__top">
-          <h3>
-            Технологии
-          </h3>
-        </div>
+        <h3 className="techs__top">
+          Технологии
+        </h3>
 
         <div className="techs__content content">
           <h4 className="content_heading">7 технологий</h4>
@@ -26,7 +24,7 @@ const Techs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 export default Techs
