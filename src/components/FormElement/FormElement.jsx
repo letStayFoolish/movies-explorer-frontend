@@ -40,7 +40,8 @@ const FormElement = () => {
                 onChange={handleOnChange}
                 name='name'
                 type='text'
-                placeholder='Имя'
+                label='Имя'
+                placeholder='Введите свое Имя.'
                 minLength={2}
                 maxLength={36}
               />
@@ -51,7 +52,8 @@ const FormElement = () => {
               onChange={handleOnChange}
               name='email'
               type='email'
-              placeholder='E-mail'
+              label='E-mail'
+              placeholder='Введите свой E-mail.'
               minLength={2}
               maxLength={36}
             />
@@ -61,7 +63,8 @@ const FormElement = () => {
               onChange={handleOnChange}
               name='password'
               type='password'
-              placeholder='Пароль'
+              label='Пароль'
+              placeholder='Введите свой Пароль.'
               minLength={2}
               maxLength={36}
             />

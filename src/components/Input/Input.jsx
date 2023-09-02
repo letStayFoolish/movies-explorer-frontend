@@ -8,13 +8,14 @@ const Input = ({
   onChange,
   name,
   type,
+  label,
   placeholder,
   minLength,
   maxLength
 }) => {
   return (
     <div className='input'>
-      <label htmlFor="" className='label'>{placeholder}
+      <label htmlFor="" className='label'>{label}
         <input
           style={{color: error && '#EE3465'}}
           value={value}
@@ -23,6 +24,7 @@ const Input = ({
           type={type}
           minLength={minLength}
           maxLength={maxLength}
+          placeholder={placeholder}
           required
         />
         <span className="span_error">
