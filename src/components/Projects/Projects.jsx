@@ -1,5 +1,4 @@
 import { projects } from '../../utils/constants'
-import iconArrow from '../../assets/icons/portfolio/arrow-icon.svg'
 import './projects.css'
 
 const Projects = () => {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './profile.css'
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 
 

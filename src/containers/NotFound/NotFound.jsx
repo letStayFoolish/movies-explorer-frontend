@@ -1,6 +1,6 @@
 import React from 'react'
 import './not-found.css'
-import {Link, Navigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 const NotFound = () => {
   return (
     <section className='not-found'>

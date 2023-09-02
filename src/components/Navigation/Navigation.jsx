@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import Menu from '../Menu/Menu'
 import Entry from "../Entry/Entry";
-
-import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 import iconClose from '../../assets/icons/close/close-icon.svg'
 import iconMenu from '../../assets/icons/navbar/burger.svg'
 import {useLocation} from "react-router-dom";
