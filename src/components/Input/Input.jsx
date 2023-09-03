@@ -9,7 +9,8 @@ const Input = ({
   label,
   placeholder,
   minLength,
-  maxLength
+  maxLength,
+  required
 }) => {
   return (
       <label htmlFor="" className='label'>{label}
@@ -22,7 +23,7 @@ const Input = ({
           minLength={minLength}
           maxLength={maxLength}
           placeholder={placeholder}
-          required
+          required={required}
         />
         <span className="span_error">
         {error && `Что-то пошло не так...`}

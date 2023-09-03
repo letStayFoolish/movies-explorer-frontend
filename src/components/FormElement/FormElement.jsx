@@ -52,7 +52,8 @@ const FormElement = () => {
                 label='Имя'
                 placeholder='Введите свое Имя.'
                 minLength={2}
-                maxLength={36}
+                maxLength={30}
+                required={true}
               />
             )}
             <Input
@@ -64,7 +65,8 @@ const FormElement = () => {
               label='E-mail'
               placeholder='Введите свой E-mail.'
               minLength={2}
-              maxLength={36}
+              maxLength={30}
+              required={true}
             />
             <Input
               value={formValue.password}
@@ -74,8 +76,9 @@ const FormElement = () => {
               type='password'
               label='Пароль'
               placeholder='Введите свой Пароль.'
-              minLength={2}
+              minLength={6}
               maxLength={36}
+              required={true}
             />
           </fieldset>
         </form>
