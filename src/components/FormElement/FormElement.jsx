@@ -3,8 +3,8 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Input from "../Input/Input";
 
 import logo from '../../assets/images/register/logo.svg'
-import './form-element.css'
 import FormButton from "../FormButton/FormButton";
+import './form-element.css'
 
 const FormElement = () => {
   const [formValue, setFormValue] = useState({

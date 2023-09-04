@@ -11,9 +11,9 @@ const SearchForm = () => {
               // name={''}
               // id={''}
               // onChange={''}
-              // minLength={''}
-              // maxLength={''}
+              minLength={1}
               placeholder='Фильм'
+              required={true}
             />
             <button type='button'>Поиск</button>
           </div>

@@ -4,11 +4,13 @@
 }
 
 .techs__wrapper {
-    padding: 6em 4.37rem 6.25rem;
+    /*padding: 6em 4.37rem 6.25rem;*/
+    padding: 96px 69.92px 100px;
 }
 
 .techs__top {
-    padding-bottom: 1.44rem;
+    /*padding-bottom: 1.44rem;*/
+    padding-bottom: 23.04px;
     border-bottom: 1px solid #dadada;
     font-family: var(--font-family);
     font-size: 22px;
@@ -25,7 +27,8 @@
 }
 
 .techs__content h4 {
-    margin: 5.62rem 0 1.62rem;
+    /*margin: 5.62rem 0 1.62rem;*/
+    margin: 89.92px 0 25.92px;
 
     text-align: center;
     font-family: var(--font-family);
@@ -36,7 +39,8 @@
 }
 
 .techs__content p {
-    margin-bottom: 6.25rem;
+    /*margin-bottom: 6.25rem;*/
+    margin-bottom: 100px;
     font-family: var(--font-family);
     font-size: 14px;
     font-weight: 400;
@@ -51,15 +55,18 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0.63rem;
+    /*gap: 0.63rem;*/
+    gap: 10px;
 }
 
 .content__stack div {
     width: 90px;
     min-height: 60px;
     background: var(--color-dark-fields);
-    padding-top: 1.31rem;
-    padding-bottom: 1.38rem;
+    /*padding-top: 1.31rem;*/
+    padding-top: 22px;
+    /*padding-bottom: 1.38rem;*/
+    padding-bottom: 22px;
     border-radius: 10px;
 
     font-family: var(--font-family);
@@ -73,27 +80,32 @@
 
 @media screen and (max-width: 768px) {
     .techs__wrapper {
-        padding: 5.8rem 3.12rem;
+        /*padding: 5.8rem 3.12rem;*/
+        padding: 92.80px 49.92px;
     }
 
     .techs__content h4 {
-        margin: 5rem 0 1.38rem;
+        /*margin: 5rem 0 1.38rem;*/
+        margin: 80px 0 22px;
     }
 
     .techs__content p {
-        margin-bottom: 5.19rem;
+        /*margin-bottom: 5.19rem;*/
+        margin-bottom: 83px;
         font-size: 12px;
         line-height: 18px;
         letter-spacing: -0.48px;
     }
 
     .content__stack {
-        gap: 0.62rem;
+        /*gap: 0.62rem;*/
+        gap: 9px;
         /*padding: 0 0.62rem;*/
     }
 
     .content__stack div {
-        padding-bottom: 1.31rem;
+        /*padding-bottom: 1.31rem;*/
+        padding-bottom: 20.96px;
         border-radius: 10px;
         width: 84px;
         min-height: 57px;
@@ -105,7 +117,8 @@
 
 @media screen and (max-width: 660px) {
     .content__stack {
-        padding: 0 3.32rem;
+        /*padding: 0 3.32rem;*/
+        padding: 0 53.12px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -113,7 +126,8 @@
 
 @media screen and (max-width: 430px) {
     .techs__wrapper {
-        padding: 4.38rem 1.12rem;
+        /*padding: 4.38rem 1.12rem;*/
+        padding: 71px 17.92px;
     }
 
     .techs__top {
@@ -122,11 +136,13 @@
     }
 
     .techs__top {
-        padding-bottom: 1.5rem;
+        /*padding-bottom: 1.5rem;*/
+        padding-bottom: 24px;
     }
 
     .techs__content h4 {
-        margin: 3.75rem 0 1.5rem;
+        /*margin: 3.75rem 0 1.5rem;*/
+        margin: 60px 0 23px;
 
         font-size: 30px;
         line-height: normal;
@@ -134,7 +150,8 @@
     }
 
     .techs__content p {
-        margin-bottom: 3.13rem;
+        /*margin-bottom: 3.13rem;*/
+        margin-bottom: 50px;
         font-size: 11px;
         line-height: 16px;
         letter-spacing: -0.44px;

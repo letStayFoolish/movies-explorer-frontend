@@ -27,79 +27,7 @@ fieldset {
     border: none;
 }
 
-/*.wrapper {*/
-/*    padding-left: 4.37rem;*/
-/*    padding-right: 4.37rem;*/
-/*}*/
-
-/*.section__margin {*/
-/*    margin: 4rem 6rem;*/
-/*}*/
-
 .App {
     position: relative;
     max-width: 1280px;
 }
-
-/*@media screen and (max-width: 768px) {*/
-/*    .wrapper {*/
-/*        padding-left: 1.88rem;*/
-/*        padding-right: 1.88rem;*/
-/*    }*/
-/*}*/
-
-/*@media screen and (max-width: 320px) {*/
-/*    .wrapper {*/
-/*        padding-left: 0.88rem;*/
-/*        padding-right: 0.88rem;*/
-/*    }*/
-/*}*/
-
-
-/*Navigation Menu Opening Animation:*/
-/*.scale-up-center {*/
-/*    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;*/
-/*    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;*/
-/*}*/
-
-/*@-webkit-keyframes scale-up-center {*/
-/*    0% {*/
-/*        -webkit-transform: scale(0.5);*/
-/*        transform: scale(0.5);*/
-/*    }*/
-/*    100% {*/
-/*        -webkit-transform: scale(1);*/
-/*        transform: scale(1);*/
-/*    }*/
-/*}*/
-/*@keyframes scale-up-center {*/
-/*    0% {*/
-/*        -webkit-transform: scale(0.5);*/
-/*        transform: scale(0.5);*/
-/*    }*/
-/*    100% {*/
-/*        -webkit-transform: scale(1);*/
-/*        transform: scale(1);*/
-/*    }*/
-/*}*/
-
-/*!* Tablets *!*/
-/*@media screen and (max-width: 700px) {*/
-/*    .section__padding {*/
-/*        padding: 4rem;*/
-/*    }*/
-/*    .section__margin {*/
-/*        margin: 4rem;*/
-/*    }*/
-/*}*/
-/*!* Mobile *!*/
-/*@media screen and (max-width: 700px) {*/
-/*    .section__padding {*/
-/*        padding: 4rem 2rem;*/
-/*    }*/
-/*    .section__margin {*/
-/*        margin: 4rem 2rem;*/
-/*    }*/
-/*}*/
-
-

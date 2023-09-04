@@ -35,7 +35,8 @@ const Profile = () => {
             // onChange={onChange}
             minLength={2}
             maxLength={30}
-            // required
+            required={true}
+            placeholder='Введите свое имя.'
           />
         </label>
         <label className='form_label'>E-mail
@@ -47,7 +48,8 @@ const Profile = () => {
             // onChange={onChange}
             minLength={2}
             maxLength={30}
-            // required
+            required={true}
+            placeholder='Введите свой E-mail.'
           />
         </label>
 

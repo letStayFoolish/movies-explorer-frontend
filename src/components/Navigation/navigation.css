@@ -114,8 +114,9 @@
         outline: 1px solid var(--color-footer);
         box-shadow: 0 0 5px 0 var(--color-footer);
         height: 100vh;
-        width: 528px;
-        padding: 9.94rem 5.62rem 5.75rem;
+        width: 518px;
+        /*padding: 9.94rem 5.62rem 5.75rem;*/
+        padding: 158px 10px 92px;
         text-align: center;
         /* ============================================================= */
         /* Basic (scrollable) menu: */
@@ -144,13 +145,15 @@
 @media screen and (max-width: 320px) {
     .navbar__menu_container_links-sign p {
         font-size: 10px;
-        margin-right: 0.88rem;
+        /*margin-right: 0.88rem;*/
+        margin-right: 14px;
     }
 
     .navbar-small-screens {
         height: 100vh;
         width: 100%;
-        padding: 9rem 0.62rem 3rem;
+        /*padding: 9rem 0.62rem 3rem;*/
+        padding: 144px 9.92px 48px;
         top: 0;
         right: 0;
     }

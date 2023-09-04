@@ -13,7 +13,8 @@
     flex-direction: column;
     border: none;
     outline: none;
-    margin-bottom: .37rem;
+    /*margin-bottom: .37rem;*/
+    margin-bottom: 5.92px;
 }
 
 .label input {
@@ -27,12 +28,14 @@
 
     border: none;
     outline: none;
-    padding: .31rem 0 .63rem;
+    /*padding: .31rem 0 .63rem;*/
+    padding: 4.96px 0 10.08px;
     border-bottom: 1px solid var(--color-line);
 }
 
 .label input:focus {
-    padding-left: .5rem;
+    /*padding-left: .5rem;*/
+    padding-left: 8px;
     /*padding: 1rem .5rem;*/
     border-bottom: 1px solid var(--color-line);
     box-shadow: 0 1px 0 0 var(--color-green);
@@ -42,7 +45,8 @@
 
 .label span {
     background: transparent;
-    margin-top: .37rem;
+    /*margin-top: .37rem;*/
+    margin-top: 5.92px;
 
     color: var(--color-red);
     font-family: var(--font-family);
@@ -57,10 +61,12 @@
         width: 100%;
         height: 63px;
 
-        margin-bottom: .31rem;
+        /*margin-bottom: .31rem;*/
+        margin-bottom: 4.96px;
     }
 
     .label input {
-        padding-bottom: .5rem;
+        /*padding-bottom: .5rem;*/
+        padding-bottom: 8px;
     }
 }

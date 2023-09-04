@@ -6,7 +6,8 @@
 }
 
 .promo__wrapper {
-    padding: 0 4.37rem;
+    /*padding: 0 4.37rem;*/
+    padding: 0 70px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -18,7 +19,8 @@
     font-weight: 400;
     line-height: 58px;
 
-    margin: calc(4.69rem + 4.625rem) 0 2.25rem;
+    /*margin: calc(4.69rem + 4.625rem) 0 2.25rem;*/
+    margin: calc(75px + 74px) 0 36px;
     max-width: 640px;
 }
 
@@ -37,11 +39,14 @@
 }
 
 .promo__content button {
-    margin: 9rem 0 4.3rem;
-    padding: 0.62rem 1.25rem;
+    /*margin: 9rem 0 4.3rem;*/
+    margin: 144px 0 68.80px;
+    /*padding: 0.62rem 1.25rem;*/
+    padding: 9.92px 20px;
     background: transparent;
     outline: none;
-    border-radius: 0.1875rem;
+    /*border-radius: 0.1875rem;*/
+    border-radius: 3px;
     border: 1px solid var(--color-text-light);
     opacity: var(--opacity-btn);
 
@@ -174,7 +179,8 @@
 
 @media screen and (max-width: 768px) {
     .promo__wrapper {
-        padding: 0 2.75rem;
+        /*padding: 0 2.75rem;*/
+        padding: 0 44px;
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
@@ -186,7 +192,8 @@
     }
 
     .promo__image {
-        margin: calc(4.625rem + 8.75rem) 0 0;
+        /*margin: calc(4.625rem + 8.75rem) 0 0;*/
+        margin: calc(74px + 140px) 0 0;
     }
 
     .promo__content {
@@ -200,7 +207,8 @@
     .promo__content h1 {
         font-size: 40px;
         line-height: 48px;
-        margin: 3rem auto 1.4rem;
+        /*margin: 3rem auto 1.4rem;*/
+        margin: 48px auto 22.40px;
     }
 
     .promo__content p {
@@ -208,30 +216,35 @@
     }
 
     .promo__content button {
-        margin: 5.55rem 0 4.75rem;
+        /*margin: 5.55rem 0 4.75rem;*/
+        margin: 88.80px 0 76px;
     }
 
 }
 
 @media screen and (max-width: 430px) {
     .promo__wrapper {
-        padding: 0 0.63rem;
+        /*padding: 0 0.63rem;*/
+        padding: 0 10px;
     }
 
     .promo__content h1 {
         font-size: 30px;
         line-height: 38px;
         letter-spacing: -1.2px;
-        margin: 2.5rem auto 1.5rem;
+        /*margin: 2.5rem auto 1.5rem;*/
+        margin: 40px auto 24px;
         width: 100%;
     }
 
     .promo__content button {
-        margin: 4.8rem 0 1.87rem;
+        /*margin: 4.8rem 0 1.87rem;*/
+        margin: 76.80px 0 29.92px;
     }
 
     .promo__image {
-        margin: calc(4.625rem + 4.38rem) 0 0;
+        /*margin: calc(4.625rem + 4.38rem) 0 0;*/
+        margin: calc(74px + 70px) 0 0;
 
     }
 

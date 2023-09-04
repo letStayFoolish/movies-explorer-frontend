@@ -4,11 +4,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem 1.88rem;
+    /*padding: 3rem 1.88rem;*/
+    padding: 48px 30px;
 }
 
 .profile__heading {
-    margin: calc(4.63rem + 1.6rem) auto 7.65rem;
+    margin: calc(74.24px + 25.60px) auto 122.40px;
+    /*margin: calc(4.63rem + 1.6rem) auto 7.65rem;*/
     color: var(--color-text-light);
     text-align: center;
     font-family: var(--font-family);
@@ -40,11 +42,13 @@
 
 .form_label:not(:last-child) {
     border-bottom: 1px solid var(--color-line);
-    padding-bottom: 1rem;
+    /*padding-bottom: 1rem;*/
+    padding-bottom: 16px;
 }
 
 .form_label:not(:first-child) {
-    margin-top: 1.06rem;
+    /*margin-top: 1.06rem;*/
+    margin-top: 16.96px;
 }
 
 .form_input {
@@ -63,7 +67,9 @@
 }
 
 .form_input:focus {
-    padding-right: .5rem;
+    /*padding-right: .5rem;*/
+    padding-right: 8px;
+    background-color: var(--color-dark);
     /*border-bottom: 1px solid var(--color-line);*/
     box-shadow: 0 1px 0 0 var(--color-green);
     transition: padding .15s ease,box-shadow .3s ease,border-radius .3s ease;
@@ -89,7 +95,8 @@
 
 .profile__btn_type_edit {
     color: var(--color-text-light);
-    margin: 12.75rem 0 .9rem;
+    /*margin: 12.75rem 0 .9rem;*/
+    margin: 204px 0 14.40px;
 }
 
 .profile__btn_type_exit {
@@ -167,11 +174,13 @@
 
 @media screen and (max-width: 768px) {
     .profile__heading {
-        margin: calc(4.63rem + 11.6rem) auto 6.1rem;
+        /*margin: calc(4.63rem + 11.6rem) auto 6.1rem;*/
+        margin: calc(74.08px + 185.60px) auto 97.60px;
     }
 
     .profile__btn_type_edit {
-        margin: 12rem 0 .9rem;
+        /*margin: 12rem 0 .9rem;*/
+        margin: 192px 0 14.40px;
     }
 }
 
@@ -183,7 +192,8 @@
 
 @media screen and (max-width: 320px) {
     .profile__heading {
-        margin: calc(4.63rem + 1.3rem) auto 5rem;
+        /*margin: calc(4.63rem + 1.3rem) auto 5rem;*/
+        margin: calc(74px + 20.80px) auto 80px;
     }
 
     .profile__form {
@@ -196,6 +206,7 @@
     }
 
     .profile__btn_type_edit {
-        margin: 22.6rem 0 1rem;
+        /*margin: 22.6rem 0 1rem;*/
+        margin: 361.60px 0 16px;
     }
 }

@@ -15,7 +15,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 15.37rem 0 .31rem;
+    /*margin: 15.37rem 0 .31rem;*/
+    margin: 245.92px 0 4.96px;
 }
 
 .not-found__text {
@@ -33,23 +34,27 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 11.5rem 0 3.75rem;
+    /*margin: 11.5rem 0 3.75rem;*/
+    margin: 184px 0 60px;
 }
 
 @media screen and (max-width: 768px) {
     .not-found__heading {
-        margin-top: 25.5rem;
+        /*margin-top: 25.5rem;*/
+        margin-top: 408px;
     }
 
     .not-found__navigate {
-        margin-bottom: 13.88rem;
+        /*margin-bottom: 13.88rem;*/
+        margin-bottom: 222px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .not-found__heading {
         font-size: 80px;
-        margin: 20.5rem 0 .63rem;
+        /*margin: 20.5rem 0 .63rem;*/
+        margin: 328px 0 10px;
     }
 
     .not-found__text {
@@ -58,6 +63,7 @@
 
     .not-found__navigate {
         font-size: 12px;
-        margin: 17.75rem 0 1.87rem;
+        /*margin: 17.75rem 0 1.87rem;*/
+        margin: 284px 0 29.92px;
     }
 }

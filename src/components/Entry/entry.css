@@ -10,7 +10,8 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
-    margin-right: 1.88rem;
+    /*margin-right: 1.88rem;*/
+    margin-right: 30.08px;
     cursor: pointer;
     transition: var(--transition-on-hover);
 }
@@ -27,10 +28,12 @@
     align-items: center;
     text-align: center;
     background: var(--color-green);
-    padding: .5rem 1.25rem;
+    /*padding: .5rem 1.25rem;*/
+    padding: 8px 20px;
     outline: none;
     border: none;
-    border-radius: 0.1875rem;
+    /*border-radius: 0.1875rem;*/
+    border-radius: 3px;
 
     color: var(--color-text-dark);
     font-family: var(--font-family);
@@ -50,15 +53,17 @@
 @media screen and (max-width: 320px) {
     .entry__container_links-sign p {
         font-size: 10px;
-        margin-right: 0.88rem;
+        /*margin-right: 0.88rem;*/
+        margin-right: 14px;
     }
 
     .entry__container_links-sign button {
-        padding: .31rem 0.75rem;
-        border-radius: 0.1875rem;
+        /*padding: .31rem 0.75rem;*/
+        padding: 4.96px 12px;
+        /*border-radius: 0.1875rem;*/
+        border-radius: 3px;
 
         font-size: 10px;
         cursor: pointer;
     }
-
 }

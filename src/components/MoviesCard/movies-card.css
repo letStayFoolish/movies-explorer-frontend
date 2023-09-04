@@ -19,7 +19,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1.12rem 1.13rem;
+    /*padding: 1.12rem 1.13rem;*/
+    padding: 17.92px 18.08px;
 }
 
 .card__title {
@@ -49,9 +50,11 @@
 }
 
 .button {
-    margin: 1.12rem 8.12rem;
+    /*margin: 1.12rem 8.12rem;*/
+    margin: 17.92px 129.92px;
     color: var(--color-text-light);
-    padding: 0.56rem 0.94rem;
+    /*padding: 0.56rem 0.94rem;*/
+    padding: 8.94px 15.04px;
     text-align: center;
     font-size: 12px;
     font-style: normal;
@@ -157,7 +160,8 @@
     }
 
     .button {
-        margin: 1.12rem 7.56rem;
+        /*margin: 1.12rem 7.56rem;*/
+        margin: 17.92px 120.96px;
     }
 }
 
@@ -167,7 +171,8 @@
     }
 
     .card__heading {
-        padding: 1.1rem 1.2rem 1.1rem .6rem;
+        /*padding: 1.1rem 1.2rem 1.1rem .6rem;*/
+        padding: 17.60px 15px 17.60px 15px;
     }
 
     .card__title {
@@ -191,7 +196,9 @@
     }
 
     .button {
-        margin: .7rem 6.26rem;
-        padding: 0.58rem .2rem;
+        /*margin: .7rem 6.26rem;*/
+        margin: 11.20px 100.16px;
+        /*padding: 0.58rem .2rem;*/
+        padding: 9.28px 3.20px;
     }
 }
