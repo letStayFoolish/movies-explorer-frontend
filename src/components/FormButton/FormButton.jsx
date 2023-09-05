@@ -1,6 +1,6 @@
 import React from 'react'
 import './form-button.css'
-const FormButton = ({ text, onClick, margin, smallScreenMargin, animation }) => {
+const FormButton = ({ text, onClick, margin, smallScreenMargin, animation, type, isSubmitDisabled }) => {
 
   const buttonStyle = {
     marginTop: margin
@@ -14,7 +14,8 @@ const FormButton = ({ text, onClick, margin, smallScreenMargin, animation }) => 
 
   return (
     <button
-      type='button'
+      disabled={isSubmitDisabled}
+      type={type}
       className={`form-btn ${animation}`}
       onClick={onClick}
       style={buttonStyle}

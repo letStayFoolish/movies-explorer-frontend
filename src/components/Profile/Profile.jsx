@@ -55,7 +55,7 @@ const Profile = () => {
 
         {editProfile ? (
           // <button className="profile__submit-btn" onClick={handleSavingChanges}>Сохранить</button>
-          <FormButton animation='scale-in-ver-top' text='Сохранить' onClick={handleSavingChanges} margin='12.25rem' smallScreenMargin={'22rem'} />
+          <FormButton type='button' animation='scale-in-ver-top' text='Сохранить' onClick={handleSavingChanges} margin='12.25rem' smallScreenMargin={'22rem'} />
         ) : (
           <>
             <button type='button' className="profile__btn profile__btn_type_edit" onClick={handleEditProfile}>Редактировать</button>

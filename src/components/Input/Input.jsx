@@ -2,7 +2,7 @@ import './input.css'
 
 const Input = ({
   value,
-  error,
+  errors,
   onChange,
   name,
   type,
@@ -15,7 +15,7 @@ const Input = ({
   return (
       <label htmlFor="" className='label'>{label}
         <input
-          style={{color: error && '#EE3465'}}
+          style={{color: errors && '#EE3465'}}
           value={value}
           onChange={onChange}
           name={name}
@@ -25,9 +25,14 @@ const Input = ({
           placeholder={placeholder}
           required={required}
         />
-        <span className="span_error">
-        {error && `Что-то пошло не так...`}
-      </span>
+        {name === 'name' ? (
+          <span className="span_error">{errors && `Пожалуйста, введите действительное имя для входа в систему.`}</span>
+        ) : name === 'email' ? (
+          <span className="span_error">{errors && `Пожалуйста, введите действительный адрес электронной почты.`}</span>
+        ) : (
+          <span className="span_error">{errors && `Пожалуйста, введите действительный пароль.`}</span>
+        )
+        }
       </label>
   )
 }
