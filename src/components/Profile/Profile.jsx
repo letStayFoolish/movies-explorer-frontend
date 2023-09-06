@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 
 
-const Profile = () => {
+const Profile = ({ handleOnLogout }) => {
   const [editProfile, setEditProfile] = useState(false)
 
   const handleEditProfile = () => {
@@ -59,7 +59,11 @@ const Profile = () => {
         ) : (
           <>
             <button type='button' className="profile__btn profile__btn_type_edit" onClick={handleEditProfile}>Редактировать</button>
-            <button type='button' className="profile__btn profile__btn_type_exit">
+            <button
+              type='button'
+              className="profile__btn profile__btn_type_exit"
+              onClick={handleOnLogout}
+            >
               <NavLink to='/'>Выйти из аккаунта</NavLink>
             </button>
           </>

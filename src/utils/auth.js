@@ -1,6 +1,5 @@
 import {BASE_URL} from "./constants";
 
-
 const checkResponse = async (res) => {
   if (res.ok) {
     return await res.json()
@@ -31,13 +30,13 @@ export const register = async (name, email, password) => {
 export const authorize = async (email, password) => {
   try {
     const response = await fetch(`${BASE_URL}/signin`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      // credentials: 'include',
-      body: JSON.stringify({ email, password })
+      credentials: "include",
+      body: JSON.stringify({email, password}),
     })
 
     return await checkResponse(response)
@@ -49,13 +48,13 @@ export const authorize = async (email, password) => {
 
 export const logout = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/logout`, {
+    const response = await fetch(`${BASE_URL}/signout`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      // credentials: 'include',
+      credentials: 'include',
     })
     return await checkResponse(response)
 
@@ -72,7 +71,7 @@ export const getContent = async () => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      // credentials: 'include',
+      credentials: 'include',
     })
     return await checkResponse(response)
 

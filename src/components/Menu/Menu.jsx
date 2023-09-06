@@ -12,7 +12,7 @@ const Menu = ({ pathname, toggleMenu }) => {
             <li className='menu_item'>
               <NavLink to='/'
                        className={pathname === '/' ? 'menu_link_active menu_link' : 'menu_link'}
-                       style={{fontWeight: pathname === '/' && '500'}}
+                       style={{fontWeight: pathname === '/' ? '500' : undefined}}
               >
                 Главная
               </NavLink>
@@ -21,7 +21,7 @@ const Menu = ({ pathname, toggleMenu }) => {
           <li className='menu_item'>
             <NavLink to='/movies'
                      className={pathname === '/movies' ? 'menu_link_active menu_link' : 'menu_link'}
-                     style={{fontWeight: pathname === '/movies' && '500'}}
+                     style={{fontWeight: pathname === '/movies' ? '500' : undefined}}
             >
               Фильмы
             </NavLink>
@@ -29,7 +29,7 @@ const Menu = ({ pathname, toggleMenu }) => {
           <li className='menu_item'>
             <NavLink to='/saved-movies'
                      className={pathname === '/saved-movies' ? 'menu_link_active menu_link' : 'menu_link'}
-                     style={{fontWeight: pathname === '/saved-movies' && '500'}}
+                     style={{fontWeight: pathname === '/saved-movies' ? '500' : undefined}}
             >
               Сохранённые фильмы
             </NavLink>
@@ -37,8 +37,8 @@ const Menu = ({ pathname, toggleMenu }) => {
         </ul>
         <div className="menu_account">
           <p
-            className={pathname === '/profile' && 'menu_link_active'}
-            style={{fontWeight: pathname === '/profile' && '500'}}
+            className={pathname === '/profile' ? 'menu_link_active' : undefined}
+            style={{fontWeight: pathname === '/profile' ? '500' : undefined}}
           >
             <NavLink to='/profile'>Аккаунт</NavLink>
           </p>

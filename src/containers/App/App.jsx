@@ -26,14 +26,12 @@ const App = () => {
     checkToken()
     // eslint-disable-next-line
   }, []);
-  const handleOnLogin = () => {
-    setIsLoggedIn(true)
-  }
+
 
   // Function to keep a user logged-in if his token is already stored:
   const checkToken = async () => {
     try {
-      const data = await auth.getContent
+      const data = await auth.getContent()
       if (!data) return;
 
       if (data.status !== 401) {
@@ -47,13 +45,29 @@ const App = () => {
     }
   }
 
+  const handleOnLogin = () => {
+    setIsLoggedIn(true)
+  }
+
+  const handleOnLogout = async () => {
+    try {
+      await auth.logout()
+      setIsLoggedIn(false)
+      navigate('/', { replace: true })
+      console.log("Log out...")
+
+    } catch (error) {
+      console.error(`Error: ${error.message}`)
+    }
+  }
+
   return (
     <div className='App'>
       {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
       <Routes>
         <Route path="/" index={true} element={<Main />} />
-        <Route path="/signup" element={<Register handleOnLogin={handleOnLogin} />} />
-        <Route path="/signin" element={<Login handleOnLogin={handleOnLogin} />} />
+        <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} />} />
+        <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} />} />
         <Route path="/movies" element={
           <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} />
           }
@@ -62,8 +76,8 @@ const App = () => {
           <ProtectedRoute isLoggedIn={isLoggedIn} element={SavedMovies} />
           }
         />
-        <Route path="/movies" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn} element={Profile} />
+        <Route path="/profile" element={
+          <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} element={Profile} />
           }
         />
         <Route path="*" element={<NotFound />} />

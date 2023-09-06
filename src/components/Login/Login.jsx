@@ -32,6 +32,7 @@ const Login = ({ handleOnLogin }) => {
   // Handler function on submit button - log in:
   const submitHandler = async (e) => {
     e.preventDefault()
+
     const { email, password } = values
 
     if (!email || !password) {
