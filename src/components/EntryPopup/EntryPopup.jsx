@@ -1,30 +1,25 @@
 import React from 'react'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import {GrClose} from "react-icons/gr";
 import {AiOutlineCheck} from "react-icons/ai";
 
 import './entry-popup.css'
 
-const EntryPopup = ({ onSuccess, isOpen, message, handleOnClose }) => {
+const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen }) => {
   const navigate = useNavigate()
-  const location = useLocation()
-  const pathname = location.pathname
 
-  const handleClickOnSuccess = () => {
-    if (pathname === '/signup') navigate('/signin')
-    else navigate('/movies')
+  const handleOnSuccess = () => {
+    navigate('/movies', { replace: true })
   }
 
-  const handleClickOnWrong = () => {
-    handleOnClose()
-
-    if (pathname === '/signup') navigate('/signup')
-    else navigate('/signin')
+  // Handler function to close modal:
+  const handleOnClose = () => {
+    setIsOpen(false)
   }
 
   return (
-    <div className={`entry-popup ${isOpen && `popup_opened`}`}>
+    <div className={isOpen ? 'entry-popup popup_opened' : 'entry-popup'}>
       <div className='entry-popup__container'>
         <div className={onSuccess ?
           'entry-popup__sign entry-popup__sign_color_green' :
@@ -42,7 +37,7 @@ const EntryPopup = ({ onSuccess, isOpen, message, handleOnClose }) => {
           {onSuccess ? message : 'Что-то пошло не так!'}
         </p>
         <button
-          onClick={onSuccess ? handleClickOnSuccess : handleClickOnWrong}
+          onClick={onSuccess ? handleOnSuccess : handleOnClose}
           type='button'
           className={onSuccess ?
           "entry-popup__button entry-popup__button_color_green" :

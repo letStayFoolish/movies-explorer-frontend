@@ -1,65 +1,66 @@
 import React, {useEffect, useState} from 'react'
 import {useNavigate} from "react-router-dom";
-
 import * as auth from '../../utils/auth'
 import FormElement from "../FormElement/FormElement";
 import Input from "../Input/Input";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
+import {EMAIL_PATTERN, NAME_PATTERN, PASSWORD_PATTERN} from "../../utils/constants";
 import './register.css'
 
-const Register = () => {
+const Register = ({ handleOnLogin }) => {
   const navigate = useNavigate()
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
   const { values, resetForm, handleOnChange, errors, isValid } = useFormWithValidation()
-  const [isSigningUp, setIsSigningUp] = useState(false)
+  const [isEntering, setIsEntering] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
+  // Props for the FormElement global component:
   const greetingMessage = 'Добро пожаловать!'
   const textButton = 'Зарегистрироваться'
+  const textOnSigningUp = 'Регистрация...'
   const textParagraph = 'Уже зарегистрированы?'
   const link = '/signin'
   const textSpan = 'Войти'
 
-  const handleOnClose = () => {
-    setIsOpen(false)
-  }
-
+  // React hook - to set submit button disabled depending on the validity of fields in the form:
   useEffect(() => {
     setIsSubmitDisabled(!isValid)
   }, [values]);
 
+
+  // Handler function on submit button - registration:
   const submitHandler = async (e) => {
     e.preventDefault()
+    const { name, email, password } = values
 
-    if(!values.name || !values.email || !values.password) {
+    if(!name || !email || !password) {
       setIsSubmitDisabled(true)
       setIsSuccess(false)
       window.alert('Пожалуйста, заполните все поля.')
       return
     } else {
       setIsSubmitDisabled(false)
-      setIsSigningUp(true)
+      setIsEntering(true)
 
       try {
-        await auth.register(values.name, values.email, values.password)
-
-        await ('/signin', { replace: true })
+        await auth.register(name, email, password)
+        setIsSuccess(true)
         setIsOpen(true)
-        await setIsSuccess(true)
+        handleOnLogin()
       } catch (err) {
         console.error(`Error: ${err.message}`)
+        setIsSuccess(false)
+        setIsOpen(true)
       }
       finally {
         setIsSubmitDisabled(true)
-        setIsSigningUp(false)
+        setIsEntering(false)
         resetForm()
-        setIsOpen(true)
       }
     }
   }
-
 
   return (
     <FormElement
@@ -70,7 +71,8 @@ const Register = () => {
       span={textSpan}
       submitHandler={submitHandler}
       isSubmitDisabled={isSubmitDisabled}
-      isSigningUp={isSigningUp ? 'Регистрация...' : isSigningUp}
+      isEntering={isEntering}
+      textOnSigningUp={textOnSigningUp}
     >
       <Input
         value={values.name || ''}
@@ -82,6 +84,7 @@ const Register = () => {
         placeholder='Введите свое Имя.'
         minLength={2}
         maxLength={30}
+        pattern={NAME_PATTERN}
         required
       />
       <Input
@@ -94,6 +97,7 @@ const Register = () => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
+        pattern={EMAIL_PATTERN}
         required
       />
       <Input
@@ -106,9 +110,10 @@ const Register = () => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
+        pattern={PASSWORD_PATTERN}
         required
       />
-      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} handleOnClose={handleOnClose} message='Спасибо, что зарегистрировались.' />
+      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.' />
     </FormElement>
   )
 }

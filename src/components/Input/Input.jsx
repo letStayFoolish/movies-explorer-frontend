@@ -10,6 +10,7 @@ const Input = ({
   placeholder,
   minLength,
   maxLength,
+  pattern,
   required
 }) => {
   return (
@@ -24,13 +25,14 @@ const Input = ({
           maxLength={maxLength}
           placeholder={placeholder}
           required={required}
+          pattern={pattern}
         />
         {name === 'name' ? (
-          <span className="span_error">{errors && `Пожалуйста, введите действительное имя для входа в систему.`}</span>
+          <span className="span_error">{errors && `Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)`}</span>
         ) : name === 'email' ? (
           <span className="span_error">{errors && `Пожалуйста, введите действительный адрес электронной почты.`}</span>
         ) : (
-          <span className="span_error">{errors && `Пожалуйста, введите действительный пароль.`}</span>
+          <span className="span_error">{errors && `Пароль должен состоять минимум из 6 символов, включая латинские буквы, цифры и специальные символы`}</span>
         )
         }
       </label>

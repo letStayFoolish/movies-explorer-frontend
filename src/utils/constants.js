@@ -1,5 +1,7 @@
 export const BASE_URL = 'http://localhost:3000'
-
+export const EMAIL_PATTERN = "[A-z0-9!#$%&'*+-/=?^_`{|]{1,64}@[A-z0-9-.]{2,253}\\.[A-z]{2,63}";
+export const NAME_PATTERN = "[A-я-\\s]{2,30}";
+  export const PASSWORD_PATTERN = "(?=.*[A-z])(?=.*\\d)(?=.*[!@#$%^&*])(?=.{6,}).*";
 export const projects = [
   {
     name: 'Статичный сайт',

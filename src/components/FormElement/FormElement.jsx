@@ -3,7 +3,19 @@ import FormButton from "../FormButton/FormButton";
 import {NavLink} from "react-router-dom";
 import './form-element.css'
 
-const FormElement = ({ children, submitHandler, greetingMessage, textBtn, paragraph, link, span, isSubmitDisabled, isSigningUp }) => {
+const FormElement = ({
+   children,
+   submitHandler,
+   greetingMessage,
+   textBtn,
+   paragraph,
+   link,
+   span,
+   isSubmitDisabled,
+   isEntering,
+   textOnSigningUp,
+   textOnSigninIn
+}) => {
   return (
     <section className='form-element'>
       <div className="form-element__wrapper">
@@ -15,7 +27,17 @@ const FormElement = ({ children, submitHandler, greetingMessage, textBtn, paragr
           <fieldset className="form-form-element__fieldset">
             {children}
           </fieldset>
-          <FormButton type='submit' text={textBtn} paragraph={paragraph} link={link} span={span} isSubmitDisabled={isSubmitDisabled} isSigningUp={isSigningUp} />
+          <FormButton
+            type='submit'
+            text={textBtn}
+            paragraph={paragraph}
+            link={link}
+            span={span}
+            isSubmitDisabled={isSubmitDisabled}
+            isEntering={isEntering}
+            textOnSigningUp={textOnSigningUp}
+            textOnSigninIn={textOnSigninIn}
+          />
           <div className="form-element__text">
             <p>{paragraph}<span><NavLink to={link}>{span}</NavLink></span></p>
           </div>
