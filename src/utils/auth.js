@@ -16,7 +16,7 @@ export const register = async (name, email, password) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify({name, email, password})
     })
 

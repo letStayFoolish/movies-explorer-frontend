@@ -1,16 +1,21 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 import {GrClose} from "react-icons/gr";
 import {AiOutlineCheck} from "react-icons/ai";
 
 import './entry-popup.css'
 
-const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen }) => {
+const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError }) => {
+  const location = useLocation()
+  const pathname = location.pathname
   const navigate = useNavigate()
 
   const handleOnSuccess = () => {
-    navigate('/movies', { replace: true })
+    if (pathname !== '/profile') {
+      navigate('/movies', { replace: true })
+    }
+    handleOnClose()
   }
 
   // Handler function to close modal:
@@ -34,7 +39,7 @@ const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen }) => {
           {onSuccess ? 'Успешно!' : 'Ошибка 😕'}
         </h2>
         <p className='entry-popup__message'>
-          {onSuccess ? message : 'Что-то пошло не так!'}
+          {onSuccess ? message : textOnError}
         </p>
         <button
           onClick={onSuccess ? handleOnSuccess : handleOnClose}
@@ -43,7 +48,7 @@ const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen }) => {
           "entry-popup__button entry-popup__button_color_green" :
           "entry-popup__button entry-popup__button_color_red"}
         >
-          {onSuccess ? 'Ок' : 'Попробуйте ещё раз.'}
+          {onSuccess ? 'Ок' : 'Попробуйте ещё раз'}
         </button>
       </div>
     </div>

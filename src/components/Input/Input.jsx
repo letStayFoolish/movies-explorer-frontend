@@ -1,4 +1,5 @@
 import './input.css'
+import {EMAIL_SPAN_ERROR, NAME_SPAN_ERROR, PASSWORD_SPAN_ERROR} from "../../utils/constants";
 
 const Input = ({
   value,
@@ -28,11 +29,11 @@ const Input = ({
           pattern={pattern}
         />
         {name === 'name' ? (
-          <span className="span_error">{errors && `Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)`}</span>
+          <span className="span_error">{errors && NAME_SPAN_ERROR}</span>
         ) : name === 'email' ? (
-          <span className="span_error">{errors && `Пожалуйста, введите действительный адрес электронной почты.`}</span>
+          <span className="span_error">{errors && EMAIL_SPAN_ERROR}</span>
         ) : (
-          <span className="span_error">{errors && `Пароль должен состоять минимум из 6 символов, включая латинские буквы, цифры и специальные символы`}</span>
+          <span className="span_error">{errors && PASSWORD_SPAN_ERROR}</span>
         )
         }
       </label>

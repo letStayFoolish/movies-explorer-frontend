@@ -1,4 +1,4 @@
-import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import {Route, Routes, useLocation, useMatch, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import Header from "../Header/Header";
@@ -13,13 +13,19 @@ import Footer from "../Footer/Footer";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import * as auth from '../../utils/auth'
 import './app.css'
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currentUser, setCurrentUser] = useState({ name: '', email: '' })
   const navigate = useNavigate()
   const location = useLocation()
   const pathname = location.pathname
+
+  const { resetForm } = useFormWithValidation()
+
 
   // State to authenticate user's token:
   useEffect(() => {
@@ -37,6 +43,12 @@ const App = () => {
       if (data.status !== 401) {
         setIsLoggedIn(true)
         navigate(pathname, {replace: true})
+
+        setCurrentUser((prevState) => ({
+          ...prevState,
+            name: data.name,
+            email: data.email
+        }))
       }
 
     } catch (error) {
@@ -54,36 +66,38 @@ const App = () => {
       await auth.logout()
       setIsLoggedIn(false)
       navigate('/', { replace: true })
-      console.log("Log out...")
-
+      resetForm()
+      setCurrentUser({ name: "", email: ""})
     } catch (error) {
       console.error(`Error: ${error.message}`)
     }
   }
 
   return (
-    <div className='App'>
-      {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
-      <Routes>
-        <Route path="/" index={true} element={<Main />} />
-        <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} />} />
-        <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} />} />
-        <Route path="/movies" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} />
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className='App'>
+        {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
+        <Routes>
+          <Route path="/" index={true} element={<Main />} />
+          <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
+          <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
+          <Route path="/movies" element={
+            <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} />
           }
-        />
-        <Route path="/saved-movies" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn} element={SavedMovies} />
+          />
+          <Route path="/saved-movies" element={
+            <ProtectedRoute isLoggedIn={isLoggedIn} element={SavedMovies} />
           }
-        />
-        <Route path="/profile" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} element={Profile} />
+          />
+          <Route path="/profile" element={
+            <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} currentUser={currentUser} element={Profile} />
           }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies') &&  <Footer />}
-    </div>
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies') &&  <Footer />}
+      </div>
+    </CurrentUserContext.Provider>
   )
 }
 

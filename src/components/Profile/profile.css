@@ -99,6 +99,12 @@
     margin: 204px 0 14.40px;
 }
 
+.profile__btn_type_edit:disabled {
+    color: var(--color-checkbox-gray);
+    cursor: not-allowed;
+    opacity: var(--opacity-btn);
+}
+
 .profile__btn_type_exit {
     color: var(--color-red);
 }

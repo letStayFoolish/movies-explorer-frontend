@@ -1,6 +1,6 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './search-form.css'
-const SearchForm = () => {
+const SearchForm = ({ searchInputRef, handleSearch, searchQuery }) => {
   return (
     <div className='search-form'>
       <div className="search-form__wrapper">
@@ -8,14 +8,12 @@ const SearchForm = () => {
           <div className="search-form__input">
             <input
               type="text"
-              // name={''}
-              // id={''}
-              // onChange={''}
+              ref={searchInputRef}
               minLength={1}
               placeholder='Фильм'
-              required={true}
+              required
             />
-            <button type='button'>Поиск</button>
+            <button type='submit' onClick={handleSearch} >Поиск</button>
           </div>
           <FilterCheckbox />
         </div>

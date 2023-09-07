@@ -1,9 +1,15 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import {getMoviesData} from "../../utils/MoviesApi";
 import './movies-cards.css'
 
-const MoviesCards = ({cards, biggerScreen, midScreen, smallScreen}) => {
-  const baseURL = 'https://api.nomoreparties.co'
+const MoviesCards = ({biggerScreen, midScreen, smallScreen, filteredMovies}) => {
+  // const [moviesData, setMoviesData] = useState([])
+
+  // useEffect(() => {
+  //   getMoviesData()
+  //     .then((data) => setMovies(data))
+  // }, []);
 
   const [currentPage, setCurrentPage] = useState(1)
   let cardsPerPage
@@ -19,7 +25,7 @@ const MoviesCards = ({cards, biggerScreen, midScreen, smallScreen}) => {
   // Calculate start and end indices for current page
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+  // const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
 
   // Handle page navigation
   const handlePageChange = (newPage) => {
@@ -29,21 +35,21 @@ const MoviesCards = ({cards, biggerScreen, midScreen, smallScreen}) => {
   return (
     <div className="movies-cards__wrapper">
       <div className="movies-cards__container">
-        {currentCards.map((card, _index) => (
+        {filteredMovies.map((movie) => (
           <MoviesCard
-            savedMovies={card.savedMovies}
-            key={_index}
-            title={card.nameRU}
-            duration={card.duration}
-            poster={`${baseURL}/${card.image.url}`}
-            id={card.id}
+            // savedMovies={movie.savedMovies}
+            key={movie.id}
+            title={movie.nameRU}
+            duration={movie.duration}
+            poster={`https://api.nomoreparties.co${movie.image.url}`}
+            id={movie.id}
           />
         ))}
       </div>
       <button
         className="movies-cards__btn-more"
         type='button'
-        onClick={() => handlePageChange([...currentCards])}
+        // onClick={() => handlePageChange([...currentCards])}
         style={{
           visibility: cardsPerPage >= 12 && biggerScreen ? "visible" :
             cardsPerPage >= 8 && midScreen ? "visible" :

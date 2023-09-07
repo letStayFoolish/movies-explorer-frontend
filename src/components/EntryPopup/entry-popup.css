@@ -63,6 +63,7 @@
     padding: 10px;
     margin-bottom: 55px;
 }
+
 .entry-popup__sign_color_green {
     background: var(--color-green);
 }
@@ -122,4 +123,36 @@
 
 @media screen and (max-width: 768px) {}
 
-@media screen and (max-width: 320px) {}
+@media screen and (max-width: 420px) {
+    .entry-popup__container {
+        width: 300px;
+        padding: 30px 30px;
+    }
+
+    .entry-popup__image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .entry-popup__sign {
+        font-size: 32px;
+        padding: 8px;
+        margin-bottom: 25px;
+    }
+
+    .entry-popup__heading {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .entry-popup__message {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .entry-popup__button {
+        font-size: 14px;
+        justify-content: center;
+        padding: 5px 25px;
+    }
+}

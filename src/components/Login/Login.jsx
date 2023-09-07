@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react'
-import {useNavigate} from "react-router-dom";
+import React, {useContext, useEffect, useState} from 'react'
+import {useLocation} from "react-router-dom";
 import * as auth from '../../utils/auth'
 import FormElement from "../FormElement/FormElement";
 import Input from "../Input/Input";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
-import {EMAIL_PATTERN, NAME_PATTERN, PASSWORD_PATTERN} from "../../utils/constants";
+import {EMAIL_PATTERN, handleMessageErrors, PASSWORD_PATTERN} from "../../utils/constants";
 import './login.css'
-
-const Login = ({ handleOnLogin }) => {
-  const navigate = useNavigate()
+const Login = ({ handleOnLogin, setCurrentUser }) => {
+  const location = useLocation()
+  const pathname = location.pathname
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
   const { values, resetForm, handleOnChange, errors, isValid } = useFormWithValidation()
   const [isEntering, setIsEntering] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [textOnError, setTextOnError] = useState('')
 
   // Props for the FormElement global component:
   const greetingMessage = 'Рады видеть!'
@@ -43,11 +44,14 @@ const Login = ({ handleOnLogin }) => {
       setIsSubmitDisabled(false)
       setIsEntering(true)
       try {
-        await auth.authorize(email, password)
+        const data = await auth.authorize(email, password)
         setIsSuccess(true)
         setIsOpen(true)
         handleOnLogin()
+        setCurrentUser({ name: data.name, email: data.email})
+
       } catch (err) {
+        setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsSuccess(false)
         setIsOpen(true)
@@ -97,7 +101,7 @@ const Login = ({ handleOnLogin }) => {
         pattern={PASSWORD_PATTERN}
         required={true}
       />
-      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Вход в систему успешен.' />
+      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Вход в систему успешен.' textOnError={textOnError} />
     </FormElement>
   )
 }
