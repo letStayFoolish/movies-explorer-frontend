@@ -1,4 +1,4 @@
-import {BASE_URL} from "./constants";
+import {BASE_URL, BASE_URL_MOVIES} from "./constants";
 
 const checkResponse = async (res) => {
   if (res.ok) {
@@ -38,5 +38,57 @@ export const updateCurrentUser = async (name, email) => {
   } catch (error) {
     console.error('Update User Error', error)
     throw error
+  }
+}
+
+export const getSavedMovies = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/movies`, {
+      method: 'GET',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+
+    return await checkResponse(response)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const saveMoviesToSavedMovies = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}/movies`, {
+      method: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    })
+
+    return await checkResponse(response)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const removeMoviesFromSavedList = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/movies/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+
+    return await checkResponse(response)
+  } catch (err) {
+    console.error(err)
   }
 }

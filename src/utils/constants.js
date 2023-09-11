@@ -1,5 +1,5 @@
 export const BASE_URL="http://localhost:3000"
-
+export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
 export const EMAIL_PATTERN=/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
 export const NAME_PATTERN="[A-я-\\s]{2,30}";
@@ -54,3 +54,13 @@ export const projects = [
     url: 'https://github.com/letStayFoolish/react-mesto-api-full-gha'
   }
 ]
+
+// Local storage functions:
+export const handleSaveToLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+
+export const handleGetFromLocalStorage = (key) => {
+  const data = localStorage.getItem(key)
+  return data ? JSON.parse(data) : null
+}

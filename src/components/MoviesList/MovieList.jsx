@@ -2,18 +2,20 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import MoviesNotFound from "../../containers/Movies/MoviesNotFound/MoviesNotFound";
 // Styles
 import './movie-list.css'
+import {useLocation} from "react-router-dom";
 
 const MovieList = ({
   searchMessageError,
-  setSearchMessageError,
   onGoBackClick,
   error,
   onShowMoreClick,
   movies,
   endIndex,
   hasMoreMovies,
-  showMessage
+  likeMovie,
+  removeMovie
 }) => {
+  const pathname = useLocation().pathname
   return (
     <div className="movies-cards__wrapper">
     {searchMessageError ? (
@@ -21,26 +23,25 @@ const MovieList = ({
       ) : (
       <div className="movies-cards__container">
         {/*{movies.slice(startIndex, endIndex).map((movie) => (*/}
-        {movies.slice(0, endIndex).map((movie) => (
+        {movies.slice(0, endIndex).map((movie, _index) => (
           <MoviesCard
-            // savedMovies={movie.savedMovies}
-            key={movie.id}
-            title={movie.nameRU}
-            duration={movie.duration}
-            poster={`https://api.nomoreparties.co${movie.image.url}`}
-            id={movie.id}
-            movieTrailer={movie.trailerLink}
+            key={movie.id || _index}
+            movie={movie}
+            likeMovie={likeMovie}
+            removeMovie={removeMovie}
           />
         ))}
       </div>
         )}
-      <button
+      {pathname === '/movies' &&
+        <button
         className="movies-cards__btn-more"
         type='button'
         onClick={onShowMoreClick}
         style={{visibility: hasMoreMovies ? 'visible' : 'hidden'}}
       >Ещё
       </button>
+      }
     </div>
   )
 }
