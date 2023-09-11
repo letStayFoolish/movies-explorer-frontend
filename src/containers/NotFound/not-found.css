@@ -36,6 +36,12 @@
     line-height: normal;
     /*margin: 11.5rem 0 3.75rem;*/
     margin: 184px 0 60px;
+    cursor: pointer;
+    transition: var(--transition-on-hover);
+}
+
+.not-found__navigate:hover {
+    opacity: var(--opacity-btn);
 }
 
 @media screen and (max-width: 768px) {

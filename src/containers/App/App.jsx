@@ -1,4 +1,4 @@
-import {Route, Routes, useLocation, useMatch, useNavigate} from "react-router-dom";
+import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import Header from "../Header/Header";
@@ -75,6 +75,10 @@ const App = () => {
     }
   }
 
+  const handleGoBack = () => {
+    navigate(-1)
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='App'>
@@ -96,7 +100,7 @@ const App = () => {
               <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} currentUser={currentUser} element={Profile} />
             }
             />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound handleGoBack={handleGoBack} />} />
           </Routes>
         </main>
 
