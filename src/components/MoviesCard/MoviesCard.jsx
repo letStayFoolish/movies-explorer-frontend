@@ -1,4 +1,5 @@
 import {useLocation} from "react-router-dom";
+// Styles
 import './movies-card.css'
 
 function DurationConverter({ minutes }) {
@@ -8,7 +9,7 @@ function DurationConverter({ minutes }) {
   return <p className='card__time'>{hours}ч {remainingMinutes}м</p>
 }
 
-const MoviesCard = ({ title, duration, poster, id, savedMovies }) => {
+const MoviesCard = ({ title, duration, poster, id, savedMovies, movieTrailer }) => {
 
   const location = useLocation()
   const pathname = location.pathname
@@ -21,7 +22,9 @@ const MoviesCard = ({ title, duration, poster, id, savedMovies }) => {
           <DurationConverter minutes={duration} />
         </div>
 
-        <img src={poster} alt="Movie Image" className="card__img flip-in-diag-1-tr"/>
+        <a href={movieTrailer} target='_blank' rel="noreferrer">
+          <img src={poster} alt="Movie Image" className="card__img flip-in-diag-1-tr"/>
+        </a>
         {/* Saved movie button */}
         {/*<button className='button button_type_add' type='button'>&#10003;</button>*/}
         {/* Add movie to list button */}

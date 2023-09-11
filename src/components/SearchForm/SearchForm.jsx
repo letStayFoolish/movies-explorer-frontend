@@ -1,24 +1,32 @@
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
+// Styles
 import './search-form.css'
-const SearchForm = ({ searchInputRef, handleSearch, searchQuery }) => {
+const SearchForm = ({ searchInputRef, handleSearch, showMessage, onCheckbox, shortMovies, setShortMovies }) => {
+const handleOnSubmit = (e) => {
+  e.preventDefault()
+  handleSearch()
+}
+
   return (
-    <div className='search-form'>
+    <form className='search-form' onSubmit={handleOnSubmit} noValidate>
       <div className="search-form__wrapper">
         <div className="search-form__container">
           <div className="search-form__input">
             <input
               type="text"
               ref={searchInputRef}
+              // value={query}
               minLength={1}
               placeholder='Фильм'
               required
             />
-            <button type='submit' onClick={handleSearch} >Поиск</button>
+            <button type='submit' >Поиск</button>
           </div>
-          <FilterCheckbox />
+          {showMessage ? <p className='search-form__container_paragraph'>Нужно ввести ключевое слово</p> : null}
+          <FilterCheckbox onCheckbox={onCheckbox} shortMovies={shortMovies} setShortMovies={setShortMovies} />
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 export default SearchForm

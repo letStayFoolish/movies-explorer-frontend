@@ -12,9 +12,10 @@ import Profile from "../../components/Profile/Profile";
 import Footer from "../Footer/Footer";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import * as auth from '../../utils/auth'
-import './app.css'
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
+// Styles
+import './app.css'
 
 
 const App = () => {
@@ -68,6 +69,7 @@ const App = () => {
       navigate('/', { replace: true })
       resetForm()
       setCurrentUser({ name: "", email: ""})
+      localStorage.clear()
     } catch (error) {
       console.error(`Error: ${error.message}`)
     }
@@ -77,24 +79,27 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <div className='App'>
         {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
-        <Routes>
-          <Route path="/" index={true} element={<Main />} />
-          <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
-          <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
-          <Route path="/movies" element={
-            <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} />
-          }
-          />
-          <Route path="/saved-movies" element={
-            <ProtectedRoute isLoggedIn={isLoggedIn} element={SavedMovies} />
-          }
-          />
-          <Route path="/profile" element={
-            <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} currentUser={currentUser} element={Profile} />
-          }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <main className='main'>
+          <Routes>
+            <Route path="/" index={true} element={<Main />} />
+            <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
+            <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
+            <Route path="/movies" element={
+              <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} />
+            }
+            />
+            <Route path="/saved-movies" element={
+              <ProtectedRoute isLoggedIn={isLoggedIn} element={SavedMovies} />
+            }
+            />
+            <Route path="/profile" element={
+              <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} currentUser={currentUser} element={Profile} />
+            }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+
         {(pathname === '/' || pathname === '/movies' || pathname === '/saved-movies') &&  <Footer />}
       </div>
     </CurrentUserContext.Provider>

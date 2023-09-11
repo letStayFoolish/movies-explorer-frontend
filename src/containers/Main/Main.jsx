@@ -8,13 +8,13 @@ import AboutProject from "../../components/AboutProject/AboutProject";
 
 const Main = () => {
   return (
-    <main>
+    <>
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
-    </main>
+    </>
   )
 }
 export default Main

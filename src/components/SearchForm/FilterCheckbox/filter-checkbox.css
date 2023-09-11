@@ -30,7 +30,11 @@
     line-height: 18px;
 }
 
-input:checked + .slider {
+/*input:checked + .slider {*/
+/*    background-color: var(--color-green);*/
+/*}*/
+
+input:checked + .slider_active {
     background-color: var(--color-green);
 }
 
@@ -40,10 +44,14 @@ input:checked + .slider {
     height: 0;
 }
 
-input:checked + .slider:before {
+/*input:checked + .slider:before {*/
+/*    left: 22px;*/
+/*    background-color: var(--color-text-light);*/
+/*}*/
+
+input:checked + .slider_active:before {
     left: 22px;
     background-color: var(--color-text-light);
-
 }
 
 @media screen and (max-width: 768px) {

@@ -188,6 +188,7 @@ Feel free to explore and enjoy the Movies Explorer App!
 ## Project's checklists:
 
 - [Checklist 3](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_jsx_diplom.pdf);
+- [Checklist 4](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_react_diplom.pdf);
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
