@@ -2,16 +2,20 @@ import React, {useEffect, useRef, useState} from 'react'
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MovieList from "../../components/MoviesList/MovieList";
 import Preloader from "../../components/Preloader/Preloader";
+import {
+  filteredMoviesFromSearch,
+  filterShortMovies,
+  handleGetFromLocalStorage,
+  handleSaveToLocalStorage
+} from "../../utils/constants";
+import {getSavedMovies} from "../../utils/MainApi";
+
 // Styles
 import './saved-movies.css'
-import {getSavedMovies, saveMoviesToSavedMovies} from "../../utils/MainApi";
-import {handleGetFromLocalStorage, handleSaveToLocalStorage} from "../../utils/constants";
 
-const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie }) => {
+const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie, shortMovies, setShortMovies }) => {
   const searchInputRef = useRef(null)
   // Movies cards
-  // ====================================================================================================
-  const [filteredMovies, setFilteredMovies] = useState([])
   // ====================================================================================================
   // States to display or hide elements on screen:
   const [preloader, setPreloader] = useState(false)
@@ -26,8 +30,9 @@ const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie }) => {
       try {
         const data = await getSavedMovies()
         await setSavedMovies(data.reverse())
-        // Put liked (saved) movies to local storage:
-        handleSaveToLocalStorage('likedMovies', data)
+        // Put saved movies to local storage:
+        handleSaveToLocalStorage('movieListSaved', data)
+
 
       } catch (error) {
         console.error(error)
@@ -40,15 +45,68 @@ const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie }) => {
 
   }, [setSavedMovies]);
 
-  const moviesSavedInLocalStorage = handleGetFromLocalStorage('likedMovies') || [];
+  const moviesSavedInLocalStorage = handleGetFromLocalStorage('movieListSaved') || [];
 
   // Handle search:
+  const handleSearch = async () => {
+    setSearchMessageError(false)
+    const searchTerm = searchInputRef.current.value
+
+    // setSearchQuery(searchTerm)
+    if (!searchTerm.trim()) {
+      // Show message: "Please type in something in the search box"
+      setShowMessage(true)
+      return
+    } else {
+      // Else... (if user typed something in the search field):
+      // searchQuery !== "":
+      setShowMessage(false)
+      // Show preloader:
+      setPreloader(true)
+
+      try {
+        const movieListFilteredByKeyword = await filteredMoviesFromSearch(moviesSavedInLocalStorage, searchTerm.trim())
+        const resultFilteredMovieList = await filterShortMovies(movieListFilteredByKeyword, shortMovies)
+        setSavedMovies(resultFilteredMovieList)
+        if (resultFilteredMovieList.length === 0) {
+          setSearchMessageError(true)
+          return;
+        }
+      } catch (error) {
+        setError(true)
+        console.error(error)
+      } finally {
+        setPreloader(false)
+      }
+    }
+  }
 
   // Handle checkbox:
+  const handlerDisplayShortMovies = (shortMovies) => {
+    setSearchMessageError(false)
+
+    const searchTerm = searchInputRef.current.value
+
+    const movieListFilteredByKeyword = filteredMoviesFromSearch(moviesSavedInLocalStorage, searchTerm.trim())
+    const resultFilteredMovieList = filterShortMovies(movieListFilteredByKeyword, shortMovies)
+    setSavedMovies(resultFilteredMovieList)
+
+    if (resultFilteredMovieList.length === 0) {
+      setSearchMessageError(true)
+      return;
+    }
+  }
 
   return (
     <section className='saved-movies'>
-      <SearchForm />
+      <SearchForm
+        searchInputRef={searchInputRef}
+        handleSearch={handleSearch}
+        showMessage={showMessage}
+        onCheckbox={handlerDisplayShortMovies}
+        setShortMovies={setShortMovies}
+        shortMovies={shortMovies}
+      />
       {preloader ?
         <Preloader /> :
         !showMessage && (
@@ -56,6 +114,7 @@ const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie }) => {
             movies={savedMovies}
             removeMovie={removeMovie}
             error={error}
+            searchMessageError={searchMessageError}
           />
         )}
     </section>

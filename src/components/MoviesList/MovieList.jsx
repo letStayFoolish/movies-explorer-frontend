@@ -22,7 +22,6 @@ const MovieList = ({
       <MoviesNotFound onGoBackClick={onGoBackClick} error={error} />
       ) : (
       <div className="movies-cards__container">
-        {/*{movies.slice(startIndex, endIndex).map((movie) => (*/}
         {movies.slice(0, endIndex).map((movie, _index) => (
           <MoviesCard
             key={movie.id || _index}

@@ -9,7 +9,6 @@ const FilterCheckbox = ({ onCheckbox, shortMovies, setShortMovies }) => {
     onCheckbox(stateShortMovies)
   }
 
-
   return (
   <div className="filter-checkbox search-form__switch">
     <label className='switch'>

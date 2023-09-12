@@ -24,6 +24,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({ name: '', email: '' })
   const [savedMovies, setSavedMovies] = useState([])
+  // Check box short movies on/off:
+  const [shortMovies, setShortMovies] = useState(false)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -99,7 +101,8 @@ const App = () => {
         nameEN: movie.nameEN,
       })
       setSavedMovies([data, ...savedMovies])
-      handleSaveToLocalStorage('likedMovies', [data, ...savedMovies])
+      // Add movie to the saved movies list in Local Storage (new movie is always placed to the beginning of the list):
+      handleSaveToLocalStorage('movieListSaved', [data, ...savedMovies])
 
     } catch (error) {
       console.error(error)
@@ -107,7 +110,7 @@ const App = () => {
   }
 
   const handleRemoveSavedMovies = async (movie) => {
-    let movieId = movie._id
+    let movieId = movie._id // movie._id is how we write it on backend
 
     try {
       if (!movieId && savedMovies.length > 0) {
@@ -115,11 +118,11 @@ const App = () => {
         if (movieFounded) movieId = movieFounded.id
       }
 
-      const moviesFromLocalStorage = handleGetFromLocalStorage('likedMovies', [])
+      const moviesFromLocalStorage = handleGetFromLocalStorage('movieListSaved', [])
 
       await MainAPI.removeMoviesFromSavedList(movie._id)
       setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
-      handleSaveToLocalStorage('likedMovies', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
+      handleSaveToLocalStorage('movieListSaved', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
     } catch (error) {
       console.error(error)
     }
@@ -135,7 +138,13 @@ const App = () => {
             <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
             <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
             <Route path="/movies" element={
-              <ProtectedRoute isLoggedIn={isLoggedIn} element={Movies} likeMovie={handlerSaveMovies}  />
+              <ProtectedRoute
+                isLoggedIn={isLoggedIn}
+                element={Movies}
+                likeMovie={handlerSaveMovies}
+                setShortMovies={setShortMovies}
+                shortMovies={shortMovies}
+              />
             }
             />
             <Route path="/saved-movies" element={
@@ -145,6 +154,8 @@ const App = () => {
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
                 removeMovie={handleRemoveSavedMovies}
+                setShortMovies={setShortMovies}
+                shortMovies={shortMovies}
               />
             }
             />

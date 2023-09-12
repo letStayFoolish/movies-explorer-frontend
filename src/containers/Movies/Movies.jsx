@@ -3,18 +3,23 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import MovieList from "../../components/MoviesList/MovieList";
 import {getMoviesData} from "../../utils/MoviesApi";
 import Preloader from "../../components/Preloader/Preloader";
-import {handleGetFromLocalStorage, handleSaveToLocalStorage} from "../../utils/constants";
+import {
+  filteredMoviesFromSearch,
+  filterShortMovies,
+  handleGetFromLocalStorage,
+  handleSaveToLocalStorage
+} from "../../utils/constants";
 import {getSavedMovies} from "../../utils/MainApi";
 
 // Styles
 import './movies.css'
 
-const Movies = ({ likeMovie }) => {
+const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
   const searchInputRef = useRef(null)
   // Movies cards
   // ====================================================================================================
-  const [movies, setMovies] = useState([]) // @todo: remove code
-  const [likedMovies, setLikedMovies] = useState([])
+  const [movies, setMovies] = useState([])
+  const [movieListSaved, setMovieListSaved] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
   // ====================================================================================================
   // States to display or hide elements on screen:
@@ -31,47 +36,33 @@ const Movies = ({ likeMovie }) => {
   const startIndex = (currentPage - 1) * itemsToAdd
   const endIndex = startIndex + initialItems
   const [moreMovies, setMoreMovies] = useState(false)
-  const [displayedMovies, setDisplayedMovies] = useState([]) // @todo: remove code
-  // Check box short movies on/off:
-  const [shortMovies, setShortMovies] = useState(false)
+  const [displayedMovies, setDisplayedMovies] = useState([])
+
   // ====================================================================================================
   //
   useEffect(() => {
     const searchFilteredFromLocalStorage = handleGetFromLocalStorage('searchFiltered')
-    const moviesSavedFromLocalStorage = handleGetFromLocalStorage('likedMovies');
-    setLikedMovies(moviesSavedFromLocalStorage)
+    const moviesSavedFromLocalStorage = handleGetFromLocalStorage('movieListSaved');
+    setMovieListSaved(moviesSavedFromLocalStorage || [])
 
     if (searchFilteredFromLocalStorage) {
-      setFilteredMovies(searchFilteredFromLocalStorage.filteredResult)
+      setFilteredMovies(searchFilteredFromLocalStorage.resultFilteredMovieList)
       searchInputRef.current.value = searchFilteredFromLocalStorage.searchTerm.trim()
       setShortMovies(searchFilteredFromLocalStorage.shortMovies)
     }
-  }, [setLikedMovies]);
-
-
-  //
-  const filteredMoviesFromSearch = (movies, search) => {
-    return movies.filter((movie) => {
-      return movie.nameRU.toLowerCase().includes(search.toLowerCase()) || movie.nameEN.toLowerCase().includes(search.toLowerCase())
-    })
-  }
-
-  //
-  const filterShortMovies = (movies, shortMoviesChecked) => {
-    if (shortMoviesChecked) {
-      return movies.filter((movie) => movie.duration <= 40);
-    }
-    return movies;
-  };
+  }, [setMovieListSaved]);
 
   // check if the movie is already liked (saved movies):
-  const checkIfMovieIsSaved = (movie, likedMovies) => {
-    return likedMovies.find(prevState => prevState.movieId === movie.id)
+  const checkIfMovieIsSaved = (movie, movieListSaved) => {
+    return movieListSaved.find(prevState => prevState.movieId === movie.id)
   }
 
   const movieListWithLikedSign = filteredMovies.map(movie => ({
-    ...movie, liked: checkIfMovieIsSaved(movie, likedMovies)
+    ...movie, saved: checkIfMovieIsSaved(movie, movieListSaved)
   }))
+
+  // Get a movie list (all movies) from the server:
+  const searchFromLocalStorage = handleGetFromLocalStorage('moviesListFromServer')
 
   //
   const handleSearch = async () => {
@@ -82,7 +73,7 @@ const Movies = ({ likeMovie }) => {
     if (!searchTerm.trim()) {
       // Show message: "Please type in something in the search box"
       setShowMessage(true)
-      return
+
     } else {
       // Else... (if user typed something in the search field):
       // searchQuery !== "":
@@ -91,44 +82,43 @@ const Movies = ({ likeMovie }) => {
       setPreloader(true)
 
       try {
-        const searchFromLocalStorage = handleGetFromLocalStorage('moviesListFromServer')
         // If a search result is already saved in the Local storage, use from there ... :
         if (searchFromLocalStorage) {
           // Search query from the local storage:
-          const filteredByKeyword = await filteredMoviesFromSearch(searchFromLocalStorage, searchTerm.trim())
+          const movieListFilteredByKeyword = await filteredMoviesFromSearch(searchFromLocalStorage, searchTerm.trim())
           // Movies from the last search session (saved in localStorage):
-          const filteredResult = await filterShortMovies(filteredByKeyword, shortMovies)
+          const resultFilteredMovieList = await filterShortMovies(movieListFilteredByKeyword, shortMovies)
           // Save result (filtered and founded movies) from last search to the local storage:
-          handleSaveToLocalStorage('searchFiltered', { filteredResult, searchTerm, shortMovies })
+          handleSaveToLocalStorage('searchFiltered', {resultFilteredMovieList, searchTerm, shortMovies})
           // Set filtered movies array from localStorage, movies to be rendered until the next search session:
-          setFilteredMovies(filteredResult)
+          setFilteredMovies(resultFilteredMovieList)
 
-          if (filteredResult.length === 0) {
+          if (resultFilteredMovieList.length === 0) {
             setSearchMessageError(true)
-            return;
+
           }
         } else {
           // Movies are not in localStorage => get movies from the server beatfilm-movies.
           const data = await getMoviesData()
-          const moviesLiked = await getSavedMovies()
+          const movieListFromSavedMovieList = await getSavedMovies()
 
-          setMovies(data) // @todo: remove code
-          setLikedMovies(moviesLiked)
+          setMovies(data)
+          setMovieListSaved(movieListFromSavedMovieList)
 
           handleSaveToLocalStorage('moviesListFromServer', data)
-          handleSaveToLocalStorage('likedMovies', moviesLiked)
+          handleSaveToLocalStorage('movieListSaved', movieListFromSavedMovieList)
 
           // Search movies by keyword in the server database (beatfilm-movies):
-          const filteredByKeyword = await filteredMoviesFromSearch(data, searchTerm.trim())
+          const movieListFilteredByKeyword = await filteredMoviesFromSearch(data, searchTerm.trim())
           // Show only short movies if short movies check box is "on" or show all movies depending on keyword:
-          const filteredResult = await filterShortMovies(filteredByKeyword, shortMovies)
+          const resultFilteredMovieList = await filterShortMovies(movieListFilteredByKeyword, shortMovies)
           // Save movie list, that we searched for (by: keywords and short movies checkbox), to local storage:
-          handleSaveToLocalStorage('searchFiltered', { filteredResult, searchTerm, shortMovies })
-          setFilteredMovies(filteredResult)
+          handleSaveToLocalStorage('searchFiltered', {resultFilteredMovieList, searchTerm, shortMovies})
+          setFilteredMovies(resultFilteredMovieList)
 
-          if (filteredResult.length === 0) {
+          if (resultFilteredMovieList.length === 0) {
             setSearchMessageError(true)
-            return;
+
           }
         }
 
@@ -154,19 +144,19 @@ const Movies = ({ likeMovie }) => {
     setSearchMessageError(false)
 
     const searchTerm = searchInputRef.current.value
-    const moviesFromLocalStorage = handleGetFromLocalStorage('moviesListFromServer')
 
-    if (moviesFromLocalStorage) {
-      const filteredByKeyword = filteredMoviesFromSearch(moviesFromLocalStorage, searchTerm.trim())
-      const filteredResult = filterShortMovies(filteredByKeyword, shortMovies)
-      setFilteredMovies(filteredResult)
-      handleSaveToLocalStorage('searchFiltered', {filteredResult, searchTerm, shortMovies})
-      if (filteredResult.length === 0) {
+    if (searchFromLocalStorage) {
+      const movieListFilteredByKeyword = filteredMoviesFromSearch(searchFromLocalStorage, searchTerm.trim())
+      const resultFilteredMovieList = filterShortMovies(movieListFilteredByKeyword, shortMovies)
+      setFilteredMovies(resultFilteredMovieList)
+      handleSaveToLocalStorage('searchFiltered', {resultFilteredMovieList, searchTerm, shortMovies})
+
+      if (resultFilteredMovieList.length === 0) {
         setSearchMessageError(true)
-        return;
+
       }
     } else {
-      return
+
     }
   }
 
@@ -179,7 +169,7 @@ const Movies = ({ likeMovie }) => {
     } else {
       setMoreMovies(false)
     }
-    setDisplayedMovies(filteredMovies.slice(0, endIndex)) // @todo: remove code
+    setDisplayedMovies(filteredMovies.slice(0, endIndex))
   }, [currentPage, itemsToAdd, filteredMovies]);
 
   // ==================================== Loading various number of cards depending on current screen width ==========================================
@@ -221,7 +211,7 @@ const Movies = ({ likeMovie }) => {
         shortMovies={shortMovies}
       />
       {preloader ?
-        <Preloader /> :
+        <Preloader/> :
         !showMessage && (
           <MovieList
             showMessage={showMessage}

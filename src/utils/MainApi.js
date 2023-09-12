@@ -8,17 +8,6 @@ const checkResponse = async (res) => {
   }
 }
 
-export const getCurrentUser = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/users/me`)
-
-    return await checkResponse(response)
-
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 // Update current user:
 export const updateCurrentUser = async (name, email) => {
   if (!name || !email) return;

@@ -13,8 +13,7 @@ function DurationConverter({ minutes }) {
 
 const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
   const pathname = useLocation().pathname
-  const [isLikedMovie, setIsLikedMovie] = useState(movie.liked)
-
+  const [isLikedMovie, setIsLikedMovie] = useState(movie.saved)
 
   const handleSaveMovie = () => {
     likeMovie(movie)
@@ -24,7 +23,6 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
   const handleDeleteMovies = () => {
     removeMovie(movie)
   }
-
 
   return (
     <div className='movies-card card '>
@@ -37,9 +35,7 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
         <a href={movie.trailerLink} target='_blank' rel="noreferrer">
           <img src={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image} alt="Movie img" className="card__img flip-in-diag-1-tr"/>
         </a>
-        {/* Saved movie button */}
-        {/*<button className='button button_type_add' type='button'>&#10003;</button>*/}
-        {/* Add movie to list button */}
+        {/* Saved movie button */} {/* Add movie to list button */}
         {pathname === '/movies' && isLikedMovie ?
           <button className='button button_type_add' type='button'>&#10003;</button> :
           pathname !== '/saved-movies' &&
