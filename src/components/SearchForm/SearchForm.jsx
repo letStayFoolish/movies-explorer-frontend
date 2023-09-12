@@ -15,7 +15,6 @@ const handleOnSubmit = (e) => {
             <input
               type="text"
               ref={searchInputRef}
-              // value={query}
               minLength={1}
               placeholder='Фильм'
               required

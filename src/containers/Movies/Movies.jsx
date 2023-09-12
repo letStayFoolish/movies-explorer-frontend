@@ -11,7 +11,6 @@ import './movies.css'
 
 const Movies = ({ likeMovie }) => {
   const searchInputRef = useRef(null)
-  // const [searchQuery, setSearchQuery] = useState('') @todo: remove code
   // Movies cards
   // ====================================================================================================
   const [movies, setMovies] = useState([]) // @todo: remove code
@@ -39,8 +38,8 @@ const Movies = ({ likeMovie }) => {
   //
   useEffect(() => {
     const searchFilteredFromLocalStorage = handleGetFromLocalStorage('searchFiltered')
-    const moviesSavedInLocalStorage = handleGetFromLocalStorage('likedMovies');
-    setLikedMovies(moviesSavedInLocalStorage)
+    const moviesSavedFromLocalStorage = handleGetFromLocalStorage('likedMovies');
+    setLikedMovies(moviesSavedFromLocalStorage)
 
     if (searchFilteredFromLocalStorage) {
       setFilteredMovies(searchFilteredFromLocalStorage.filteredResult)
@@ -48,6 +47,7 @@ const Movies = ({ likeMovie }) => {
       setShortMovies(searchFilteredFromLocalStorage.shortMovies)
     }
   }, [setLikedMovies]);
+
 
   //
   const filteredMoviesFromSearch = (movies, search) => {
@@ -69,7 +69,7 @@ const Movies = ({ likeMovie }) => {
     return likedMovies.find(prevState => prevState.movieId === movie.id)
   }
 
-  const movieLiked = filteredMovies.map(movie => ({
+  const movieListWithLikedSign = filteredMovies.map(movie => ({
     ...movie, liked: checkIfMovieIsSaved(movie, likedMovies)
   }))
 
@@ -95,12 +95,10 @@ const Movies = ({ likeMovie }) => {
         // If a search result is already saved in the Local storage, use from there ... :
         if (searchFromLocalStorage) {
           // Search query from the local storage:
-          // const filteredByKeyword = await filteredMoviesFromSearch(searchFromLocalStorage, searchQuery.trim()) // @todo: remove code
           const filteredByKeyword = await filteredMoviesFromSearch(searchFromLocalStorage, searchTerm.trim())
           // Movies from the last search session (saved in localStorage):
           const filteredResult = await filterShortMovies(filteredByKeyword, shortMovies)
           // Save result (filtered and founded movies) from last search to the local storage:
-          // handleSaveToLocalStorage('searchFiltered', { filteredResult, searchQuery, shortMovies }) // @todo: remove code
           handleSaveToLocalStorage('searchFiltered', { filteredResult, searchTerm, shortMovies })
           // Set filtered movies array from localStorage, movies to be rendered until the next search session:
           setFilteredMovies(filteredResult)
@@ -121,12 +119,10 @@ const Movies = ({ likeMovie }) => {
           handleSaveToLocalStorage('likedMovies', moviesLiked)
 
           // Search movies by keyword in the server database (beatfilm-movies):
-          // const filteredByKeyword = await filteredMoviesFromSearch(data, searchQuery.trim()) @todo: remove code
           const filteredByKeyword = await filteredMoviesFromSearch(data, searchTerm.trim())
           // Show only short movies if short movies check box is "on" or show all movies depending on keyword:
           const filteredResult = await filterShortMovies(filteredByKeyword, shortMovies)
           // Save movie list, that we searched for (by: keywords and short movies checkbox), to local storage:
-          // handleSaveToLocalStorage('searchFiltered', { filteredResult, searchQuery, shortMovies }) @todo: remove code
           handleSaveToLocalStorage('searchFiltered', { filteredResult, searchTerm, shortMovies })
           setFilteredMovies(filteredResult)
 
@@ -184,7 +180,7 @@ const Movies = ({ likeMovie }) => {
       setMoreMovies(false)
     }
     setDisplayedMovies(filteredMovies.slice(0, endIndex)) // @todo: remove code
-  }, [currentPage, itemsToAdd, filteredMovies]); // [filteredMovies, currentPage, itemsToAdd] @todo: remove code
+  }, [currentPage, itemsToAdd, filteredMovies]);
 
   // ==================================== Loading various number of cards depending on current screen width ==========================================
   useEffect(() => {
@@ -212,7 +208,6 @@ const Movies = ({ likeMovie }) => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  // }, [handleSearch, filteredMovies, displayedMovies, window.innerWidth]); @todo: remove code
   }, [filteredMovies, window.innerWidth]);
 
   return (
@@ -235,8 +230,7 @@ const Movies = ({ likeMovie }) => {
             onGoBackClick={handleGoBackClick}
             error={error}
             onShowMoreClick={handleShowMoreClick}
-            // movies={displayedMovies} @todo: remove code
-            movies={movieLiked}
+            movies={movieListWithLikedSign}
             endIndex={endIndex}
             hasMoreMovies={moreMovies}
             likeMovie={likeMovie}

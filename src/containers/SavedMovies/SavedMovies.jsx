@@ -1,9 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MovieList from "../../components/MoviesList/MovieList";
-import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import Preloader from "../../components/Preloader/Preloader";
-import {useLocation} from "react-router-dom";
 // Styles
 import './saved-movies.css'
 import {getSavedMovies, saveMoviesToSavedMovies} from "../../utils/MainApi";

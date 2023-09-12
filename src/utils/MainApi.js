@@ -1,4 +1,4 @@
-import {BASE_URL, BASE_URL_MOVIES} from "./constants";
+import { BASE_URL } from "./constants";
 
 const checkResponse = async (res) => {
   if (res.ok) {

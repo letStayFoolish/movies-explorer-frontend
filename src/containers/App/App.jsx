@@ -94,8 +94,7 @@ const App = () => {
         image: `${SERVER_URL}${movie.image.url}`,
         trailerLink: movie.trailerLink,
         thumbnail: `${SERVER_URL}${movie.image.formats.thumbnail.url}`,
-        // owner: movie.owner,
-        movieID: movie.id,
+        movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
       })
@@ -108,19 +107,19 @@ const App = () => {
   }
 
   const handleRemoveSavedMovies = async (movie) => {
-    let movieID = movie._id
+    let movieId = movie._id
 
     try {
-      if (!movieID && savedMovies.length > 0) {
-        const movieFounded = savedMovies.find(movie => movie.movieID === movieID)
-        if (movieFounded) movieID = movieFounded._id
+      if (!movieId && savedMovies.length > 0) {
+        const movieFounded = savedMovies.find(movie => movie.movieId === movieId)
+        if (movieFounded) movieId = movieFounded.id
       }
 
       const moviesFromLocalStorage = handleGetFromLocalStorage('likedMovies', [])
 
       await MainAPI.removeMoviesFromSavedList(movie._id)
-      setSavedMovies(savedMovies.filter(movie => movie._id !== movieID))
-      handleSaveToLocalStorage('likedMovies', moviesFromLocalStorage.filter(movie => movie._id !== movieID))
+      setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
+      handleSaveToLocalStorage('likedMovies', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
     } catch (error) {
       console.error(error)
     }

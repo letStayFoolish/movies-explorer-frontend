@@ -18,7 +18,7 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
 
   const handleSaveMovie = () => {
     likeMovie(movie)
-    setIsLikedMovie(!isLikedMovie)
+    // setIsLikedMovie(!isLikedMovie)
   }
 
   const handleDeleteMovies = () => {
@@ -35,7 +35,7 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
         </div>
 
         <a href={movie.trailerLink} target='_blank' rel="noreferrer">
-          <img src={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image} alt="Movie Image" className="card__img flip-in-diag-1-tr"/>
+          <img src={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image} alt="Movie img" className="card__img flip-in-diag-1-tr"/>
         </a>
         {/* Saved movie button */}
         {/*<button className='button button_type_add' type='button'>&#10003;</button>*/}
