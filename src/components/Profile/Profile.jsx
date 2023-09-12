@@ -5,6 +5,8 @@ import useFormWithValidation from "../../hooks/useFormWithValidation";
 import {EMAIL_PATTERN, handleMessageErrors, NAME_PATTERN} from "../../utils/constants";
 import {updateCurrentUser} from "../../utils/MainApi";
 import EntryPopup from "../EntryPopup/EntryPopup";
+
+// Styles:
 import './profile.css'
 
 const Profile = ({ handleOnLogout, currentUser }) => {
@@ -36,7 +38,10 @@ const Profile = ({ handleOnLogout, currentUser }) => {
   }, [currentUser]);
 
   useEffect(() => {
-    if (name !== values.name || email !== values.email) {
+    if (
+      (name !== values.name || email !== values.email) &&
+      (values.name !== '' && NAME_PATTERN.test(values.name) && values.email !== '' && EMAIL_PATTERN.test(values.email))
+    ) {
       setBtnDisabled(false)
     }
     else setBtnDisabled(true)
@@ -59,7 +64,6 @@ const Profile = ({ handleOnLogout, currentUser }) => {
       console.error(`Error: ${err.message}`)
       setIsSuccess(false)
       setIsOpen(true)
-
     }
     finally {
       setBtnDisabled(true)
@@ -71,18 +75,17 @@ const Profile = ({ handleOnLogout, currentUser }) => {
     <div className='profile'>
       <h2 className="profile__heading">Привет, {name}!</h2>
 
-      <form className="profile__form form">
+      <form className="profile__form form" onSubmit={handleSavingChanges}>
         <label className='form_label'>Имя
           <input
             className='form_input'
             type="text"
             name='name'
-            value={values.name || ""}
+            value={values.name}
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
             required
-            pattern={NAME_PATTERN}
             placeholder='Введите свое имя.'
           />
         </label>
@@ -91,18 +94,16 @@ const Profile = ({ handleOnLogout, currentUser }) => {
             className='form_input'
             type="email"
             name='email'
-            value={values.email || ""}
+            value={values.email}
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
             required
-            pattern={EMAIL_PATTERN}
             placeholder='Введите свой E-mail.'
           />
         </label>
 
         {editProfile ? (
-          // <button className="profile__submit-btn" onClick={handleSavingChanges}>Сохранить</button>
           <FormButton type='button' animation='scale-in-ver-top' text={isEntering ? 'Сохраняю...' : 'Сохранить'} onClick={handleSavingChanges} margin='12.25rem' smallScreenMargin={'22rem'} />
         ) : (
           <>

@@ -8,19 +8,20 @@ import {
   filterShortMovies,
   handleGetFromLocalStorage,
   handleSaveToLocalStorage
-} from "../../utils/constants";
+} from "../../utils/utils";
 import {getSavedMovies} from "../../utils/MainApi";
 
 // Styles
 import './movies.css'
 
-const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
+const Movies = ({ likeMovie }) => {
   const searchInputRef = useRef(null)
   // Movies cards
   // ====================================================================================================
   const [movies, setMovies] = useState([])
   const [movieListSaved, setMovieListSaved] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
+  const [shortMovies, setShortMovies] = useState(false)
   // ====================================================================================================
   // States to display or hide elements on screen:
   const [preloader, setPreloader] = useState(false)
@@ -95,7 +96,6 @@ const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
 
           if (resultFilteredMovieList.length === 0) {
             setSearchMessageError(true)
-
           }
         } else {
           // Movies are not in localStorage => get movies from the server beatfilm-movies.
@@ -118,7 +118,6 @@ const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
 
           if (resultFilteredMovieList.length === 0) {
             setSearchMessageError(true)
-
           }
         }
 
@@ -153,7 +152,6 @@ const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
 
       if (resultFilteredMovieList.length === 0) {
         setSearchMessageError(true)
-
       }
     } else {
 
@@ -191,7 +189,6 @@ const Movies = ({likeMovie, shortMovies, setShortMovies}) => {
         setItemsToAdd(1)
       }
     }
-
     window.addEventListener('resize', handleResize)
 
     // Clean up the event listener when the component unmounts

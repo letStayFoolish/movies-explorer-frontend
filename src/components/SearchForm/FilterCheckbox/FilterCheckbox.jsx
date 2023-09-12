@@ -12,7 +12,7 @@ const FilterCheckbox = ({ onCheckbox, shortMovies, setShortMovies }) => {
   return (
   <div className="filter-checkbox search-form__switch">
     <label className='switch'>
-      <input type='checkbox' id='checkbox' checked={shortMovies} onChange={handleOnChange} className={shortMovies ? 'active' : null} />
+      <input type='checkbox' checked={shortMovies} onChange={handleOnChange} className={shortMovies ? 'active' : null} />
       <span className={shortMovies ? 'slider slider_active' : 'slider'} ></span>
     </label>
     <p>Короткометражки</p>

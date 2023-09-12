@@ -5,15 +5,18 @@ import FormElement from "../FormElement/FormElement";
 import Input from "../Input/Input";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
-import {EMAIL_PATTERN, handleMessageErrors, NAME_PATTERN, PASSWORD_PATTERN} from "../../utils/constants";
+import {
+  EMAIL_PATTERN,
+  handleMessageErrors, NAME_PATTERN, PASSWORD_PATTERN,
+} from "../../utils/constants";
+// Styles
 import './register.css'
 
-const Register = ({ handleOnLogin, setCurrentUser }) => {
-  const navigate = useNavigate()
+const Register = ({handleOnLogin, setCurrentUser}) => {
   const location = useLocation()
   const pathname = location.pathname
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
-  const { values, resetForm, handleOnChange, errors, isValid } = useFormWithValidation()
+  const {values, resetForm, handleOnChange, errors, setErrors, isValid} = useFormWithValidation()
   const [isEntering, setIsEntering] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -36,9 +39,9 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
   // Handler function on submit button - registration:
   const submitHandler = async (e) => {
     e.preventDefault()
-    const { name, email, password } = values
+    const {name, email, password} = values
 
-    if(!name || !email || !password) {
+    if (!name || !email || !password) {
       setIsSubmitDisabled(true)
       setIsSuccess(false)
       window.alert('Пожалуйста, заполните все поля.')
@@ -52,14 +55,13 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         setIsSuccess(true)
         setIsOpen(true)
         handleOnLogin()
-        setCurrentUser({ name: data.name, email: data.email})
+        setCurrentUser({name: data.name, email: data.email})
       } catch (err) {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsSuccess(false)
         setIsOpen(true)
-      }
-      finally {
+      } finally {
         setIsSubmitDisabled(true)
         setIsEntering(false)
         resetForm()
@@ -89,8 +91,8 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свое Имя.'
         minLength={2}
         maxLength={30}
-        pattern={NAME_PATTERN}
         required
+        pattern={NAME_PATTERN.test(values.name)}
       />
       <Input
         value={values.email || ''}
@@ -102,8 +104,8 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
-        pattern={EMAIL_PATTERN}
         required
+        pattern={EMAIL_PATTERN.test(values.email)}
       />
       <Input
         value={values.password || ''}
@@ -115,10 +117,11 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
-        pattern={PASSWORD_PATTERN}
         required
+        pattern={PASSWORD_PATTERN.test(values.password)}
       />
-      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.' textOnError={textOnError} />
+      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.'
+                  textOnError={textOnError}/>
     </FormElement>
   )
 }

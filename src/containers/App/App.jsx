@@ -15,7 +15,8 @@ import * as auth from '../../utils/auth'
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import * as MainAPI from '../../utils/MainApi'
-import {handleGetFromLocalStorage, handleSaveToLocalStorage, SERVER_URL} from "../../utils/constants";
+import {handleGetFromLocalStorage, handleSaveToLocalStorage} from "../../utils/utils";
+import {SERVER_URL} from "../../utils/constants";
 
 // Styles
 import './app.css'
@@ -25,8 +26,6 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({ name: '', email: '' })
   const [savedMovies, setSavedMovies] = useState([])
   // Check box short movies on/off:
-  const [shortMovies, setShortMovies] = useState(false)
-
   const navigate = useNavigate()
   const location = useLocation()
   const pathname = location.pathname
@@ -115,14 +114,17 @@ const App = () => {
     try {
       if (!movieId && savedMovies.length > 0) {
         const movieFounded = savedMovies.find(movie => movie.movieId === movieId)
-        if (movieFounded) movieId = movieFounded.id
+        if (movieFounded) {
+          movieId = movieFounded.id
+        }
       }
 
-      const moviesFromLocalStorage = handleGetFromLocalStorage('movieListSaved', [])
-
-      await MainAPI.removeMoviesFromSavedList(movie._id)
-      setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
-      handleSaveToLocalStorage('movieListSaved', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
+      if (movieId) {
+        const moviesFromLocalStorage = handleGetFromLocalStorage('movieListSaved' || [])
+        await MainAPI.removeMoviesFromSavedList(movie._id)
+        setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
+        handleSaveToLocalStorage('movieListSaved', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
+      }
     } catch (error) {
       console.error(error)
     }
@@ -142,8 +144,6 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 element={Movies}
                 likeMovie={handlerSaveMovies}
-                setShortMovies={setShortMovies}
-                shortMovies={shortMovies}
               />
             }
             />
@@ -154,8 +154,6 @@ const App = () => {
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
                 removeMovie={handleRemoveSavedMovies}
-                setShortMovies={setShortMovies}
-                shortMovies={shortMovies}
               />
             }
             />

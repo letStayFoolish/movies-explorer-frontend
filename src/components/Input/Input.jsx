@@ -1,5 +1,4 @@
 import './input.css'
-import {EMAIL_SPAN_ERROR, NAME_SPAN_ERROR, PASSWORD_SPAN_ERROR} from "../../utils/constants";
 
 const Input = ({
   value,
@@ -28,14 +27,16 @@ const Input = ({
           required={required}
           pattern={pattern}
         />
-        {name === 'name' ? (
-          <span className="span_error">{errors && NAME_SPAN_ERROR}</span>
-        ) : name === 'email' ? (
-          <span className="span_error">{errors && EMAIL_SPAN_ERROR}</span>
-        ) : (
-          <span className="span_error">{errors && PASSWORD_SPAN_ERROR}</span>
-        )
-        }
+        <span className="span_error">{errors}</span>
+        {/*{*/}
+        {/*  name === 'name' && !NAME_PATTERN.test(value) ? (*/}
+        {/*  <span className="span_error">{errors && NAME_SPAN_ERROR}</span>*/}
+        {/*  ) : name === 'email' && !EMAIL_PATTERN.test(value) ? (*/}
+        {/*    <span className="span_error">{errors && EMAIL_SPAN_ERROR}</span>*/}
+        {/*  ) : name === 'password' && !PASSWORD_PATTERN.test(value) ? (*/}
+        {/*    <span className="span_error">{errors && PASSWORD_SPAN_ERROR}</span>*/}
+        {/*  ) : null*/}
+        {/*}*/}
       </label>
   )
 }

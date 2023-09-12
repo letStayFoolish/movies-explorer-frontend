@@ -1,9 +1,10 @@
 export const BASE_URL="http://localhost:3000"
 export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
-export const EMAIL_PATTERN=/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-export const NAME_PATTERN="[A-я-\\s]{2,30}";
-export const PASSWORD_PATTERN="(?=.*[A-z])(?=.*\\d)(?=.*[!@#$%^&*])(?=.{6,}).*";
+export const EMAIL_PATTERN=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i
+export const NAME_PATTERN=/^[A-Za-zА-Яа-я\s-]+$/
+export const PASSWORD_PATTERN=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+// export const PASSWORD_PATTERN="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
 
 // Messages on errors:
 // Login:
@@ -37,7 +38,7 @@ export function handleMessageErrors(error, pathname) {
 
 // Error messages to show on span below inputs:
 export const NAME_SPAN_ERROR="Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)"
-export const EMAIL_SPAN_ERROR="Пожалуйста, введите действительный адрес электронной почты."
+export const EMAIL_SPAN_ERROR="Пожалуйста, введите корректный E-mail. Пример: example@example.com"
 export const PASSWORD_SPAN_ERROR="Пароль должен состоять минимум из 6 символов, включая латинские буквы, цифры и специальные символы"
 
 export const projects = [
@@ -54,27 +55,3 @@ export const projects = [
     url: 'https://github.com/letStayFoolish/react-mesto-api-full-gha'
   }
 ]
-
-// Local storage functions:
-export const handleSaveToLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value))
-}
-
-export const handleGetFromLocalStorage = (key) => {
-  const data = localStorage.getItem(key)
-  return data ? JSON.parse(data) : null
-}
-
-export const filteredMoviesFromSearch = (movies, search) => {
-  return movies.filter((movie) => {
-    return movie.nameRU.toLowerCase().includes(search.toLowerCase()) || movie.nameEN.toLowerCase().includes(search.toLowerCase())
-  })
-}
-
-//
-export const filterShortMovies = (movies, shortMoviesChecked) => {
-  if (shortMoviesChecked) {
-    return movies.filter((movie) => movie.duration <= 40);
-  }
-  return movies;
-};

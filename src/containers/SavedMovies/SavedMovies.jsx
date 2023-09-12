@@ -7,13 +7,13 @@ import {
   filterShortMovies,
   handleGetFromLocalStorage,
   handleSaveToLocalStorage
-} from "../../utils/constants";
+} from "../../utils/utils";
 import {getSavedMovies} from "../../utils/MainApi";
 
 // Styles
 import './saved-movies.css'
 
-const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie, shortMovies, setShortMovies }) => {
+const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie }) => {
   const searchInputRef = useRef(null)
   // Movies cards
   // ====================================================================================================
@@ -22,6 +22,7 @@ const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie, shortMovies, se
   const [searchMessageError, setSearchMessageError] = useState(null)
   const [showMessage, setShowMessage] = useState(false)
   const [error, setError] = useState(false)
+  const [shortMovies, setShortMovies] = useState(false)
   // ====================================================================================================
 
   useEffect(() => {
@@ -52,7 +53,6 @@ const SavedMovies = ({ savedMovies, setSavedMovies, removeMovie, shortMovies, se
     setSearchMessageError(false)
     const searchTerm = searchInputRef.current.value
 
-    // setSearchQuery(searchTerm)
     if (!searchTerm.trim()) {
       // Show message: "Please type in something in the search box"
       setShowMessage(true)

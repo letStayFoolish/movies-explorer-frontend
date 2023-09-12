@@ -85,7 +85,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
-        pattern={EMAIL_PATTERN}
+        pattern={EMAIL_PATTERN.test(values.email)}
         required={true}
       />
       <Input
@@ -98,7 +98,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
-        pattern={PASSWORD_PATTERN}
+        pattern={PASSWORD_PATTERN.test(values.password)}
         required={true}
       />
       <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Вход в систему успешен.' textOnError={textOnError} />
