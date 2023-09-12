@@ -18,7 +18,7 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
 
   const handleSaveMovie = () => {
     likeMovie(movie)
-    // setIsLikedMovie(!isLikedMovie)
+    setIsLikedMovie(!isLikedMovie)
   }
 
   const handleDeleteMovies = () => {
