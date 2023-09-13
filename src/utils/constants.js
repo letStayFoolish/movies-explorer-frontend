@@ -1,11 +1,10 @@
-// export const BASE_URL="http://localhost:3000"
-export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
+export const BASE_URL="http://localhost:3000" // For Development
+// export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
 export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
-export const EMAIL_PATTERN=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i
-export const NAME_PATTERN=/^[A-Za-zА-Яа-я\s-]+$/
-export const PASSWORD_PATTERN=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-// export const PASSWORD_PATTERN="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+export const EMAIL_PATTERN=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i // (OK!) tested on https://regex101.com/
+export const NAME_PATTERN=/^[A-Za-zА-Яа-я\s-]+$/ // (OK!) tested on https://regex101.com/
+export const PASSWORD_PATTERN=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ // (OK!) tested on https://regex101.com/
 
 // Messages on errors:
 // Login:
@@ -38,8 +37,9 @@ export function handleMessageErrors(error, pathname) {
 }
 
 // Error messages to show on span below inputs:
-export const NAME_SPAN_ERROR="Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)"
-export const EMAIL_SPAN_ERROR="Пожалуйста, введите корректный E-mail. Пример: example@example.com"
+// export const NAME_SPAN_ERROR="Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)"
+export const NAME_SPAN_ERROR="Имя должно быть от 2 до 30 симв., содержать только буквы, дефис или пробел"
+export const EMAIL_SPAN_ERROR="Требуется ввести электронный адрес. Пример: example@example.com"
 export const PASSWORD_SPAN_ERROR="Пароль должен состоять минимум из 6 символов, включая латинские буквы, цифры и специальные символы"
 
 export const projects = [

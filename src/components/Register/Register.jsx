@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import * as auth from '../../utils/auth'
 import FormElement from "../FormElement/FormElement";
 import Input from "../Input/Input";
@@ -7,7 +7,12 @@ import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
 import {
   EMAIL_PATTERN,
-  handleMessageErrors, NAME_PATTERN, PASSWORD_PATTERN,
+  EMAIL_SPAN_ERROR,
+  handleMessageErrors,
+  NAME_PATTERN,
+  NAME_SPAN_ERROR,
+  PASSWORD_PATTERN,
+  PASSWORD_SPAN_ERROR,
 } from "../../utils/constants";
 // Styles
 import './register.css'
@@ -16,7 +21,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
   const location = useLocation()
   const pathname = location.pathname
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
-  const {values, resetForm, handleOnChange, errors, setErrors, isValid} = useFormWithValidation()
+  const {values, resetForm, handleOnChange, errors, isValid} = useFormWithValidation()
   const [isEntering, setIsEntering] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -83,7 +88,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
     >
       <Input
         value={values.name || ''}
-        errors={errors.name}
+        errors={errors?.name}
         onChange={handleOnChange}
         name='name'
         type='text'
@@ -91,12 +96,12 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свое Имя.'
         minLength={2}
         maxLength={30}
-        required
-        pattern={NAME_PATTERN.test(values.name)}
+        pattern={NAME_PATTERN}
+        errorMessage={NAME_SPAN_ERROR}
       />
       <Input
         value={values.email || ''}
-        errors={errors.email}
+        errors={errors?.email}
         onChange={handleOnChange}
         name='email'
         type='email'
@@ -104,12 +109,12 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
-        required
-        pattern={EMAIL_PATTERN.test(values.email)}
+        pattern={EMAIL_PATTERN}
+        errorMessage={EMAIL_SPAN_ERROR}
       />
       <Input
         value={values.password || ''}
-        errors={errors.password}
+        errors={errors?.password}
         onChange={handleOnChange}
         name='password'
         type='password'
@@ -117,8 +122,8 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
-        required
-        pattern={PASSWORD_PATTERN.test(values.password)}
+        pattern={PASSWORD_PATTERN}
+        errorMessage={PASSWORD_SPAN_ERROR}
       />
       <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.'
                   textOnError={textOnError}/>

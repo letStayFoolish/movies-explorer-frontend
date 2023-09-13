@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
-import {EMAIL_PATTERN, handleMessageErrors, NAME_PATTERN} from "../../utils/constants";
+import {NAME_PATTERN, EMAIL_PATTERN, handleMessageErrors} from "../../utils/constants";
 import {updateCurrentUser} from "../../utils/MainApi";
 import EntryPopup from "../EntryPopup/EntryPopup";
 
@@ -24,23 +24,23 @@ const Profile = ({ handleOnLogout, currentUser }) => {
 
 
   useEffect(() => {
-    setValues({ ...values,
-      'name': name,
-      'email': email
-    })
+    // setValues({ ...values,
+    //   'name': name,
+    //   'email': email
+    // })
 
-    // if (Object.keys(currentUser).length !== 0) {
-    //   setValues({ ...values,
-    //     'name': name,
-    //     'email': email
-    //   })
-    // }
+    if (Object.keys(currentUser).length !== 0) {
+      setValues({ ...values,
+        'name': name,
+        'email': email
+      })
+    }
   }, [currentUser]);
 
   useEffect(() => {
     if (
       (name !== values.name || email !== values.email) &&
-      (values.name !== '' && NAME_PATTERN.test(values.name) && values.email !== '' && EMAIL_PATTERN.test(values.email))
+      (values.name !== '' && values.email !== '')
     ) {
       setBtnDisabled(false)
     }
@@ -75,7 +75,7 @@ const Profile = ({ handleOnLogout, currentUser }) => {
     <div className='profile'>
       <h2 className="profile__heading">Привет, {name}!</h2>
 
-      <form className="profile__form form" onSubmit={handleSavingChanges}>
+      <form className="profile__form form" onSubmit={handleSavingChanges} noValidate>
         <label className='form_label'>Имя
           <input
             className='form_input'
@@ -85,6 +85,7 @@ const Profile = ({ handleOnLogout, currentUser }) => {
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
+            pattern={NAME_PATTERN}
             required
             placeholder='Введите свое имя.'
           />
@@ -98,6 +99,8 @@ const Profile = ({ handleOnLogout, currentUser }) => {
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
+            pattern={EMAIL_PATTERN}
+            // pattern="[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
             required
             placeholder='Введите свой E-mail.'
           />

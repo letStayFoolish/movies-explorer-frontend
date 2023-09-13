@@ -137,8 +137,12 @@ const App = () => {
         <main className='main'>
           <Routes>
             <Route path="/" index={true} element={<Main />} />
-            <Route path="/signup" element={ <Register handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
-            <Route path="/signin" element={ <Login handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />} />
+            <Route path="/signup" element={
+              <ProtectedRoute isLoggedIn={!isLoggedIn} element={Register} setCurrentUser={setCurrentUser} />
+            } />
+            <Route path="/signin" element={
+              <ProtectedRoute isLoggedIn={!isLoggedIn} element={Login} handleOnLogin={handleOnLogin} setCurrentUser={setCurrentUser} />
+            } />
             <Route path="/movies" element={
               <ProtectedRoute
                 isLoggedIn={isLoggedIn}

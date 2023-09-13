@@ -5,7 +5,13 @@ import FormElement from "../FormElement/FormElement";
 import Input from "../Input/Input";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
-import {EMAIL_PATTERN, handleMessageErrors, PASSWORD_PATTERN} from "../../utils/constants";
+import {
+  EMAIL_PATTERN,
+  EMAIL_SPAN_ERROR,
+  handleMessageErrors,
+  PASSWORD_PATTERN,
+  PASSWORD_SPAN_ERROR
+} from "../../utils/constants";
 import './login.css'
 const Login = ({ handleOnLogin, setCurrentUser }) => {
   const location = useLocation()
@@ -85,8 +91,8 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
-        pattern={EMAIL_PATTERN.test(values.email)}
-        required={true}
+        pattern={EMAIL_PATTERN}
+        errorMessage={EMAIL_SPAN_ERROR}
       />
       <Input
         value={values.password || ""}
@@ -98,8 +104,8 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
-        pattern={PASSWORD_PATTERN.test(values.password)}
-        required={true}
+        pattern={PASSWORD_PATTERN}
+        errorMessage={PASSWORD_SPAN_ERROR}
       />
       <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Вход в систему успешен.' textOnError={textOnError} />
     </FormElement>

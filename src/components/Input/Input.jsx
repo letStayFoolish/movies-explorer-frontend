@@ -1,4 +1,11 @@
 import './input.css'
+import {
+  EMAIL_PATTERN,
+  EMAIL_SPAN_ERROR,
+  NAME_PATTERN,
+  NAME_SPAN_ERROR, PASSWORD_PATTERN,
+  PASSWORD_SPAN_ERROR
+} from "../../utils/constants";
 
 const Input = ({
   value,
@@ -11,7 +18,7 @@ const Input = ({
   minLength,
   maxLength,
   pattern,
-  required
+  errorMessage
 }) => {
   return (
       <label htmlFor="" className='label'>{label}
@@ -24,19 +31,10 @@ const Input = ({
           minLength={minLength}
           maxLength={maxLength}
           placeholder={placeholder}
-          required={required}
           pattern={pattern}
+          required
         />
-        <span className="span_error">{errors}</span>
-        {/*{*/}
-        {/*  name === 'name' && !NAME_PATTERN.test(value) ? (*/}
-        {/*  <span className="span_error">{errors && NAME_SPAN_ERROR}</span>*/}
-        {/*  ) : name === 'email' && !EMAIL_PATTERN.test(value) ? (*/}
-        {/*    <span className="span_error">{errors && EMAIL_SPAN_ERROR}</span>*/}
-        {/*  ) : name === 'password' && !PASSWORD_PATTERN.test(value) ? (*/}
-        {/*    <span className="span_error">{errors && PASSWORD_SPAN_ERROR}</span>*/}
-        {/*  ) : null*/}
-        {/*}*/}
+        <span className="span_error">{errors && errorMessage}</span>
       </label>
   )
 }

@@ -16,7 +16,7 @@
     <a href="https://github.com/letStayFoolish/movies-explorer-frontend/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://more-movies.nomoredom.nomoredomainsicu.ru/">View Demo</a>
     ·
     <a href="https://github.com/letStayFoolish/movies-explorer-frontend/issues">Report Bug</a>
     ·
