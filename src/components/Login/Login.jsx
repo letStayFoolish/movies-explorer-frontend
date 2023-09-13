@@ -50,7 +50,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
       try {
         const data = await auth.authorize(email, password)
         setIsSuccess(true)
-        setIsOpen(true)
+        // setIsOpen(true)
         handleOnLogin()
         setCurrentUser({ name: data.name, email: data.email})
 
@@ -58,8 +58,9 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsSuccess(false)
-        setIsOpen(true)
+        // setIsOpen(true)
       } finally {
+        setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
         resetForm()

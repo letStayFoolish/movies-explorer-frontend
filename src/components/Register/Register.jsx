@@ -41,6 +41,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
   // Handler function on submit button - registration:
   const submitHandler = async (e) => {
     e.preventDefault()
+
     const {name, email, password} = values
 
     if (!name || !email || !password) {
@@ -55,15 +56,16 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
       try {
         const data = await auth.register(name, email, password)
         setIsSuccess(true)
-        setIsOpen(true)
+        // setIsOpen(true)
         handleOnLogin()
         setCurrentUser({name: data.name, email: data.email})
       } catch (err) {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsSuccess(false)
-        setIsOpen(true)
+        // setIsOpen(true)
       } finally {
+        setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
         resetForm()
