@@ -1,5 +1,5 @@
 // export const BASE_URL="http://localhost:3000" // For Development
-export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
+export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru/"
 export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
 // export const EMAIL_PATTERN=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i // (OK!) tested on https://regex101.com/
