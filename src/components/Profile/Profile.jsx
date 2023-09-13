@@ -2,7 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
-import {NAME_PATTERN, EMAIL_PATTERN, handleMessageErrors} from "../../utils/constants";
+import {
+  handleMessageErrors,
+  EMAIL_SPAN_ERROR,
+  NAME_SPAN_ERROR
+} from "../../utils/constants";
 import {updateCurrentUser} from "../../utils/MainApi";
 import EntryPopup from "../EntryPopup/EntryPopup";
 
@@ -10,7 +14,7 @@ import EntryPopup from "../EntryPopup/EntryPopup";
 import './profile.css'
 
 const Profile = ({ handleOnLogout, currentUser }) => {
-  const { values, handleOnChange, setValues } = useFormWithValidation()
+  const { values, handleOnChange, setValues, errors } = useFormWithValidation()
 
   const location = useLocation()
   const pathname = location.pathname
@@ -21,7 +25,6 @@ const Profile = ({ handleOnLogout, currentUser }) => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [textOnError, setTextOnError] = useState('')
   const [isEntering, setIsEntering] = useState(false)
-
 
   useEffect(() => {
     // setValues({ ...values,
@@ -40,7 +43,8 @@ const Profile = ({ handleOnLogout, currentUser }) => {
   useEffect(() => {
     if (
       (name !== values.name || email !== values.email) &&
-      (values.name !== '' && values.email !== '')
+      (values.name !== '' && values.email !== '') &&
+      !errors.name && !errors.email
     ) {
       setBtnDisabled(false)
     }
@@ -81,30 +85,31 @@ const Profile = ({ handleOnLogout, currentUser }) => {
             className='form_input'
             type="text"
             name='name'
-            value={values.name}
+            value={values.name || ""}
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
-            pattern={NAME_PATTERN}
+            pattern='^[A-Za-zА-Яа-я \-]+$'
             required
             placeholder='Введите свое имя.'
           />
         </label>
+        <span className="span_error">{errors.name && NAME_SPAN_ERROR}</span>
         <label className='form_label'>E-mail
           <input
             className='form_input'
             type="email"
             name='email'
-            value={values.email}
+            value={values.email || ""}
             onChange={handleOnChange}
             minLength={2}
             maxLength={30}
-            pattern={EMAIL_PATTERN}
-            // pattern="[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+            pattern='^[a-zA-Z0-9_.\-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$'
             required
             placeholder='Введите свой E-mail.'
           />
         </label>
+        <span className="span_error">{errors.email && EMAIL_SPAN_ERROR}</span>
 
         {editProfile ? (
           <FormButton type='button' animation='scale-in-ver-top' text={isEntering ? 'Сохраняю...' : 'Сохранить'} onClick={handleSavingChanges} margin='12.25rem' smallScreenMargin={'22rem'} />

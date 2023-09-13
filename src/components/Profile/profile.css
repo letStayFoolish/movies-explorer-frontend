@@ -75,6 +75,21 @@
     transition: padding .15s ease,box-shadow .3s ease,border-radius .3s ease;
 }
 
+.span_error {
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    background: transparent;
+    /*margin-top: .37rem;*/
+    margin-top: 5.92px;
+
+    color: var(--color-red);
+    font-family: var(--font-family);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .profile__btn {
     font-family: var(--font-family);
     text-align: center;

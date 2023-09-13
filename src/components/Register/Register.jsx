@@ -6,12 +6,9 @@ import Input from "../Input/Input";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import EntryPopup from "../EntryPopup/EntryPopup";
 import {
-  EMAIL_PATTERN,
   EMAIL_SPAN_ERROR,
   handleMessageErrors,
-  NAME_PATTERN,
   NAME_SPAN_ERROR,
-  PASSWORD_PATTERN,
   PASSWORD_SPAN_ERROR,
 } from "../../utils/constants";
 // Styles
@@ -96,7 +93,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свое Имя.'
         minLength={2}
         maxLength={30}
-        pattern={NAME_PATTERN}
+        pattern='^[A-Za-zА-Яа-я \-]+$'
         errorMessage={NAME_SPAN_ERROR}
       />
       <Input
@@ -109,7 +106,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свой E-mail.'
         minLength={2}
         maxLength={30}
-        pattern={EMAIL_PATTERN}
+        pattern='^[a-zA-Z0-9_.\-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$'
         errorMessage={EMAIL_SPAN_ERROR}
       />
       <Input
@@ -122,7 +119,7 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         placeholder='Введите свой Пароль.'
         minLength={6}
         maxLength={36}
-        pattern={PASSWORD_PATTERN}
+        pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$'
         errorMessage={PASSWORD_SPAN_ERROR}
       />
       <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.'

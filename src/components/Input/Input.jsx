@@ -1,12 +1,4 @@
 import './input.css'
-import {
-  EMAIL_PATTERN,
-  EMAIL_SPAN_ERROR,
-  NAME_PATTERN,
-  NAME_SPAN_ERROR, PASSWORD_PATTERN,
-  PASSWORD_SPAN_ERROR
-} from "../../utils/constants";
-
 const Input = ({
   value,
   errors,
