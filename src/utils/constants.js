@@ -1,10 +1,22 @@
-// export const BASE_URL="http://localhost:3000" // For Development
-export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
+export const BASE_URL="http://localhost:3000" // For Development
+// export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
 export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
 // export const EMAIL_PATTERN=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$/i // (OK!) tested on https://regex101.com/
 // export const NAME_PATTERN="/^[A-Za-zА-Яа-я \-]+$" // (OK!) tested on https://regex101.com/
 // export const PASSWORD_PATTERN=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ // (OK!) tested on https://regex101.com/
+
+export const INITIAL_NUMBER_OF_CARDS_1280 = 12
+export const INITIAL_NUMBER_OF_CARDS_768 = 8
+export const INITIAL_NUMBER_OF_CARDS_320 = 5
+export const CARDS_TO_ADD_1280 = 3
+export const CARDS_TO_ADD_768 = 2
+export const CARDS_TO_ADD_320 = 1
+export const SCREEN_WIDTH_L = 1280
+export const SCREEN_WIDTH_M = 766
+
+export const SHORT_MOVIES = 40
+
 
 // Messages on errors:
 // Login:

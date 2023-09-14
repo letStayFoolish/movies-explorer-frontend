@@ -10,11 +10,20 @@ import {
   handleSaveToLocalStorage
 } from "../../utils/utils";
 import {getSavedMovies} from "../../utils/MainApi";
+import {
+  CARDS_TO_ADD_1280,
+  CARDS_TO_ADD_320,
+  CARDS_TO_ADD_768,
+  INITIAL_NUMBER_OF_CARDS_1280,
+  INITIAL_NUMBER_OF_CARDS_320,
+  INITIAL_NUMBER_OF_CARDS_768,
+  SCREEN_WIDTH_L,
+  SCREEN_WIDTH_M
+} from "../../utils/constants";
 
 // Styles
 import './movies.css'
-
-const Movies = ({ likeMovie }) => {
+const Movies = ({ likeMovie, removeMovie }) => {
   const searchInputRef = useRef(null)
   // Movies cards
   // ====================================================================================================
@@ -31,8 +40,8 @@ const Movies = ({ likeMovie }) => {
   // ====================================================================================================
   // Pagination:
   const [currentPage, setCurrentPage] = useState(1)
-  const [initialItems, setInitialItems] = useState(12)
-  const [itemsToAdd, setItemsToAdd] = useState(3)
+  const [initialItems, setInitialItems] = useState(INITIAL_NUMBER_OF_CARDS_1280)
+  const [itemsToAdd, setItemsToAdd] = useState(CARDS_TO_ADD_1280)
   // Calculate start and end indices for the current page
   const startIndex = (currentPage - 1) * itemsToAdd
   const endIndex = startIndex + initialItems
@@ -40,7 +49,6 @@ const Movies = ({ likeMovie }) => {
   const [displayedMovies, setDisplayedMovies] = useState([])
 
   // ====================================================================================================
-  //
   useEffect(() => {
     const searchFilteredFromLocalStorage = handleGetFromLocalStorage('searchFiltered')
     const moviesSavedFromLocalStorage = handleGetFromLocalStorage('movieListSaved');
@@ -153,8 +161,6 @@ const Movies = ({ likeMovie }) => {
       if (resultFilteredMovieList.length === 0) {
         setSearchMessageError(true)
       }
-    } else {
-
     }
   }
 
@@ -176,26 +182,29 @@ const Movies = ({ likeMovie }) => {
     const handleResize = () => {
       const screenWidth = window.innerWidth
 
-      if (screenWidth >= 1280) {
-        setInitialItems(12)
-        setItemsToAdd(3)
+      if (screenWidth >= SCREEN_WIDTH_L) {
+        setInitialItems(INITIAL_NUMBER_OF_CARDS_1280)
+        setItemsToAdd(CARDS_TO_ADD_1280)
         // 1276px and less
-      } else if (screenWidth > 766 && screenWidth < 1280) {
-        setInitialItems(8)
-        setItemsToAdd(2)
+      } else if (screenWidth > SCREEN_WIDTH_M && screenWidth < SCREEN_WIDTH_L) {
+        setInitialItems(INITIAL_NUMBER_OF_CARDS_768)
+        setItemsToAdd(CARDS_TO_ADD_768)
         // 766px and less
-      } else if (screenWidth <= 766) {
-        setInitialItems(5)
-        setItemsToAdd(1)
+      } else if (screenWidth <= SCREEN_WIDTH_M) {
+        setInitialItems(INITIAL_NUMBER_OF_CARDS_320)
+        setItemsToAdd(CARDS_TO_ADD_320)
       }
     }
+    console.log(initialItems, itemsToAdd)
+
     window.addEventListener('resize', handleResize)
 
     // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [filteredMovies, window.innerWidth]);
+
+  }, [searchInputRef, filteredMovies, window.innerWidth, initialItems, itemsToAdd ]);
 
   return (
     <section className='movies'>
@@ -221,6 +230,7 @@ const Movies = ({ likeMovie }) => {
             endIndex={endIndex}
             hasMoreMovies={moreMovies}
             likeMovie={likeMovie}
+            removeMovie={removeMovie}
           />
         )}
     </section>

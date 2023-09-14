@@ -1,20 +1,22 @@
 import React from 'react'
 import {useLocation, useNavigate} from "react-router-dom";
-
 import {GrClose} from "react-icons/gr";
 import {AiOutlineCheck} from "react-icons/ai";
 
+// Styles
 import './entry-popup.css'
 
-const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError }) => {
+const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError, resetForm }) => {
   const location = useLocation()
   const pathname = location.pathname
   const navigate = useNavigate()
 
+  // @todo remove if it is necessary!!!
   const handleOnSuccess = () => {
-    if (pathname !== '/profile') {
-      navigate('/movies', { replace: true })
-    }
+    // if (pathname !== '/profile') {
+    //   navigate('/movies', { replace: true })
+    // }
+    // resetForm()
     handleOnClose()
   }
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
@@ -12,13 +12,13 @@ import EntryPopup from "../EntryPopup/EntryPopup";
 
 // Styles:
 import './profile.css'
+import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
-const Profile = ({ handleOnLogout, currentUser }) => {
-  const { values, handleOnChange, setValues, errors } = useFormWithValidation()
+const Profile = ({ handleOnLogout }) => {
+  const { values, handleOnChange, setValues, errors, resetForm } = useFormWithValidation()
 
   const location = useLocation()
   const pathname = location.pathname
-  const { name, email } = currentUser
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [editProfile, setEditProfile] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
@@ -26,18 +26,21 @@ const Profile = ({ handleOnLogout, currentUser }) => {
   const [textOnError, setTextOnError] = useState('')
   const [isEntering, setIsEntering] = useState(false)
 
-  useEffect(() => {
-    // setValues({ ...values,
-    //   'name': name,
-    //   'email': email
-    // })
+  const currentUser = useContext(CurrentUserContext)
+  const { name, email } = currentUser
 
-    if (Object.keys(currentUser).length !== 0) {
-      setValues({ ...values,
-        'name': name,
-        'email': email
-      })
-    }
+  useEffect(() => {
+    setValues({ ...values,
+      'name': name,
+      'email': email
+    })
+
+    // if (Object.keys(currentUser).length !== 0) {
+    //   setValues({ ...values,
+    //     'name': name,
+    //     'email': email
+    //   })
+    // }
   }, [currentUser]);
 
   useEffect(() => {
@@ -72,6 +75,7 @@ const Profile = ({ handleOnLogout, currentUser }) => {
     finally {
       setBtnDisabled(true)
       setIsEntering(false)
+      setIsSuccess(true)
     }
   }
 
@@ -131,7 +135,14 @@ const Profile = ({ handleOnLogout, currentUser }) => {
           </>
 
         )}
-        <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Данные успешно обновлены 👍🏻' textOnError={textOnError} />
+        <EntryPopup
+          isOpen={isOpen}
+          onSuccess={isSuccess}
+          setIsOpen={setIsOpen}
+          message='Данные успешно обновлены 👍🏻'
+          textOnError={textOnError}
+          resetForm={resetForm}
+        />
       </form>
     </div>
   )

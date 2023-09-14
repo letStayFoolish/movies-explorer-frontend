@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import {useLocation} from "react-router-dom";
 import * as auth from '../../utils/auth'
 import FormElement from "../FormElement/FormElement";
@@ -10,6 +10,8 @@ import {
   handleMessageErrors,
   PASSWORD_SPAN_ERROR
 } from "../../utils/constants";
+
+// Styles
 import './login.css'
 const Login = ({ handleOnLogin, setCurrentUser }) => {
   const location = useLocation()
@@ -50,20 +52,17 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
       try {
         const data = await auth.authorize(email, password)
         setIsSuccess(true)
-        // setIsOpen(true)
         handleOnLogin()
+        resetForm()
         setCurrentUser({ name: data.name, email: data.email})
-
       } catch (err) {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsSuccess(false)
-        // setIsOpen(true)
       } finally {
         setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
-        resetForm()
       }
     }
   }
@@ -106,7 +105,14 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$'
         errorMessage={PASSWORD_SPAN_ERROR}
       />
-      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Вход в систему успешен.' textOnError={textOnError} />
+      <EntryPopup
+        isOpen={isOpen}
+        onSuccess={isSuccess}
+        setIsOpen={setIsOpen}
+        message='Вход в систему успешен.'
+        textOnError={textOnError}
+        resetForm={resetForm}
+      />
     </FormElement>
   )
 }

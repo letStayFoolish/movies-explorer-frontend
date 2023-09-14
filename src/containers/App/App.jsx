@@ -65,6 +65,7 @@ const App = () => {
 
   const handleOnLogin = () => {
     setIsLoggedIn(true)
+    navigate('/movies', { replace: true })
   }
 
   const handleOnLogout = async () => {
@@ -113,17 +114,19 @@ const App = () => {
 
     try {
       if (!movieId && savedMovies.length > 0) {
-        const movieFounded = savedMovies.find(movie => movie.movieId === movieId)
+
+        const movieFounded = savedMovies.find(m => m.movieId === movie.id)
+
         if (movieFounded) {
-          movieId = movieFounded.id
+          movieId = movieFounded._id
         }
       }
 
       if (movieId) {
         const moviesFromLocalStorage = handleGetFromLocalStorage('movieListSaved' || [])
-        await MainAPI.removeMoviesFromSavedList(movie._id)
-        setSavedMovies(savedMovies.filter(movie => movie._id !== movieId))
-        handleSaveToLocalStorage('movieListSaved', moviesFromLocalStorage.filter(movie => movie._id !== movieId))
+        await MainAPI.removeMoviesFromSavedList(movieId)
+        setSavedMovies(savedMovies.filter(m => m._id !== movieId))
+        handleSaveToLocalStorage('movieListSaved', moviesFromLocalStorage.filter(m => m._id !== movieId))
       }
     } catch (error) {
       console.error(error)
@@ -148,6 +151,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 element={Movies}
                 likeMovie={handlerSaveMovies}
+                removeMovie={handleRemoveSavedMovies}
               />
             }
             />
@@ -162,7 +166,7 @@ const App = () => {
             }
             />
             <Route path="/profile" element={
-              <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} currentUser={currentUser} element={Profile} />
+              <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} element={Profile} />
             }
             />
             <Route path="*" element={<NotFound handleGoBack={handleGoBack} />} />

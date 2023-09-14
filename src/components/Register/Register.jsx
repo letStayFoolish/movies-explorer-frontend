@@ -11,14 +11,14 @@ import {
   NAME_SPAN_ERROR,
   PASSWORD_SPAN_ERROR,
 } from "../../utils/constants";
+
 // Styles
 import './register.css'
-
-const Register = ({handleOnLogin, setCurrentUser}) => {
+const Register = ({ handleOnLogin, setCurrentUser }) => {
   const location = useLocation()
   const pathname = location.pathname
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
-  const {values, resetForm, handleOnChange, errors, isValid} = useFormWithValidation()
+  const { values, resetForm, handleOnChange, errors, isValid } = useFormWithValidation()
   const [isEntering, setIsEntering] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -56,19 +56,20 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
       try {
         const data = await auth.register(name, email, password)
         setIsSuccess(true)
-        // setIsOpen(true)
+        setIsOpen(true)
         handleOnLogin()
+        resetForm()
         setCurrentUser({name: data.name, email: data.email})
       } catch (err) {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
+        setIsOpen(true)
+
         setIsSuccess(false)
-        // setIsOpen(true)
       } finally {
         setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
-        resetForm()
       }
     }
   }
@@ -124,8 +125,14 @@ const Register = ({handleOnLogin, setCurrentUser}) => {
         pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$'
         errorMessage={PASSWORD_SPAN_ERROR}
       />
-      <EntryPopup isOpen={isOpen} onSuccess={isSuccess} setIsOpen={setIsOpen} message='Спасибо, что зарегистрировались.'
-                  textOnError={textOnError}/>
+      <EntryPopup
+        isOpen={isOpen}
+        onSuccess={isSuccess}
+        setIsOpen={setIsOpen}
+        message='Спасибо, что зарегистрировались.'
+        textOnError={textOnError}
+        resetForm={resetForm}
+      />
     </FormElement>
   )
 }

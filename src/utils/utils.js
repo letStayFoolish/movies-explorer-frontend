@@ -1,4 +1,6 @@
 // Local storage functions:
+import {SHORT_MOVIES} from "./constants";
+
 export const handleSaveToLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
@@ -18,7 +20,7 @@ export const filteredMoviesFromSearch = (movies, search) => {
 //
 export const filterShortMovies = (movies, shortMoviesChecked) => {
   if (shortMoviesChecked) {
-    return movies.filter((movie) => movie.duration <= 40);
+    return movies.filter((movie) => movie.duration <= SHORT_MOVIES);
   }
   return movies;
 };

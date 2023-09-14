@@ -22,6 +22,11 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
 
   const handleDeleteMovies = () => {
     removeMovie(movie)
+    setIsLikedMovie(!isLikedMovie)
+  }
+
+  const handleRemoveMoviesFromSavedList = () => {
+    console.log('Hey delete me please!')
   }
 
   return (
@@ -37,7 +42,7 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
         </a>
         {/* Saved movie button */} {/* Add movie to list button */}
         {pathname === '/movies' && isLikedMovie ?
-          <button className='button button_type_add' type='button'>&#10003;</button> :
+          <button className='button button_type_add' type='button' onClick={handleDeleteMovies}>&#10003;</button> :
           pathname !== '/saved-movies' &&
           <button className='button button_type_text' type='button' onClick={handleSaveMovie}>Сохранить</button>
         }
