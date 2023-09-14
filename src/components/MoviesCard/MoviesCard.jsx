@@ -25,10 +25,6 @@ const MoviesCard = ({ movie, likeMovie, removeMovie }) => {
     setIsLikedMovie(!isLikedMovie)
   }
 
-  const handleRemoveMoviesFromSavedList = () => {
-    console.log('Hey delete me please!')
-  }
-
   return (
     <div className='movies-card card '>
       <div className="card__container">

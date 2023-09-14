@@ -1,21 +1,45 @@
+import {useLocation} from "react-router-dom";
+import {useCallback} from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoviesNotFound from "../../containers/Movies/MoviesNotFound/MoviesNotFound";
+import {
+  CARDS_TO_ADD_1280,
+  CARDS_TO_ADD_320,
+  CARDS_TO_ADD_768,
+  SCREEN_WIDTH_L,
+  SCREEN_WIDTH_M
+} from "../../utils/constants";
+
 // Styles
 import './movie-list.css'
-import {useLocation} from "react-router-dom";
-
 const MovieList = ({
+  screenWidth,
   searchMessageError,
   onGoBackClick,
   error,
-  onShowMoreClick,
+  setMoviesToShow,
   movies,
   endIndex,
-  hasMoreMovies,
   likeMovie,
-  removeMovie
+  removeMovie,
+                     showMoreMovies
 }) => {
   const pathname = useLocation().pathname
+
+  const handleOnShowMoreClick = useCallback(() => {
+    if (screenWidth >= SCREEN_WIDTH_L) {
+      setMoviesToShow((prevState) => prevState + CARDS_TO_ADD_1280)
+      // 1276px and less
+    } else if (screenWidth > SCREEN_WIDTH_M && screenWidth < SCREEN_WIDTH_L) {
+      setMoviesToShow((prevState) => prevState + CARDS_TO_ADD_768)
+      // 766px and less
+    } else if (screenWidth <= SCREEN_WIDTH_M) {
+      setMoviesToShow((prevState) => prevState + CARDS_TO_ADD_320)
+    }
+    console.log('Add more...!', )
+
+  }, [screenWidth, setMoviesToShow])
+
   return (
     <div className="movies-cards__wrapper">
     {searchMessageError ? (
@@ -36,8 +60,8 @@ const MovieList = ({
         <button
         className="movies-cards__btn-more"
         type='button'
-        onClick={onShowMoreClick}
-        style={{visibility: hasMoreMovies ? 'visible' : 'hidden'}}
+        onClick={handleOnShowMoreClick}
+        style={{visibility: movies.length !== 0 && endIndex < movies.length ? 'visible' : 'hidden'}}
       >Ещё
       </button>
       }

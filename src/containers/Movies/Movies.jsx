@@ -11,15 +11,13 @@ import {
 } from "../../utils/utils";
 import {getSavedMovies} from "../../utils/MainApi";
 import {
-  CARDS_TO_ADD_1280,
-  CARDS_TO_ADD_320,
-  CARDS_TO_ADD_768,
   INITIAL_NUMBER_OF_CARDS_1280,
   INITIAL_NUMBER_OF_CARDS_320,
   INITIAL_NUMBER_OF_CARDS_768,
   SCREEN_WIDTH_L,
   SCREEN_WIDTH_M
 } from "../../utils/constants";
+import useResponsiveCardsShowing from "../../hooks/useResponsiveCardsShowing";
 
 // Styles
 import './movies.css'
@@ -39,19 +37,14 @@ const Movies = ({ likeMovie, removeMovie }) => {
   const [error, setError] = useState(false)
   // ====================================================================================================
   // Pagination:
-  const [currentPage, setCurrentPage] = useState(1)
-  const [initialItems, setInitialItems] = useState(INITIAL_NUMBER_OF_CARDS_1280)
-  const [itemsToAdd, setItemsToAdd] = useState(CARDS_TO_ADD_1280)
-  // Calculate start and end indices for the current page
-  const startIndex = (currentPage - 1) * itemsToAdd
-  const endIndex = startIndex + initialItems
-  const [moreMovies, setMoreMovies] = useState(false)
-  const [displayedMovies, setDisplayedMovies] = useState([])
-
+  const [moviesToShow, setMoviesToShow] = useState(INITIAL_NUMBER_OF_CARDS_1280)
+  const [screenWidth] = useResponsiveCardsShowing()
   // ====================================================================================================
+
   useEffect(() => {
     const searchFilteredFromLocalStorage = handleGetFromLocalStorage('searchFiltered')
     const moviesSavedFromLocalStorage = handleGetFromLocalStorage('movieListSaved');
+
     setMovieListSaved(moviesSavedFromLocalStorage || [])
 
     if (searchFilteredFromLocalStorage) {
@@ -143,10 +136,6 @@ const Movies = ({ likeMovie, removeMovie }) => {
     searchInputRef.current.value = ''
   }
 
-  const handleShowMoreClick = () => {
-    setCurrentPage(currentPage + 1)
-  }
-
   const handlerDisplayShortMovies = (shortMovies) => {
     setSearchMessageError(false)
 
@@ -163,48 +152,29 @@ const Movies = ({ likeMovie, removeMovie }) => {
       }
     }
   }
-
-  // ============================================= Pagination ==========================================
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsToAdd
-    const endIndex = startIndex + initialItems + (currentPage - 1) * itemsToAdd
-    if (endIndex < filteredMovies.length) {
-      setMoreMovies(true)
-    } else {
-      setMoreMovies(false)
-    }
-    setDisplayedMovies(filteredMovies.slice(0, endIndex))
-  }, [currentPage, itemsToAdd, filteredMovies]);
-
+  // ============================================= Pagination ========================================================================================
   // ==================================== Loading various number of cards depending on current screen width ==========================================
+
+
   useEffect(() => {
-    // Add a resize event listener to adjust values based on screen width
-    const handleResize = () => {
-      const screenWidth = window.innerWidth
+    let cardsInitialToShow = INITIAL_NUMBER_OF_CARDS_1280
 
-      if (screenWidth >= SCREEN_WIDTH_L) {
-        setInitialItems(INITIAL_NUMBER_OF_CARDS_1280)
-        setItemsToAdd(CARDS_TO_ADD_1280)
-        // 1276px and less
-      } else if (screenWidth > SCREEN_WIDTH_M && screenWidth < SCREEN_WIDTH_L) {
-        setInitialItems(INITIAL_NUMBER_OF_CARDS_768)
-        setItemsToAdd(CARDS_TO_ADD_768)
-        // 766px and less
-      } else if (screenWidth <= SCREEN_WIDTH_M) {
-        setInitialItems(INITIAL_NUMBER_OF_CARDS_320)
-        setItemsToAdd(CARDS_TO_ADD_320)
-      }
+    if (screenWidth >= SCREEN_WIDTH_L) {
+      cardsInitialToShow = INITIAL_NUMBER_OF_CARDS_1280
+      // 1276px and less
+    } else if (screenWidth > SCREEN_WIDTH_M && screenWidth < SCREEN_WIDTH_L) {
+      cardsInitialToShow = INITIAL_NUMBER_OF_CARDS_768
+      // 766px and less
+    } else if (screenWidth <= SCREEN_WIDTH_M) {
+      cardsInitialToShow = INITIAL_NUMBER_OF_CARDS_320
     }
-    console.log(initialItems, itemsToAdd)
+    // setMoviesToShow(cardsInitialToShow)
 
-    window.addEventListener('resize', handleResize)
+    setTimeout(() => {
+      setMoviesToShow(cardsInitialToShow)
+    }, 0)
+  }, [screenWidth, searchInputRef]); //handleSearch
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-
-  }, [searchInputRef, filteredMovies, window.innerWidth, initialItems, itemsToAdd ]);
 
   return (
     <section className='movies'>
@@ -219,19 +189,21 @@ const Movies = ({ likeMovie, removeMovie }) => {
       {preloader ?
         <Preloader/> :
         !showMessage && (
-          <MovieList
-            showMessage={showMessage}
-            setSearchMessageError={setSearchMessageError}
-            searchMessageError={searchMessageError}
-            onGoBackClick={handleGoBackClick}
-            error={error}
-            onShowMoreClick={handleShowMoreClick}
-            movies={movieListWithLikedSign}
-            endIndex={endIndex}
-            hasMoreMovies={moreMovies}
-            likeMovie={likeMovie}
-            removeMovie={removeMovie}
-          />
+          <>
+            <MovieList
+              screenWidth={screenWidth}
+              showMessage={showMessage}
+              setSearchMessageError={setSearchMessageError}
+              searchMessageError={searchMessageError}
+              onGoBackClick={handleGoBackClick}
+              error={error}
+              setMoviesToShow={setMoviesToShow}
+              movies={movieListWithLikedSign}
+              endIndex={moviesToShow}
+              likeMovie={likeMovie}
+              removeMovie={removeMovie}
+            />
+          </>
         )}
     </section>
   )

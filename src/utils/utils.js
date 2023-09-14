@@ -1,5 +1,5 @@
 // Local storage functions:
-import {SHORT_MOVIES} from "./constants";
+import { SHORT_MOVIES } from "./constants";
 
 export const handleSaveToLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
