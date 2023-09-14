@@ -154,8 +154,6 @@ const Movies = ({ likeMovie, removeMovie }) => {
   }
   // ============================================= Pagination ========================================================================================
   // ==================================== Loading various number of cards depending on current screen width ==========================================
-
-
   useEffect(() => {
     let cardsInitialToShow = INITIAL_NUMBER_OF_CARDS_1280
 

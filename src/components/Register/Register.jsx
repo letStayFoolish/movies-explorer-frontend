@@ -64,7 +64,6 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         setTextOnError(() => handleMessageErrors(err.message, pathname))
         console.error(`Error: ${err.message}`)
         setIsOpen(true)
-
         setIsSuccess(false)
       } finally {
         setIsOpen(true)
@@ -131,7 +130,6 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         setIsOpen={setIsOpen}
         message='Спасибо, что зарегистрировались.'
         textOnError={textOnError}
-        resetForm={resetForm}
       />
     </FormElement>
   )

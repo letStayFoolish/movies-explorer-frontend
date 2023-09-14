@@ -111,7 +111,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         setIsOpen={setIsOpen}
         message='Вход в систему успешен.'
         textOnError={textOnError}
-        resetForm={resetForm}
+        // resetForm={resetForm}
       />
     </FormElement>
   )

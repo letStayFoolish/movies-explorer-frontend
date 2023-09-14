@@ -14,9 +14,9 @@ import EntryPopup from "../EntryPopup/EntryPopup";
 import './profile.css'
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
-const Profile = ({ handleOnLogout }) => {
+const Profile = ({ handleOnLogout, setCurrentUser }) => {
   const { values, handleOnChange, setValues, errors, resetForm } = useFormWithValidation()
-
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false)
   const location = useLocation()
   const pathname = location.pathname
   const [btnDisabled, setBtnDisabled] = useState(true)
@@ -50,8 +50,12 @@ const Profile = ({ handleOnLogout }) => {
       !errors.name && !errors.email
     ) {
       setBtnDisabled(false)
+      setIsSubmitDisabled(false)
     }
-    else setBtnDisabled(true)
+    else {
+      setIsSubmitDisabled(true)
+      setBtnDisabled(true)
+    }
   }, [values]);
 
   const handleEditProfile = () => {
@@ -61,21 +65,23 @@ const Profile = ({ handleOnLogout }) => {
   const handleSavingChanges = async () => {
     // Submit changes
     setIsEntering(true)
+
     try {
-      await updateCurrentUser(values.name, values.email)
+      const data = await updateCurrentUser(values.name, values.email)
       setEditProfile(false)
-      setIsOpen(true)
       setIsSuccess(true)
+      setIsOpen(true)
+      setCurrentUser({name: data.name, email: data.email})
     } catch (err) {
       setTextOnError(() => handleMessageErrors(err.message, pathname))
-      console.error(`Error: ${err.message}`)
-      setIsSuccess(false)
       setIsOpen(true)
+      setIsSuccess(false)
+      setIsSubmitDisabled(true)
+      console.error(`Error: ${err.message}`)
     }
     finally {
       setBtnDisabled(true)
       setIsEntering(false)
-      setIsSuccess(true)
     }
   }
 
@@ -116,7 +122,15 @@ const Profile = ({ handleOnLogout }) => {
         <span className="span_error">{errors.email && EMAIL_SPAN_ERROR}</span>
 
         {editProfile ? (
-          <FormButton type='button' animation='scale-in-ver-top' text={isEntering ? 'Сохраняю...' : 'Сохранить'} onClick={handleSavingChanges} margin='12.25rem' smallScreenMargin={'22rem'} />
+          <FormButton
+            type='button'
+            animation='scale-in-ver-top'
+            text={isEntering ? 'Сохраняю...' : 'Сохранить'}
+            onClick={handleSavingChanges}
+            margin='12.25rem'
+            smallScreenMargin={'22rem'}
+            isSubmitDisabled={isSubmitDisabled}
+          />
         ) : (
           <>
             <button
@@ -141,7 +155,6 @@ const Profile = ({ handleOnLogout }) => {
           setIsOpen={setIsOpen}
           message='Данные успешно обновлены 👍🏻'
           textOnError={textOnError}
-          resetForm={resetForm}
         />
       </form>
     </div>

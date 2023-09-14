@@ -6,19 +6,7 @@ import {AiOutlineCheck} from "react-icons/ai";
 // Styles
 import './entry-popup.css'
 
-const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError, resetForm }) => {
-  const location = useLocation()
-  const pathname = location.pathname
-  const navigate = useNavigate()
-
-  // @todo remove if it is necessary!!!
-  const handleOnSuccess = () => {
-    // if (pathname !== '/profile') {
-    //   navigate('/movies', { replace: true })
-    // }
-    // resetForm()
-    handleOnClose()
-  }
+const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError }) => {
 
   // Handler function to close modal:
   const handleOnClose = () => {
@@ -44,7 +32,7 @@ const EntryPopup = ({ onSuccess, isOpen, message, setIsOpen, textOnError, resetF
           {onSuccess ? message : textOnError}
         </p>
         <button
-          onClick={onSuccess ? handleOnSuccess : handleOnClose}
+          onClick={handleOnClose}
           type='button'
           className={onSuccess ?
           "entry-popup__button entry-popup__button_color_green" :

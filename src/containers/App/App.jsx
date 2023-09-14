@@ -166,7 +166,7 @@ const App = () => {
             }
             />
             <Route path="/profile" element={
-              <ProtectedRoute isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} element={Profile} />
+              <ProtectedRoute setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} handleOnLogout={handleOnLogout} element={Profile} />
             }
             />
             <Route path="*" element={<NotFound handleGoBack={handleGoBack} />} />
