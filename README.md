@@ -219,6 +219,8 @@ LinkedIn profile: [linkedIn](https://twitter.com/twitter_handle)
 
 Project Link: [https://github.com/letStayFoolish/movies-explorer-frontend/](https://github.com/letStayFoolish/movies-explorer-frontend/)
 
+Pull request Link: [https://github.com/letStayFoolish/movies-explorer-frontend/pull/2](https://github.com/letStayFoolish/movies-explorer-frontend/pull/2)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
