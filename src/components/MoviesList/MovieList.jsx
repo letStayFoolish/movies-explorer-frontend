@@ -22,7 +22,6 @@ const MovieList = ({
   endIndex,
   likeMovie,
   removeMovie,
-                     showMoreMovies
 }) => {
   const pathname = useLocation().pathname
 
@@ -36,7 +35,6 @@ const MovieList = ({
     } else if (screenWidth <= SCREEN_WIDTH_M) {
       setMoviesToShow((prevState) => prevState + CARDS_TO_ADD_320)
     }
-    console.log('Add more...!', )
 
   }, [screenWidth, setMoviesToShow])
 

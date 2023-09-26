@@ -4,11 +4,11 @@ const useResponsiveCardsShowing = () => {
 
   const handleOnResizeWindow = useCallback(() => {
     setScreenWidth(window.innerWidth)
-  })
+  }, [])
 
   const handleOnLoadingPage = useCallback(() => {
     setScreenWidth(window.innerWidth)
-  })
+  }, [])
 
   useEffect(() => {
     const timeoutDelayOnResizing = 1000

@@ -1,5 +1,5 @@
-// export const BASE_URL="http://localhost:3000" // For Development
-export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
+export const BASE_URL="http://localhost:3000" // For Development
+// export const BASE_URL="https://api.more-movies.nomoredomainsicu.ru"
 export const SERVER_URL="https://api.nomoreparties.co"
 export const BASE_URL_MOVIES="https://api.nomoreparties.co/beatfilm-movies"
 
@@ -8,7 +8,7 @@ export const INITIAL_NUMBER_OF_CARDS_768 = 8
 export const INITIAL_NUMBER_OF_CARDS_320 = 5
 export const CARDS_TO_ADD_1280 = 3
 export const CARDS_TO_ADD_768 = 2
-export const CARDS_TO_ADD_320 = 1
+export const CARDS_TO_ADD_320 = 2
 export const SCREEN_WIDTH_L = 1280
 export const SCREEN_WIDTH_M = 766
 
@@ -27,7 +27,7 @@ const EDIT_PROFILE_ERROR="При обновлении профиля произ�
 // Else:
 const SERVER_ERROR="На сервере произошла ошибка."
 
-// Handler to show correct error message
+// Handler to show a correct error message
 export function handleMessageErrors(error, pathname) {
   // Login:
   if (error === "Error: 400" && pathname === '/signin') return TOKEN_ERROR

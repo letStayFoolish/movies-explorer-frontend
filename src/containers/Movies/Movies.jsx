@@ -168,10 +168,12 @@ const Movies = ({ likeMovie, removeMovie }) => {
     }
     // setMoviesToShow(cardsInitialToShow)
 
+    console.log(searchInputRef.current.value)
+
     setTimeout(() => {
       setMoviesToShow(cardsInitialToShow)
     }, 0)
-  }, [screenWidth, searchInputRef]); //handleSearch
+  }, [screenWidth, searchInputRef?.current?.value]);
 
 
   return (

@@ -8,6 +8,7 @@ const checkResponse = async (res) => {
   }
 }
 
+// Registration
 export const register = async (name, email, password) => {
   try {
     const response = await fetch(`${BASE_URL}/signup`, {
@@ -27,6 +28,7 @@ export const register = async (name, email, password) => {
   }
 }
 
+// Login
 export const authorize = async (email, password) => {
   try {
     const response = await fetch(`${BASE_URL}/signin`, {
@@ -46,6 +48,7 @@ export const authorize = async (email, password) => {
   }
 }
 
+// Logout
 export const logout = async () => {
   try {
     const response = await fetch(`${BASE_URL}/signout`, {
@@ -63,6 +66,8 @@ export const logout = async () => {
     throw error
   }
 }
+
+// Get current user
 export const getContent = async () => {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
