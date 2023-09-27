@@ -1,0 +1,116 @@
+.footer__wrapper {
+    /*padding: 4.1rem 4.38rem 1.25rem;*/
+    padding: 65.60px 70px 20px;
+}
+
+.footer__text {
+    /*padding-bottom: 1.1rem;*/
+    padding-bottom: 17.60px;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.footer__text {
+    color: var(--color-gray);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.footer__navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    /*margin-top: 1.25rem;*/
+    margin-top: 20px;
+}
+
+.footer__navigation p {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-family);
+    font-size: 13px;
+    line-height: normal;
+}
+
+.footer__navigation ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*gap: 1.25rem;*/
+    gap: 20px;
+}
+
+.footer__navigation li a {
+    text-align: right;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+
+    transition: var(--transition-on-hover);
+}
+
+.footer__navigation li a:hover {
+    opacity: var(--opacity-link);
+}
+
+@media screen and (max-width: 768px) {
+    .footer__wrapper {
+        /*padding: 4.8rem 1.87rem 1.25rem;*/
+        padding: 76.80px 29.92px 20px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .footer__wrapper {
+        /*padding: 4.94rem 0.63rem 1.25rem;*/
+        padding: 79px 10px 20px;
+    }
+
+    .footer__text {
+        /*padding-bottom: 1.31rem;*/
+        padding-bottom: 20.96px;
+    }
+
+    .footer__text h4 {
+        font-size: 12px;
+        text-align: center;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .footer__navigation {
+        display: flex;
+        flex-direction: column-reverse;
+        /*margin-top: 1.6rem;*/
+        margin-top: 25.60px;
+    }
+
+    .footer__navigation ul {
+        flex-direction: column;
+        /*gap: 0.5rem;*/
+        gap: 8px;
+    }
+
+    .footer__navigation ul li a {
+        font-size: 12px;
+    }
+
+    .footer__navigation p {
+        font-size: 12px;
+        color: var(--color-gray);
+        /*margin-top: 1.65rem;*/
+        margin-top: 26.40px;
+    }
+}
+

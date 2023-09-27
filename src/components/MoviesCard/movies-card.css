@@ -1,0 +1,204 @@
+.movies-card {
+    font-family: var(--font-family);
+    color: var(--color-text-light);
+    background: var(--color-bg-movies);
+
+    border-radius: 6px;
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.08);
+    max-width: 360px;
+}
+
+.card__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card__heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 1.12rem 1.13rem;*/
+    padding: 17.92px 18.08px;
+}
+
+.card__title {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+
+    max-width: 240px;
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; /* give the beautiful '...' effect */
+}
+
+.card__time {
+    color: var(--color-gray);
+    text-align: right;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.card__img {
+    width: 360px;
+    height: 200px;
+    object-position: center;
+    object-fit: cover;
+}
+
+.button {
+    /*margin: 1.12rem 8.12rem;*/
+    margin: 17.92px 129.92px;
+    color: var(--color-text-light);
+    /*padding: 0.56rem 0.94rem;*/
+    padding: 8.94px 15.04px;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 11px;
+    border-radius: 30px;
+    transition: var(--transition-on-hover);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: var(--opacity-btn);
+}
+
+.button_type_text {
+    background: #313131;
+}
+
+.button_type_add {
+    background: var(--color-red);
+}
+
+.button_type_remove {
+    background: #313131;
+}
+
+.fade-in-fwd {
+    -webkit-animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+
+.flip-in-diag-1-tr {
+    -webkit-animation: flip-in-diag-1-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-diag-1-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+@-webkit-keyframes flip-in-diag-1-tr {
+    0% {
+        -webkit-transform: rotate3d(1, 1, 0, -80deg);
+        transform: rotate3d(1, 1, 0, -80deg);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotate3d(1, 1, 0, 0deg);
+        transform: rotate3d(1, 1, 0, 0deg);
+        opacity: 1;
+    }
+}
+@keyframes flip-in-diag-1-tr {
+    0% {
+        -webkit-transform: rotate3d(1, 1, 0, -80deg);
+        transform: rotate3d(1, 1, 0, -80deg);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotate3d(1, 1, 0, 0deg);
+        transform: rotate3d(1, 1, 0, 0deg);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 888px) {
+    .movies-card {
+        max-width: 342px;
+    }
+
+    .card__title {
+        max-width: 224px;
+    }
+
+    .card__img {
+        width: 342px;
+        height: 190px;
+    }
+
+    .button {
+        /*margin: 1.12rem 7.56rem;*/
+        margin: 17.92px 120.96px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .movies-card {
+        max-width: 300px;
+    }
+
+    .card__heading {
+        /*padding: 1.1rem 1.2rem 1.1rem .6rem;*/
+        padding: 17.60px 15px 17.60px 15px;
+    }
+
+    .card__title {
+        max-width: 200px;
+
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .card__time {
+        font-size: 10px;
+    }
+
+    .card__title {
+        max-width: 200px;
+    }
+
+    .card__img {
+        width: 300px;
+        height: 168px;
+    }
+
+    .button {
+        /*margin: .7rem 6.26rem;*/
+        margin: 11.20px 100.16px;
+        /*padding: 0.58rem .2rem;*/
+        padding: 9.28px 3.20px;
+    }
+}

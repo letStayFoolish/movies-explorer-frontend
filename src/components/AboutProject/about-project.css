@@ -1,0 +1,214 @@
+.about-project {
+    background: var(--color-footer);
+    color: var(--color-text-light);
+    position: relative;
+}
+
+.about-project__wrapper {
+    /*padding: 7rem 4.37rem;*/
+    padding: 112px 69.92px;
+}
+
+.about-project__about {
+    /*padding-bottom: 1.6rem;*/
+    padding-bottom: 25.60px;
+    border-bottom: 1px solid #dadada;
+
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+}
+
+.about-project__content {
+    /*margin: 4.2rem 0 6.88rem;*/
+    margin: 67.20px 0 110px;
+    display: flex;
+    /*gap: 3.5rem;*/
+    gap: 56px;
+}
+
+.content__column h4 {
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+
+    /*margin-bottom: 1.63rem;*/
+    margin-bottom: 26px;
+}
+
+.content__column p {
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.content_timeline {
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline__first-week {
+    flex: 1;
+}
+
+.timeline__second-week {
+    flex: 4;
+}
+
+.first-week_box {
+    /*padding-bottom: 0.56rem;*/
+    padding-bottom: 8.96px;
+    /*padding-top: 0.56rem;*/
+    padding-top: 8.96px;
+    min-height: 36px;
+
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: normal;
+}
+
+.first-week_box_color_green {
+    color: var(--color-text-dark);
+    background: var(--color-green);
+    max-width: 228px;
+}
+
+.first-week_box_color_dark {
+    color: var(--color-text-light);
+    background: var(--color-dark);
+    max-width: 912px;
+}
+
+.content_timeline p {
+    margin-top: 0.87rem;
+    /*margin-top: 13.92px;*/
+
+    color: var(--color-gray);
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project__wrapper {
+        /*padding: 5.5rem 3.13rem;*/
+        padding: 88px 50px;
+    }
+
+    .about-project__about {
+        /*padding-bottom: 1.5rem;*/
+        padding-bottom: 24px;
+    }
+
+    .about-project__content {
+        /*margin-bottom: 5.8rem;*/
+        margin-bottom: 92.80px;
+        /*gap: 2.4rem;*/
+        gap: 38.40px;
+    }
+
+    .content__column h4 {
+        /*margin-bottom: 1.3rem;*/
+        margin-bottom: 20.80px;
+    }
+
+    .content__column p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .timeline__first-week {
+        flex: 1.2;
+    }
+
+    .timeline__second-week {
+        flex: 4.5;
+    }
+
+    .first-week_box_color_green {
+        max-width: 140px;
+    }
+
+    .first-week_box_color_dark {
+        max-width: 528px;
+    }
+
+    .content_timeline p {
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .about-project__wrapper {
+        /*padding: 4.4rem 1.12rem 4.31rem;*/
+        padding: 70.40px 17.92px 68.96px;
+    }
+
+    .about-project__about {
+        /*padding-bottom: 1.72rem;*/
+        padding-bottom: 27.52px;
+
+        font-size: 18px;
+        font-style: normal;
+        letter-spacing: -0.72px;
+    }
+
+    .about-project__content {
+        flex-direction: column;
+        /*gap: 3.4rem;*/
+        gap: 54.40px;
+        /*margin: 3.6rem 0;*/
+        margin: 58px 0;
+    }
+
+    .content__column h4 {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        /*margin-bottom: 1rem;*/
+        margin-bottom: 16px;
+    }
+
+    .content__column p {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .first-week_box {
+        /*padding-bottom: 0.69rem;*/
+        padding-bottom: 11px;
+        /*padding-top: 0.69rem;*/
+        padding-top: 11px;
+
+        font-size: 11px;
+    }
+
+    .timeline__first-week {
+        flex: 1;
+    }
+
+    .timeline__second-week {
+        flex: 2;
+    }
+
+    .first-week_box_color_green {
+        width: 100px;
+    }
+
+    .first-week_box_color_dark {
+        width: 184px;
+    }
+
+    .content_timeline p {
+        font-size: 11px;
+        line-height: normal;
+        /*margin-top: 0.63rem;*/
+        margin-top: 10px;
+    }
+}
