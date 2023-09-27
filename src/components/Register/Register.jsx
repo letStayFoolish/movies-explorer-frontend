@@ -23,6 +23,7 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [textOnError, setTextOnError] = useState('')
+  const [isDisabled, setIsDisabled] = useState(false)
 
   // Props for the FormElement global component:
   const greetingMessage = 'Добро пожаловать!'
@@ -41,17 +42,18 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
   // Handler function on submit button - registration:
   const submitHandler = async (e) => {
     e.preventDefault()
-
+    setIsSubmitDisabled(true)
     const {name, email, password} = values
 
     if (!name || !email || !password) {
-      setIsSubmitDisabled(true)
+      // setIsSubmitDisabled(true)
       setIsSuccess(false)
       window.alert('Пожалуйста, заполните все поля.')
       return
     } else {
-      setIsSubmitDisabled(false)
-      setIsEntering(true)
+      // setIsSubmitDisabled(false) // Function to change state - button mode: disabled
+      setIsEntering(true) // Function to change state - text on button (text...)
+      setIsDisabled(true) // Function to change state - input fields: disabled
 
       try {
         const data = await auth.register(name, email, password)
@@ -69,6 +71,7 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
+        setIsDisabled(false)
       }
     }
   }
@@ -97,6 +100,7 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         maxLength={30}
         pattern='^[A-Za-zА-Яа-я \-]+$'
         errorMessage={NAME_SPAN_ERROR}
+        isDisabled={isDisabled}
       />
       <Input
         value={values.email || ''}
@@ -110,6 +114,7 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         maxLength={30}
         pattern='^[a-zA-Z0-9_.\-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$'
         errorMessage={EMAIL_SPAN_ERROR}
+        isDisabled={isDisabled}
       />
       <Input
         value={values.password || ''}
@@ -123,6 +128,7 @@ const Register = ({ handleOnLogin, setCurrentUser }) => {
         maxLength={36}
         pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$'
         errorMessage={PASSWORD_SPAN_ERROR}
+        isDisabled={isDisabled}
       />
       <EntryPopup
         isOpen={isOpen}

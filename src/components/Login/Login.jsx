@@ -22,6 +22,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [textOnError, setTextOnError] = useState('')
+  const [isDisabled, setIsDisabled] = useState(false)
 
   // Props for the FormElement global component:
   const greetingMessage = 'Рады видеть!'
@@ -39,16 +40,19 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
   // Handler function on submit button - log in:
   const submitHandler = async (e) => {
     e.preventDefault()
+    setIsSubmitDisabled(true)
 
     const { email, password } = values
 
     if (!email || !password) {
-      setIsSubmitDisabled(true)
+      // setIsSubmitDisabled(true)
       setIsSuccess(false)
       window.alert('Пожалуйста, заполните все поля.')
     } else {
-      setIsSubmitDisabled(false)
+      // setIsSubmitDisabled(false)
       setIsEntering(true)
+      setIsDisabled(true)
+
       try {
         const data = await auth.authorize(email, password)
         setIsSuccess(true)
@@ -63,6 +67,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         setIsOpen(true)
         setIsSubmitDisabled(true)
         setIsEntering(false)
+        setIsDisabled(false)
       }
     }
   }
@@ -91,6 +96,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         maxLength={30}
         pattern='^[a-zA-Z0-9_.\-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$'
         errorMessage={EMAIL_SPAN_ERROR}
+        isDisabled={isDisabled}
       />
       <Input
         value={values.password || ""}
@@ -104,6 +110,7 @@ const Login = ({ handleOnLogin, setCurrentUser }) => {
         maxLength={36}
         pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$'
         errorMessage={PASSWORD_SPAN_ERROR}
+        isDisabled={isDisabled}
       />
       <EntryPopup
         isOpen={isOpen}

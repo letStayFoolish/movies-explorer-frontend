@@ -10,7 +10,8 @@ const Input = ({
   minLength,
   maxLength,
   pattern,
-  errorMessage
+  errorMessage,
+  isDisabled
 }) => {
   return (
       <label htmlFor="" className='label'>{label}
@@ -25,6 +26,7 @@ const Input = ({
           placeholder={placeholder}
           pattern={pattern}
           required
+          disabled={isDisabled}
         />
         <span className="span_error">{errors && errorMessage}</span>
       </label>

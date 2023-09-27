@@ -30,7 +30,8 @@ const FormButton = ({
     <button
       disabled={isSubmitDisabled}
       type={type}
-      className={`form-btn ${animation}`}
+      // className={`form-btn ${animation}`}
+      className='form-btn'
       onClick={onClick}
       style={buttonStyle}
     >
