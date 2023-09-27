@@ -72,6 +72,7 @@ const Profile = ({ handleOnLogout, setCurrentUser }) => {
       setIsSuccess(true)
       setIsOpen(true)
       setCurrentUser({name: data.name, email: data.email})
+
     } catch (err) {
       setTextOnError(() => handleMessageErrors(err.message, pathname))
       setIsOpen(true)
@@ -102,6 +103,7 @@ const Profile = ({ handleOnLogout, setCurrentUser }) => {
             pattern='^[A-Za-zА-Яа-я \-]+$'
             required
             placeholder='Введите свое имя.'
+            disabled={isEntering}
           />
         </label>
         <span className="span_error">{errors.name && NAME_SPAN_ERROR}</span>
@@ -117,6 +119,7 @@ const Profile = ({ handleOnLogout, setCurrentUser }) => {
             pattern='^[a-zA-Z0-9_.\-]+@[a-zA-Z0-9_]+\.[a-z]{2,6}$'
             required
             placeholder='Введите свой E-mail.'
+            disabled={isEntering}
           />
         </label>
         <span className="span_error">{errors.email && EMAIL_SPAN_ERROR}</span>
