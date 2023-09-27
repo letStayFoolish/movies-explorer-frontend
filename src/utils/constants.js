@@ -49,7 +49,7 @@ export function handleMessageErrors(error, pathname) {
 // export const NAME_SPAN_ERROR="Имя должно содержать только буквы, дефисы или пробелы (от 2 до 30 симв.)"
 export const NAME_SPAN_ERROR="Имя должно быть от 2 до 30 симв., содержать только буквы, дефис или пробел"
 export const EMAIL_SPAN_ERROR="Требуется ввести электронный адрес. Пример: example@example.com"
-export const PASSWORD_SPAN_ERROR="Пароль должен состоять минимум из 6 символов, включая латинские буквы, цифры и специальные символы"
+export const PASSWORD_SPAN_ERROR="Пароль должен состоять минимум из 6 символов, включая латинские буквы (по крайней мере, одна заглавная буква), цифры и специальные символы"
 
 export const projects = [
   {
